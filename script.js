@@ -303,3 +303,83 @@
 // } else {
 // 	console.log("Height is undefined");
 // }
+
+// ==================== Equality Operator : == VS === VS !== and "else if" Statement ==================== // // Notion :
+
+// //////////////////// Strict Equality "===" ////////////////////
+// /* "===" signifie "égalité" stricte (la même valeur et le même type) */
+// // console.log(18 === 18); // true
+// // console.log(18 === 19); // false
+// // console.log("18" === 18); // false
+
+// //////////////////// Loose Equality "==" //////////////////// /* à ne pas utiliser */
+// /* "==" signifie "égalité" (la même valeur) */
+// // console.log(18 == 18); // true
+// // console.log(18 == 19); // false
+// // console.log("18" == 18); // true
+
+// //////////////////// Strict Not Equality "!==" ////////////////////
+// /* "!==" signifie "strictement non égal" (sans Type Coercion)
+//    Pour la "Loose Non Equality" => "!=" */
+// // console.log(18 !== 18); // false
+// // console.log(18 !== 19); // true
+// // console.log("18" !== 19); // true
+
+// //////////////////// En pratique 1 ////////////////////
+// // const age = "18";
+// const age = 18;
+
+// /* Strict Equality */
+// if (age === 18) {
+// 	console.log("You just became an adult (Strict)");
+// }
+
+// /* Loose Equality (à éviter au maximum sauf si nécessaire) */
+// if (age == 18) {
+// 	console.log("You just became an adult (Loose)");
+// }
+
+// //////////////////// En pratique 2 ////////////////////
+// /* Il faut transformer la valeur de prompt en "Number" car de base il se définira en String et dans le Control Flow avec
+//    le Strict Equality (===), il ne sera pas pris en compte (car "===" ne fait pas de Type Coercion)
+//    (Essayer sans le Keyword "Number", le typeof devrait renvoyer string") */
+// const favouriteNumber = Number(prompt("What is your favourite number?"));
+// console.log(favouriteNumber);
+// console.log(typeof favouriteNumber);
+
+// if (favouriteNumber === 21) {
+// 	console.log("This is a great number!");
+// } else if (favouriteNumber === 15) {
+// 	console.log("This is also a cool number!");
+// } else if (favouriteNumber === 24) {
+// 	console.log("This is also a cool number!");
+// } else {
+// 	console.log("This number is not 21 or 15 or 24...10");
+// }
+
+// if (favouriteNumber !== 21) {
+// 	console.log("Why not 21 ?");
+// }
+
+// ==================== Logical Operators (AND, OR, NOT) ==================== // // Notion :
+// /* && -> AND
+//    || -> OR
+//    ! -> NOT */
+
+/* (Jouer avec les valeurs "true" et "false" pour voir les résultats sur la console de l'inspecteur) */
+const hasDriversLicense = false; // A
+const hasGoodVision = false; // B
+const isTired = false; // C
+
+// console.log(hasDriversLicense && hasGoodVision);
+// console.log(hasDriversLicense || hasGoodVision);
+// console.log(hasDriversLicense && hasGoodVision && isTired);
+// console.log(!hasDriversLicense);
+
+//////////////////// En pratique ////////////////////
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+	console.log("Sarah is able to drive!");
+} else {
+	console.log("Someone else should drive...");
+}
