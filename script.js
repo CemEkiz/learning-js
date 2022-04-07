@@ -366,20 +366,70 @@
 //    || -> OR
 //    ! -> NOT */
 
-/* (Jouer avec les valeurs "true" et "false" pour voir les résultats sur la console de l'inspecteur) */
-const hasDriversLicense = false; // A
-const hasGoodVision = false; // B
-const isTired = false; // C
+// /* (Jouer avec les valeurs "true" et "false" pour voir les résultats sur la console de l'inspecteur) */
+// const hasDriversLicense = false; // A
+// const hasGoodVision = false; // B
+// const isTired = false; // C
 
-// console.log(hasDriversLicense && hasGoodVision);
-// console.log(hasDriversLicense || hasGoodVision);
-// console.log(hasDriversLicense && hasGoodVision && isTired);
-// console.log(!hasDriversLicense);
+// // console.log(hasDriversLicense && hasGoodVision);
+// // console.log(hasDriversLicense || hasGoodVision);
+// // console.log(hasDriversLicense && hasGoodVision && isTired);
+// // console.log(!hasDriversLicense);
 
-//////////////////// En pratique ////////////////////
+// //////////////////// En pratique ////////////////////
 
-if (hasDriversLicense && hasGoodVision && !isTired) {
-	console.log("Sarah is able to drive!");
+// if (hasDriversLicense && hasGoodVision && !isTired) {
+// 	console.log("Sarah is able to drive!");
+// } else {
+// 	console.log("Someone else should drive...");
+// }
+
+// ==================== Switch Statement ==================== // // Notion :
+/* Cette instruction va chercher une égalité stricte (===) afin de s'exécuter
+   Les switch Statements viennent simplifier du code qui serait trop long avec le if...else Statement */
+
+// const day = "wednesday";
+
+// switch (day) {
+// 	case "monday": // day === monday
+// 		console.log("Plan course structure");
+// 		console.log("Go to coding meetup");
+// 		break;
+// 	case "tuesday": // day === tuesday
+// 		console.log("Prepare theory videos");
+// 		break;
+// 	case "wednesday": // day === wednesday
+// 	case "thursday": // day === thursday
+// 		console.log("Write code examples");
+// 		break;
+// 	case "friday": // day === friday
+// 		console.log("Record videos");
+// 		break;
+// 	case "saturday": // day === saturday
+// 	case "sunday": // day === sunday
+// 		console.log("Enjoy the weekend!");
+// 		break;
+// 	default:
+// 		console.log("Not a valid day!");
+// 		break;
+// }
+
+/* Le code réalisé ci-dessus avec le Switch Statement peut être réalisé avec le if...else Statement
+   Mais le soucis réside dans le fait que le code sera long et fastidieux à écrire dans certaines situations
+   Le résultat est donc le même, seule la syntaxe change */
+
+const day = "sunday";
+
+if (day === "monday") {
+	console.log("Plan course structure");
+} else if (day === "tuesday") {
+	console.log("Prepare theory videos");
+} else if (day === "wednesday" || day === "thursday") {
+	console.log("Write code examples");
+} else if (day === "friday") {
+	console.log("Record videos");
+} else if (day === "saturday" || day === "sunday") {
+	console.log("Enjoy the weekend!");
 } else {
-	console.log("Someone else should drive...");
+	console.log("Invalid day!");
 }
