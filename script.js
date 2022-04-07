@@ -388,6 +388,8 @@
 /* Cette instruction va chercher une égalité stricte (===) afin de s'exécuter
    Les switch Statements viennent simplifier du code qui serait trop long avec le if...else Statement */
 
+//////////////////// En pratique 1 ////////////////////
+
 // const day = "wednesday";
 
 // switch (day) {
@@ -414,22 +416,76 @@
 // 		break;
 // }
 
+//////////////////// En pratique 2 ////////////////////
+
 /* Le code réalisé ci-dessus avec le Switch Statement peut être réalisé avec le if...else Statement
    Mais le soucis réside dans le fait que le code sera long et fastidieux à écrire dans certaines situations
    Le résultat est donc le même, seule la syntaxe change */
 
-const day = "sunday";
+// const day = "sunday";
 
-if (day === "monday") {
-	console.log("Plan course structure");
-} else if (day === "tuesday") {
-	console.log("Prepare theory videos");
-} else if (day === "wednesday" || day === "thursday") {
-	console.log("Write code examples");
-} else if (day === "friday") {
-	console.log("Record videos");
-} else if (day === "saturday" || day === "sunday") {
-	console.log("Enjoy the weekend!");
+// if (day === "monday") {
+// 	console.log("Plan course structure");
+// } else if (day === "tuesday") {
+// 	console.log("Prepare theory videos");
+// } else if (day === "wednesday" || day === "thursday") {
+// 	console.log("Write code examples");
+// } else if (day === "friday") {
+// 	console.log("Record videos");
+// } else if (day === "saturday" || day === "sunday") {
+// 	console.log("Enjoy the weekend!");
+// } else {
+// 	console.log("Invalid day!");
+// }
+
+// ==================== Statements VS Expressions ==================== // // Notion :
+
+//////////////////// Expressions ////////////////////
+/* Les expressions -> produisent des valeurs
+Voici quelques exemples */
+
+// 3 + 4; // => expression
+// 1991; // => expression
+// "cem" // ==> expression
+// true && false && !false; // => expression
+
+//////////////////// Expressions ////////////////////
+/* Les Statements (instructions) ne produisent pas de valeurs en elle-mêmes, ce sont des "actions" */
+
+// if // => statement
+// else // => statement
+// else if // => statement
+// switch // => statement
+
+//////////////////// Exemple Complet ////////////////////
+/* if = instruction | {} = bloc d'instruction | 23, 10, "23 is bigger" = expressions | const = declaration | str = variable */
+
+// if (23 > 10) {
+// 	const str = "23 is bigger";
+// }
+
+// ==================== Conditional (Ternary) Operator ==================== // // Notion :
+/* Un opérateur ternaire a 3 parties (contrairement à l'opérateur binaire qui nécessite une opérande gauche et droite)
+   L'intérêt de l'opérateur ternaire est de définir l'expression en fonction d'une condition d'où son autre nom "opérateur conditionnel"
+   /!\ L'opérateur conditionnel produit une expression (valeur) CONTRAIREMENT au if Statement qui n'en produit pas (c'est seulement un TEST)
+   L'opérateur conditionnel est constitué de : 
+   1 - La condition (age >= 18)
+   2 - La partie if (?)
+   3 - La partie else (:) */
+
+const age = 17;
+const drink = age >= 18 ? "wine 🍷" : "water 💧";
+console.log(drink);
+
+/* Il est possible de le faire autrement, en faisant attention à créer la variable d'abord en dehors de l'instruction
+   Puis de le ré-assigner à l'intérieur (dans le cas de l'opérateur ternaire, c'est + court et + lisible mais le résultat est le même) */
+let drink2;
+if (age >= 18) {
+	drink2 = "wine 🍷";
 } else {
-	console.log("Invalid day!");
+	drink2 = "water 💧";
 }
+console.log(drink2);
+
+/* L'opérateur ternaire étant une expression il est possible de l'insérer dans un Template Literal (contrairement au if Statement) */
+console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
