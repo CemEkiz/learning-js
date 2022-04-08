@@ -1,29 +1,29 @@
 //////////////////// Coding Challenge #1 ////////////////////
 
-// // 1)
-// // With Data 1
-// // const marksMass = 78;
-// // const marksHeight = 1.69;
-// // const johnMass = 92;
-// // const johnHeight = 1.95;
+// 1)
+// With Data 1
+// const marksMass = 78;
+// const marksHeight = 1.69;
+// const johnMass = 92;
+// const johnHeight = 1.95;
 
-// // With Data 2
+// With Data 2
 // const marksMass = 95;
 // const marksHeight = 1.88;
 // const johnMass = 85;
 // const johnHeight = 1.76;
 
-// // 2)
+// 2)
 // const marksBMI = marksMass / marksHeight ** 2;
 // console.log(marksBMI);
 // const johnBMI = johnMass / johnHeight ** 2;
 // console.log(johnBMI);
 
-// // 3)
+// 3)
 // const marksHigherBMI = marksBMI > johnBMI;
 // console.log(marksHigherBMI);
 
-// //////////////////// Coding Challenge #2 ////////////////////
+//////////////////// Coding Challenge #2 ////////////////////
 
 // if (marksBMI > johnBMI) {
 // 	console.log(
@@ -35,15 +35,15 @@
 // 	);
 // }
 
-// //////////////////// Coding Challenge #3 ////////////////////
+//////////////////// Coding Challenge #3 ////////////////////
 
-// // 1)
+// 1)
 // const averageScoreDolphins = (96 + 108 + 89) / 3;
 // console.log(averageScoreDolphins);
 // const averageScoreKoalas = (88 + 91 + 110) / 3;
 // console.log(averageScoreKoalas);
 
-// // 2)
+// 2)
 // if (averageScoreDolphins > averageScoreKoalas) {
 // 	console.log("Dolphins win!");
 // } else if (averageScoreDolphins === averageScoreKoalas) {
@@ -90,3 +90,15 @@
 // } else {
 // 	console.log("No ones win!");
 // }
+
+//////////////////// Coding Challenge #4 ////////////////////
+
+// 1)
+let bill = 430;
+console.log(bill);
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+	`The bill was ${bill}, the tip was ${tip} and te the total value was ${
+		bill + tip
+	}`
+);

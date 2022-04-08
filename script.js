@@ -473,19 +473,21 @@ Voici quelques exemples */
    2 - La partie if (?)
    3 - La partie else (:) */
 
-const age = 17;
-const drink = age >= 18 ? "wine 🍷" : "water 💧";
-console.log(drink);
+// const age = 17;
+// const drink = age >= 18 ? "wine 🍷" : "water 💧";
+// console.log(drink);
 
 /* Il est possible de le faire autrement, en faisant attention à créer la variable d'abord en dehors de l'instruction
    Puis de le ré-assigner à l'intérieur (dans le cas de l'opérateur ternaire, c'est + court et + lisible mais le résultat est le même) */
-let drink2;
-if (age >= 18) {
-	drink2 = "wine 🍷";
-} else {
-	drink2 = "water 💧";
-}
-console.log(drink2);
+// let drink2;
+// if (age >= 18) {
+// 	drink2 = "wine 🍷";
+// } else {
+// 	drink2 = "water 💧";
+// }
+// console.log(drink2);
 
-/* L'opérateur ternaire étant une expression il est possible de l'insérer dans un Template Literal (contrairement au if Statement) */
-console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
+/* L'opérateur ternaire étant une expression il est possible de l'insérer dans un Template Literal (contrairement au if Statement)
+   /!\ L'opérateur ternaire n'est pas là pour remplacer le if Statement, il est là pour prendre des décisions rapides, être insérés
+   dans des Templates Literals, etc. Mais le if Statement et switch Statement restent indispensables selon les situations ! */
+// console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
