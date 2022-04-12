@@ -91,14 +91,14 @@
 // 	console.log("No ones win!");
 // }
 
-//////////////////// Coding Challenge #4 ////////////////////
+// //////////////////// Coding Challenge #4 (Ternary Operator) ////////////////////
 
-// 1)
-let bill = 430;
-console.log(bill);
-const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-console.log(
-	`The bill was ${bill}, the tip was ${tip} and te the total value was ${
-		bill + tip
-	}`
-);
+// // 1)
+// let bill = 275;
+// console.log(bill);
+// const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// console.log(
+// 	`The bill was ${bill}, the tip was ${tip} and te the total value was ${
+// 		bill + tip
+// 	}`
+// );
