@@ -18,14 +18,14 @@
 // =============================================================== //
 // =============================================================== //
 
-// /* Les fonctions peuvent être ré-utilisés (comme les variables)
-//    La partie qui se trouve entre {} est nommée "Function Body", c'est cette partie qui sera exécuté
-//    Après avoir crée une fonction on peut la ré-utiliser autant de fois qu'on le souhaite en l'appelant avec "logger()" par exemple
-//    En anglais on dit "invoking", "running" ou "calling" the function lorsque l'on fait appel à une fonction
-//    Une fonction peut contenir des données mais peut aussi en renvoyer
-//    Analogie : on met des fruits (données) dans un mixeur (fonction), celle-ci va mixer (fonction body va s'exécuter) et retourner un jus de fruit (données)
-//    Les fonctions permettent de créer du maintenable code, car elles permettent de ré-utiliser des parties de code facilement en évitant les redondances
-//    Et éviter les répétions est un principe fondamental du Clean Code ! */
+/* Les fonctions peuvent être ré-utilisés (comme les variables)
+   La partie qui se trouve entre {} est nommée "Function Body", c'est cette partie qui sera exécuté
+   Après avoir crée une fonction on peut la ré-utiliser autant de fois qu'on le souhaite en l'appelant avec "logger()" par exemple
+   En anglais on dit "invoking", "running" ou "calling" the function lorsque l'on fait appel à une fonction
+   Une fonction peut contenir des données mais peut aussi en renvoyer
+   Analogie : on met des fruits (données) dans un mixeur (fonction), celle-ci va mixer (fonction body va s'exécuter) et retourner un jus de fruit (données)
+   Les fonctions permettent de créer du maintenable code, car elles permettent de ré-utiliser des parties de code facilement en évitant les redondances
+   Et éviter les répétions est un principe fondamental du Clean Code ! */
 
 // function logger() {
 // 	console.log("My name is Cem");
@@ -33,6 +33,12 @@
 
 // logger();
 // logger();
+// logger();
+
+// const logger = function () {
+// 	console.log("My name is Cem");
+// };
+
 // logger();
 
 // /* Ce qui est à l'intérieur des () est appelé "paramètre", il est possible d'en définir plusieurs
@@ -59,7 +65,7 @@
 
 // ================================================================================================== //
 // ================================================================================================== //
-// ========================== Function Declartions VS Function Expressions ========================== // Notion :
+// ========================== Function Declarations VS Function Expressions ========================== // Notion :
 // ================================================================================================== //
 // ================================================================================================== //
 // /* Le résultat sera le même, mais la différence réside dans le fait qu'une Declaration peut survenir après l'avoir utilisé
@@ -105,14 +111,14 @@
 //                  le body function est constitué d'une variable "age" qui définit l'âge puis l'utilise pour faire le calcul "65 - age" dans la variable "retirement"
 //                  la fonction retourne le résultat de la variable retirement */
 
-// // const yearsUntilRetirement = (birthYear) => {
-// // 	const age = 2022 - birthYear;
-// // 	const retirement = 65 - age;
-// // 	return retirement;
-// // };
+// const yearsUntilRetirement = (birthYear) => {
+// 	const age = 2022 - birthYear;
+// 	const retirement = 65 - age;
+// 	return retirement;
+// };
 
-// // const retirementCem = yearsUntilRetirement(1996);
-// // console.log(retirementCem);
+// const retirementCem = yearsUntilRetirement(1996);
+// console.log(retirementCem);
 
 // /* ---------------------- Scénario 2 ---------------------- */
 // /* Il y a plusieurs paramètres */
@@ -159,8 +165,8 @@
 // ========================== Reviewing Functions ========================== // Notion :
 // ========================================================================= //
 // ========================================================================= //
-/* À noter : return Statement ne fait pas que renvoyer une valeur, mais elle met fin à la fonction
-   donc tout ce qui se trouve après ne sera pas exécuté ! */
+// /* À noter : return Statement ne fait pas que renvoyer une valeur, mais elle met fin à la fonction
+//    donc tout ce qui se trouve après ne sera pas exécuté ! */
 
 // const calcAge = function (birthYear) {
 // 	return 2022 - birthYear;
@@ -261,13 +267,13 @@
 // ];
 // console.log(ages);
 
-// ======================================================================================= //
-// ======================================================================================= //
-// ========================== Basic Arrays Operations (Methods) ========================== //  Notion :
-// ======================================================================================= //
-// ======================================================================================= //
-// /* JavaScript a des built-in functions applicables directement aux Arrays : les "Methods"
-//    On relie une method à un Array (ou autres) par le biais de la notation pointée "." */
+// =================================================================== //
+// =================================================================== //
+// ========================== Array Methods ========================== //  Notion :
+// =================================================================== //
+// =================================================================== //
+/* JavaScript a des built-in functions applicables directement aux Arrays : les "Methods"
+   On relie une method à un Array (ou autres) par le biais de la notation pointée "." */
 
 // const friends = ["Michael", "Steven", "Peter"];
 
@@ -311,8 +317,8 @@
 
 // /* ---------------------- Savoir si un élément est dans l'Array ---------------------- */
 
-// console.log(friends.includes("Steven")); // 1
-// console.log(friends.includes("Bob")); // -1
+// console.log(friends.includes("Steven")); // true
+// console.log(friends.includes("Bob")); // false
 
 // /* Cette méthode test avec l'égalité stricte ! */
 // friends.push(23);
@@ -322,7 +328,7 @@
 // /* C'est très souvent utilisé */
 
 // if (friends.includes("Peter")) {
-// 	console.log("You have a friend called Bob");
+// 	console.log("You have a friend called Peter");
 // }
 
 // ============================================================================= //
@@ -336,28 +342,28 @@
 /* Les Objects résoudent ce problème car il est possible de nommer, c'est ce qu'on appelle "key" donc l'ordre des éléments n'a pas d'importance
    On utilise donc les Arrays pour des structures ordonnées et les Objects pour des structures désordonnées */
 
-// /* À titre de comparaison entre les Arrays et les Objects */
-// // const jonasArray = [
-// // 	"Jonas",
-// // 	"Schmedtmann",
-// // 	2037 - 1991,
-// // 	"Teacher",
-// // 	["Michael", "Peter", "Steven"],
-// // ];
+/* À titre de comparaison entre les Arrays et les Objects */
+// const jonasArray = [
+// 	"Jonas",
+// 	"Schmedtmann",
+// 	2037 - 1991,
+// 	"Teacher",
+// 	["Michael", "Peter", "Steven"],
+// ];
 
 // /* Voici à quoi ressemble une structure de donnée avec les Objects
 //    Chaque ligne correspond à une "key-value pair"
 //    Object = correspond à tout ce qui est entre {}
 //    Property (ou Key) = correspond à "firstName", "lastName", etc.
 //    Property Value (ou Value) = Données, Arrays, Functions, etc. */
-// const jonas = {
-// 	firstName: "Jonas",
-// 	lastName: "Schmedtmann",
-// 	age: 2037 - 1991,
-// 	job: "Teacher",
+// const cemProfile = {
+// 	firstName: "Cem",
+// 	lastName: "Ekiz",
+// 	age: 2022 - 1996,
+// 	job: "Developer",
 // 	friends: ["Michael", "Peter", "Steven"],
 // };
-// console.log(jonas);
+// console.log(cemProfile);
 
 // ====================================================================================== //
 // ====================================================================================== //
@@ -365,14 +371,15 @@
 // ====================================================================================== //
 // ====================================================================================== //
 
-// const jonas = {
-// 	firstName: "Jonas",
-// 	lastName: "Schmedtmann",
-// 	age: 2037 - 1991,
-// 	job: "Teacher",
+// const cemProfile = {
+// 	firstName: "Cem",
+// 	lastName: "Ekiz",
+// 	age: 2022 - 1996,
+// 	job: "Developer",
 // 	friends: ["Michael", "Peter", "Steven"],
 // };
-// console.log(jonas);
+
+/* -------------------- . vs [] -------------------- */
 
 // /* Voici commment récupérer une donnée dans un Object : grâce à l'opérateur "notation pointée" -> "."*/
 // console.log(jonas.firstName);
@@ -384,46 +391,59 @@
 // console.log(jonas["first" + nameKey]);
 // console.log(jonas["last" + nameKey]);
 
-// /* Un autre scénario dans lequel on ne sait pas encore quel valeur nous allons recevoir à l'avance
-//    -> Dans le prompt je vais demander "job" et nous allons voir ce que la console nous renvoie
-//    Cet exemple montre clairement la différence entre la "." Notation et la "[]" Notation */
-// const interestedIn = prompt(
-// 	"What do you want to know about Jonas? Choose between firstName, lastName, age, job and friendsjob"
-// );
-// console.log(interestedIn); // job
-// console.log(jonas.interestedIn); // undefined (falsy value) // c'est ce qu'on obtient lorsqu'on essaye d'accéder à une Property qui n'existe pas dans un Object
-// console.log(jonas[interestedIn]); // Teacher
-// console.log(jonas[interestedIn]); // undefined // si je demande une Property qui n'existe pas, la console retourne "undefined" => falsy value
+/* -------------------- Test avec le Prompt -------------------- */
 
-// /* Maintenant de print un string dans la console lorsque l'user essaye d'accéder à une Property qui n'existe pas ! */
-// /* Explication : "si jonas[interestedIn"] existe (si c'est true) alors print le dans la console
-//                   sinon (si c'est falsy : 0, undefined, etc.) print le string "Wrong request!" */
-// if (jonas[interestedIn]) {
-// 	console.log;
+// /* Dans le prompt je vais demander "job" et nous allons voir ce que la console nous renvoie */
+// const interestedIn = prompt("What do you want to know about Cem?");
+
+// /* Retourne ce que je demande dans le prompt */
+// console.log(interestedIn); // job
+
+// /* Retourne "undefined" car "." essaye d'accéder à la propriété "interestedIn" dans l'Object "cemProfile" mais celle-ci n'existe pas */
+// console.log(cemProfile.interestedIn); // undefined (falsy value) //
+
+// /* Retourne la valeur de la key "job" (qui a été demandé dans le prompt) de l'Object "cemProfile" */
+// console.log(cemProfile[interestedIn]); // Developer
+
+// /* Retourne "undefined" si je demande une key inexistante dans le Prompt*/
+// console.log(cemProfile[interestedIn]); // undefined
+
+// /* Si je rentre une key valide dans le prompt alors la première instruction est exécuté, sinon si la key n'existe pas -> "Wrong Requet" */
+// if (cemProfile[interestedIn]) {
+// 	console.log(cemProfile[interestedIn]);
 // } else {
 // 	console.log("Wrong request!");
 // }
 
-// /* Ajouter une nouvelle Property à un Object : possible de le faire avec "." ou [] */
-// jonas.location = "Portugal";
-// jonas["twitter"] = "@jonasschmedtman";
-// console.log(jonas);
-// console.log(jonas.location);
+/* -------------------- Ajouter nouvel élément à un Object  -------------------- */
 
-// /* Exemple plus complexe (la notation pointée agit de gauche à droite => jonas.friends d'abord puis friends.length ! // cf. Table des Precedence si besoin) */
+// /* Ajouter une nouvelle Property à un Object avec "." */
+// cemProfile.location = "France";
+
+// /* Ajouter une nouvelle Property à un Object avec "[]" */
+// cemProfile["twitter"] = "@cemekyz";
+
+// console.log(cemProfile); // retourne l'Object cemProfile avec les nouvelles key-value pair
+// console.log(cemProfile.location); // France
+
+/* -------------------- Template Literals avec Objects Methods  -------------------- */
+
+// /* Exemple plus complexe (la notation pointée agit de gauche à droite
+//    (cemProfile.friends d'abord puis friends.length) // cf. Table des Precedence si besoin) */
 // console.log(
-// 	`${jonas.firstName} has ${jonas.friends.length} friends and his best friend is called ${jonas.friends[0]}`
+// 	`${cemProfile.firstName} has ${cemProfile.friends.length} friends and his best friend is called ${cemProfile.friends[0]}`
 // );
+// // > Cem has 3 friends and his best friend is called Michael
 
 // ==================================================================== //
 // ==================================================================== //
 // ========================== Object Methods ========================== //  Notion :
 // ==================================================================== //
 // ==================================================================== //
-// /* Pour rappel : dans un Object il peut y avoir plusieurs types de données, des Arrays et mêmes d'autres Object
-//    Voyons maintenant les Functions à l'intérieur d'un Object (Functions = un autre type de valeur) = Methods */
+// // /* Pour rappel : dans un Object il peut y avoir plusieurs types de données, des Arrays et mêmes d'autres Object
+// //    Voyons maintenant les Functions à l'intérieur d'un Object (Functions = un autre type de valeur) = Methods */
 
-// /* ---------------------- Scénario 1 ---------------------- */
+// // /* ---------------------- Scénario 1 ---------------------- */
 // /* Lorsqu'une Function Expression (calcAge dans cet exemple) est attaché à un Object => on appelle cela une "Method"
 //    calcAge est donc une Property qui a pour valeur une Function
 //    L'instruction "this" pointe sur Jonas dans cet exemple pour la Property "birthYear"
@@ -447,7 +467,7 @@
 //    C'est l'objet (jonas) qui appelle sa méthode (calcAge). Donc le "this.birthYear" dans la Method "calcAge" fera référence au birthYear de l'object Jonas */
 // /* ou */
 // console.log(jonas.calcAge()); // 31 //
-// // console.log(jonas["calcAge"]()); // 31 //
+// console.log(jonas["calcAge"]()); // 31 //
 
 // /* Il est possible de faire comme ceci pour accéder plusieurs fois à l'âge de Jonas mais dans le cadre d'un site/application ça serait "lourd" en terme de calcul
 //    et c'est une mauvaise pratique */
@@ -464,7 +484,7 @@
 // 	firstName: "Cem",
 // 	lastName: "Ekiz",
 // 	birthYear: 1996,
-// 	job: "Développeur Web",
+// 	job: "Developer",
 // 	friends: ["Jeremy", "Azzedine", "Sojy"],
 // 	hasDriversLicense: true,
 
@@ -482,9 +502,11 @@
 // 	},
 // };
 
-// /* Attention : il faut avoir au moins computer la version "cem.calcage()" avant d'utiliser "cem.age" autant de fois que l'on veut
-// Si on essaye seulement "console.log(cem.age" -> la console retourne undefined */
+// /* Attention : il faut avoir au moins computer la version "cem.calcage()" avant d'utiliser "cem.age" autant de fois que l'on veut.
+// Si on essaye seulement "console.log(cem.age)" la console retourne undefined */
+// console.log(cem.age);
 // console.log(cem.calcAge());
+// console.log(cem.age);
 // console.log(cem.getSummary());
 
 // /** À noter : dans l'exercice sur les Basics Arrays nous avons appelé des built-in Methods "friends.push" ou "friends.indexOf"
@@ -510,8 +532,8 @@
 // // console.log("Lifting weights repetition 10 🏋️");
 
 // /* Une Loop for continuera à s'éxecuter tant que la condition est true (ici la condition est "rep <= 10") */
-// for (let rep = 1; rep <= 10; rep++) {
-// 	console.log(`Lifting weights repetition ${rep} 🏋️`);
+// for (let i = 1; i <= 5; i++) {
+// 	console.log(`Lifting weights repetition ${i} 🏋️`);
 // }
 
 // ============================================================================================= //
@@ -520,6 +542,7 @@
 // ============================================================================================= //
 // ============================================================================================= //
 
+// /* Array contenant les infos de Jonas */
 // const jonas = [
 // 	"Jonas",
 // 	"Schmedtmann",
@@ -529,6 +552,7 @@
 // 	true,
 // ];
 
+// /* Array vide dans lequel vont être push les Data Types des infos de Jonas */
 // const types = [];
 
 // /* Voici ce que je veux faire avec une Loop for */
@@ -563,6 +587,8 @@
 // 	types.push(typeof jonas[i]);
 // }
 
+// /* Étant donné qu'à chaque itération, le type de l'élément de l'array "jonas" a été push dans l'array "types"
+//    on retrouvera ici la liste des types de chaque élément */
 // console.log(types);
 
 // /* ---------------------- Scénario avec la For Loop ---------------------- */
@@ -620,7 +646,10 @@
 //    puis quand elle tombera sur un nombre, la loop s'arrêtera (le nombre ne sera pas print). */
 
 // for (let i = 0; i < jonas.length; i++) {
-// 	if (typeof jonas[i] === "number") break;
+// 	if (typeof jonas[i] === "number") {
+// 		console.log(jonas[i]);
+// 		break;
+// 	}
 // 	console.log(jonas[i], typeof jonas[i]);
 // }
 
@@ -643,20 +672,22 @@
 
 // /* Nous voulons dans cet exemple Loop en commencant par la fin => [4], [3], [2], etc. */
 
-// for (let i = jonas.length - 1; i >= 0; i--) {
+// for (let i = jonas.length; i >= 0; i--) {
 // 	console.log(i, jonas[i]);
 // }
 
+// console.log(jonas.length);
+
 // /* ---------------------- Loops in Loops ---------------------- */
 
-// /* La première loop lance l'exercie 1 et s'arrêtera à 3, et à chaque exercice une Loop de 5 répétions se lance. */
-// for (let exercise = 1; exercise <= 3; exercise++) {
-// 	console.log(`Starting exercise ${exercise}`);
+/* La première loop lance l'exercie 1 et s'arrêtera à 3, et à chaque exercice une Loop de 5 répétions se lance. */
+for (let exercise = 1; exercise <= 3; exercise++) {
+	console.log(`Starting exercise ${exercise}`);
 
-// 	for (let rep = 1; rep <= 5; rep++) {
-// 		console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
-// 	}
-// }
+	for (let rep = 1; rep <= 5; rep++) {
+		console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+	}
+}
 
 // ==================================================================== //
 // ==================================================================== //

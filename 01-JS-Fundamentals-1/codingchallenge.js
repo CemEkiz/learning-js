@@ -1,31 +1,37 @@
-//////////////////// Coding Challenge #1 ////////////////////
+//////////////////// Coding Challenge #1 (variables) ////////////////////
 
-// 1)
-// With Data 1
 // const marksMass = 78;
 // const marksHeight = 1.69;
 // const johnMass = 92;
 // const johnHeight = 1.95;
 
-// With Data 2
-// const marksMass = 95;
-// const marksHeight = 1.88;
-// const johnMass = 85;
-// const johnHeight = 1.76;
+// // With Data 2
+// // const marksMass = 95;
+// // const marksHeight = 1.88;
+// // const johnMass = 85;
+// // const johnHeight = 1.76;
 
-// 2)
 // const marksBMI = marksMass / marksHeight ** 2;
-// console.log(marksBMI);
+// console.log(marksBMI); // 27..
 // const johnBMI = johnMass / johnHeight ** 2;
-// console.log(johnBMI);
+// console.log(johnBMI); // 24..
 
-// 3)
 // const marksHigherBMI = marksBMI > johnBMI;
-// console.log(marksHigherBMI);
+// console.log(marksHigherBMI); // true
 
-//////////////////// Coding Challenge #2 ////////////////////
+// //////////////////// Coding Challenge #2 (if/else) ////////////////////
 
-// if (marksBMI > johnBMI) {
+// const marksMass = 78;
+// const marksHeight = 1.69;
+// const johnMass = 92;
+// const johnHeight = 1.95;
+
+// const marksBMI = marksMass / marksHeight ** 2;
+// console.log(marksBMI); // 27..
+// const johnBMI = johnMass / johnHeight ** 2;
+// console.log(johnBMI); // 24..
+
+// if (marksBMI > johnBMI) { // true
 // 	console.log(
 // 		`Mark's BMI (${marksBMI}) is higher than John's BMI (${johnBMI})`
 // 	);
@@ -35,16 +41,14 @@
 // 	);
 // }
 
-//////////////////// Coding Challenge #3 ////////////////////
+//////////////////// Coding Challenge #3 (if/else and operators) ////////////////////
 
-// 1)
 // const averageScoreDolphins = (96 + 108 + 89) / 3;
-// console.log(averageScoreDolphins);
+// console.log(averageScoreDolphins); // 97
 // const averageScoreKoalas = (88 + 91 + 110) / 3;
-// console.log(averageScoreKoalas);
+// console.log(averageScoreKoalas); // 96
 
-// 2)
-// if (averageScoreDolphins > averageScoreKoalas) {
+// if (averageScoreDolphins > averageScoreKoalas) { // true
 // 	console.log("Dolphins win!");
 // } else if (averageScoreDolphins === averageScoreKoalas) {
 // 	console.log("There is a draw!");
@@ -54,16 +58,16 @@
 
 // // Bonus 1
 // const averageScoreDolphins = (97 + 112 + 101) / 3;
-// console.log(averageScoreDolphins);
+// console.log(averageScoreDolphins); // 103
 // const averageScoreKoalas = (109 + 95 + 123) / 3;
-// console.log(averageScoreKoalas);
+// console.log(averageScoreKoalas); // 109
 
 // if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
 // 	console.log("Dolphins win!");
 // } else if (
 // 	averageScoreKoalas > averageScoreDolphins &&
 // 	averageScoreKoalas >= 100
-// ) {
+// ) { // true
 // 	console.log("Koalas win!");
 // } else {
 // 	console.log("No ones win!");
@@ -75,17 +79,17 @@
 // const averageScoreKoalas = (109 + 95 + 106) / 3;
 // console.log(averageScoreKoalas);
 
-// if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
+// if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) { // false
 // 	console.log("Dolphins win!");
 // } else if (
 // 	averageScoreKoalas > averageScoreDolphins &&
 // 	averageScoreKoalas >= 100
-// ) {
+// ) { // false
 // 	console.log("Koalas win!");
 // } else if (
 // 	(averageScoreDolphins === averageScoreKoalas && averageScoreDolphins,
 // 	averageScoreKoalas >= 100)
-// ) {
+// ) { // false
 // 	console.log("There is a draw!");
 // } else {
 // 	console.log("No ones win!");
@@ -96,6 +100,7 @@
 // // 1)
 // let bill = 275;
 // console.log(bill);
+
 // const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 // console.log(
 // 	`The bill was ${bill}, the tip was ${tip} and te the total value was ${

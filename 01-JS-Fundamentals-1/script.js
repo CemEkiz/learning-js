@@ -1,5 +1,7 @@
 // ================================================================= //
+// ================================================================= //
 // ========================== Hello World ========================== //
+// ================================================================= //
 // ================================================================= //
 
 // let js = "amazing";
@@ -7,7 +9,9 @@
 // console.log(40 + 8 + 23 - 10);
 
 // ========================================================================== //
-// ========================== Values and Variables ========================== //
+// ========================================================================== //
+// ========================== Values and Variables ========================== // Notion :
+// ========================================================================== //
 // ========================================================================== //
 
 // console.log("Cem");
@@ -16,14 +20,16 @@
 // console.log(firstName);
 
 // ============================================================================ //
-// ========================== Variables Naming Rules ========================== //
+// ============================================================================ //
+// ========================== Variables Naming Rules ========================== // Notion :
+// ============================================================================ //
 // ============================================================================ //
 
-/******************** Conventions ********************/
+// /******************** Conventions ********************/
 
-let firstName = "Cem"; // camelCase
-let myCurrentJob = "Developer"; // Utiliser un nom de variable descriptif (nameOfMyCat, myFirstJob) plutôt que des noms qui n'ont pas de sens (job1, job2, catNumber2)
-let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keywords tel que PI par exemple
+// let firstName = "Cem"; // camelCase
+// let myCurrentJob = "Developer"; // Utiliser un nom de variable descriptif (nameOfMyCat, myFirstJob) plutôt que des noms qui n'ont pas de sens (job1, job2, catNumber2)
+// let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keywords tel que PI par exemple
 
 /******************** Règles ********************/
 
@@ -33,7 +39,9 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // let caseSensitive = value // Les noms des variables sont sensibles à la casse, donc si je déclare "let casesensitive" ça sera une toute autre variable qui sera déclaré
 
 // ================================================================ //
-// ========================== Data Types ========================== //
+// ================================================================ //
+// ========================== Data Types ========================== // Notion : OK
+// ================================================================ //
 // ================================================================ //
 
 // /******************** String ********************/
@@ -57,7 +65,9 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // console.log(typeof null);
 
 // ========================================================================= //
-// ========================== let VS const VS var ========================== //
+// ========================================================================= //
+// ========================== let VS const VS var ========================== // Notion : OK
+// ========================================================================= //
 // ========================================================================= //
 
 // /******************** let ********************/
@@ -86,7 +96,9 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // console.log(lastName);
 
 // ========================================================================== //
+// ========================================================================== //
 // ========================== Arithmetic Operators ========================== //
+// ========================================================================== //
 // ========================================================================== //
 
 // let myAge = 26;
@@ -211,13 +223,11 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // const year = 2037;
 
 // /* Construction d'une variable SANS Template Literals */
-
 // const jonas =
 // 	"I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
 // console.log(jonas);
 
 // /* Construction d'une variable AVEC Template Literals */
-
 // const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
 // console.log(jonasNew);
 
@@ -243,32 +253,34 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // if signifie "si", "else" signifie "sinon" ce qui est à l'intérieur de () est la condition qui peut être true ou false, ce qui est à l'intérieur de {} est le bloc qui sera exécuté si la condition est true ou false.
 // Dans le cas où il n'y a pas de else Statement : si la condition est true, le bloc {} sera exécuté, si il est false il ne sera pas exécuté */
 
-// const age = 15;
+// const ageofSarah = 15;
 
-// if (age >= 18) {
+// if (ageofSarah >= 18) {
 // 	console.log("Sarah can start driving license 🚗");
 // } else {
-// 	const yearsLeft = 18 - age;
+// 	const yearsLeft = 18 - ageofSarah;
 // 	console.log(`Sarah is too young, Wait another ${yearsLeft} years :)`);
 // }
 
-// const birthYear = 1991;
+// const birthYear = 2012;
 // let century;
 
 // if (birthYear <= 2000) {
-// 	let century = 20;
+// 	century = 20;
 // } else {
-// 	let century = 21;
+// 	century = 21;
 // }
+
+// console.log(century);
 
 // ===================================================================================== //
 // ========================== Type Conversion & Type Coercion ========================== //
 // ===================================================================================== //
 
-// /* Dans l'exemple ci-dessous, "1991" est un String, et "18" est un Number */
+/* Dans l'exemple ci-dessous, "1991" est un String, et "18" est un Number */
 
-// // const inputYear = "1991";
-// // console.log(inputYear + 18); // 199118 (String et Number)
+// const inputYear = "1991";
+// console.log(inputYear + 18); // 199118 (String et Number)
 
 // /******************** Type Conversion ********************/
 // /* On parle de Conversion de Data Type lorsqu'on le fait manuellement avec les fonctions "Number", "String", "Boolean", etc. */
@@ -308,24 +320,24 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // ========================== Truthy & Falsy Values ========================== //
 // =========================================================================== //
 
-// /******************** Falsy Values ********************/
-// /* Mais qu'est-ce que c'est "falsy values" => ce sont des valeurs qui vont être converti en "false" avec Boolean
-//    Il existe 5 valeurs pouvant être converti en false : 0, "", undefined, null, NaN */
+/******************** Falsy Values ********************/
+/* Mais qu'est-ce que c'est "falsy values" => ce sont des valeurs qui vont être converti en "false" avec Boolean
+   Il existe 5 valeurs pouvant être converti en false : 0, "", undefined, null, NaN */
 
-// // console.log(Boolean(0)); // false
-// // console.log(Boolean("")); // false
-// // console.log(Boolean(undefined)); // false
-// // console.log(Boolean(null)); // false
-// // console.log(Boolean(NaN)); // false
+// console.log(Boolean(0)); // false
+// console.log(Boolean("")); // false
+// console.log(Boolean(undefined)); // false
+// console.log(Boolean(null)); // false
+// console.log(Boolean(NaN)); // false
 
-// /******************** Truthy Values ********************/
-// /* À l'inverse, les truthy values => ce sont des valeurs qui vont être converti en "true" avec Boolean
-// Exemples => String qui ne sont pas vide, Number autres que 0, etc. */
+/******************** Truthy Values ********************/
+/* À l'inverse, les truthy values => ce sont des valeurs qui vont être converti en "true" avec Boolean
+Exemples => String qui ne sont pas vide, Number autres que 0, etc. */
 
-// // console.log(Boolean("Cem")); // true
-// // console.log(Boolean(1)); // true
+// console.log(Boolean("Cem")); // true
+// console.log(Boolean(1)); // true
 
-// /******************** En pratique ********************/
+/******************** En pratique ********************/
 // /* En réalité on ne fait pas de Type Conversion manuellement, c'est seulement à titre pédagogique.
 //    En pratique, c'est le Type Coercion qui entre en action pour les Booleans (de manière implicite)
 //    Voici ce que donne le Type Coercion en pratique avec les Truthy et Falsy Values :  */
@@ -448,13 +460,13 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 
 // /******************** En pratique (1) ********************/
 
-// const day = "wednesday";
+// const day = "monday";
 
 // switch (day) {
 // 	case "monday": // day === monday
 // 		console.log("Plan course structure");
 // 		console.log("Go to coding meetup");
-// 		break;
+// 	// break;
 // 	case "tuesday": // day === tuesday
 // 		console.log("Prepare theory videos");
 // 		break;
@@ -479,21 +491,21 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 //    Mais le soucis réside dans le fait que le code sera long et fastidieux à écrire dans certaines situations
 //    Le résultat est donc le même, seule la syntaxe change */
 
-// // const day = "sunday";
+// const day = "sunday";
 
-// // if (day === "monday") {
-// // 	console.log("Plan course structure");
-// // } else if (day === "tuesday") {
-// // 	console.log("Prepare theory videos");
-// // } else if (day === "wednesday" || day === "thursday") {
-// // 	console.log("Write code examples");
-// // } else if (day === "friday") {
-// // 	console.log("Record videos");
-// // } else if (day === "saturday" || day === "sunday") {
-// // 	console.log("Enjoy the weekend!");
-// // } else {
-// // 	console.log("Invalid day!");
-// // }
+// if (day === "monday") {
+// 	console.log("Plan course structure");
+// } else if (day === "tuesday") {
+// 	console.log("Prepare theory videos");
+// } else if (day === "wednesday" || day === "thursday") {
+// 	console.log("Write code examples");
+// } else if (day === "friday") {
+// 	console.log("Record videos");
+// } else if (day === "saturday" || day === "sunday") {
+// 	console.log("Enjoy the weekend!");
+// } else {
+// 	console.log("Invalid day!");
+// }
 
 // ================================================================================ //
 // ========================== Statements VS Expressions  ========================== //
@@ -519,6 +531,7 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // 	const str = "23 is bigger";
 // }
 
+// console.log(str);
 // ===================================================================================== //
 // ========================== Conditional (Ternary) Operator  ========================== //
 // ===================================================================================== //
@@ -537,8 +550,9 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 // /* Il est possible de le faire autrement, en faisant attention à créer la variable d'abord en dehors de l'instruction
 //    Puis de le ré-assigner à l'intérieur (dans le cas de l'opérateur ternaire, c'est + court et + lisible mais le résultat est le même) */
 
+// const age2 = 18;
 // let drink2;
-// if (age >= 18) {
+// if (age2 >= 18) {
 // 	drink2 = "wine 🍷";
 // } else {
 // 	drink2 = "water 💧";
@@ -549,4 +563,5 @@ let PI = 3.1415; // Il existe certaines exceptions de nommage pour certains keyw
 //    /!\ L'opérateur ternaire n'est pas là pour remplacer le if Statement, il est là pour prendre des décisions rapides, être insérés
 //    dans des Templates Literals, etc. Mais le if Statement et switch Statement restent indispensables selon les situations ! */
 
-// console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
+// const age3 = 18;
+// console.log(`I like to drink ${age3 >= 18 ? "wine 🍷" : "water 💧"}`);
