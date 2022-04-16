@@ -680,14 +680,14 @@
 
 // /* ---------------------- Loops in Loops ---------------------- */
 
-/* La première loop lance l'exercie 1 et s'arrêtera à 3, et à chaque exercice une Loop de 5 répétions se lance. */
-for (let exercise = 1; exercise <= 3; exercise++) {
-	console.log(`Starting exercise ${exercise}`);
+// /* La première loop lance l'exercie 1 et s'arrêtera à 3, et à chaque exercice une Loop de 5 répétions se lance. */
+// for (let exercise = 1; exercise <= 3; exercise++) {
+// 	console.log(`Starting exercise ${exercise}`);
 
-	for (let rep = 1; rep <= 5; rep++) {
-		console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
-	}
-}
+// 	for (let rep = 1; rep <= 5; rep++) {
+// 		console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+// 	}
+// }
 
 // ==================================================================== //
 // ==================================================================== //
