@@ -270,15 +270,15 @@ const array3 = array1.concat(array2);
 // - Add ... between elements and start and end of string
 // - Log string to the console
 
-const data1 = [17, 21, 23];
-const data2 = [12, 5, -5, 0, 4];
+// const data1 = [17, 21, 23];
+// const data2 = [12, 5, -5, 0, 4];
 
-const printForecast = function (arr) {
-  let str = '';
-  for (let i = 0; i < arr.length; i++) {
-    str += `${arr[i]}°C in ${i + 1} days... `;
-  }
-  console.log(str);
-};
+// const printForecast = function (arr) {
+//   let str = '';
+//   for (let i = 0; i < arr.length; i++) {
+//     str += `${arr[i]}°C in ${i + 1} days... `;
+//   }
+//   console.log(str);
+// };
 
-printForecast(data1);
+// printForecast(data1);
