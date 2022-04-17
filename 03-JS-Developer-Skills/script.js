@@ -1,5 +1,5 @@
 // Utilisation du strict mode dans tous les projets !
-'use strict';
+// 'use strict';
 
 // 1) Paramétrage de l'extension Prettier -> OK
 // 2) Paramétrage de mon 1er snippet "cl -> console.log()" : Command Palett > User Snippets > cem.code-snippets (Vidéo 55 | Timecode 11:00)
@@ -98,30 +98,187 @@ const array2 = ['d', 'e', 'f'];
 const array3 = array1.concat(array2);
 */
 
-const calcTempAmplitude = function (t1, t2) {
-  const temps = t1.concat(t2);
-  console.log(temps);
+// const calcTempAmplitude = function (t1, t2) {
+//   const temps = t1.concat(t2);
+//   console.log(temps);
 
-  let max = temps[0];
-  let min = temps[0];
+//   let max = temps[0];
+//   let min = temps[0];
 
-  for (let i = 0; i < temps.length; i++) {
-    const curTemp = temps[i];
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
 
-    if (typeof curTemp !== 'number') continue;
+//     if (typeof curTemp !== 'number') continue;
 
-    if (curTemp > max) max = curTemp;
-    if (curTemp < min) min = curTemp;
+//     if (curTemp > max) max = curTemp;
+//     if (curTemp < min) min = curTemp;
+//   }
+//   return max - min;
+// };
+
+// /* Je met 2 arrays en input afin de simuler le fonctionnement du .concat Method */
+// const amplitude = calcTempAmplitude([3, 5, 1], [9, 0, 5]);
+// console.log(amplitude); // 9
+
+// =================================================================================== //
+// =================================================================================== //
+// ========================== Debugger de Chrome (Video 61) ========================== //
+// =================================================================================== //
+// =================================================================================== //
+/* Exemple : je crée une fonction qui permet de convertir des degrés celsius en kelvin
+   Pour faire cela on aditionne 273 à la valeur en celsius.
+   Je ne définis pas de paramètres à la fonction (l'input viendra du prompt)
+   Je crée un object measurement puis une variable "kelvin" qui va chercher la propriété "value" de l'Object measurement */
+
+/* -------------------------------------------- */
+
+/* Bug : quand j'entre un nombre dans le prompt (10 par exemple) cela fait une concaténation de string (10 devient 10273) */
+// const measureKelvin = function () {
+//   const measurement = {
+//     type: 'temp',
+//     unit: 'celsius',
+//     value: prompt('Degrees Celsius:'),
+//   };
+
+//   const kelvin = measurement.value + 273;
+//   return kelvin;
+// };
+
+// console.log(measureKelvin());
+
+/* -------------------------------------------- */
+
+/* Solution de Jonas
+   1 - Identifier le problème : lorsqu'on log le résultat de la fonction, elle renvoie une concaténation de string (10 devient 10273)
+   2 - Trouver la source du problème : console.log(measurement) -> on voit que le prompt retourne "10" en tant que string !
+     Petite astuce : lorsque l'on veut log un object dans la console -> console.log(measurement) affichera un tableau ;)
+   3 - Fix le problème : utiliser la fonction "Number" sur le prompt afin de convertir le résultat en Number */
+
+// const measureKelvin = function () {
+//   const measurement = {
+//     type: 'temp',
+//     unit: 'celsius',
+//     value: Number(prompt('Degrees Celsius:')),
+//   };
+
+//   console.table(measurement);
+
+//   const kelvin = measurement.value + 273;
+//   return kelvin;
+// };
+
+// console.log(measureKelvin());
+
+/* -------------------------------------------- */
+
+/* Solution de moi-même : je l'ai trouvé tout seul sur stackoverflow -> parseInt */
+// const measureKelvin = function () {
+//   const measurement = {
+//     type: 'temp',
+//     unit: 'celsius',
+//     value: prompt('Degrees Celsius:'),
+//   };
+//   const convertNumb = parseInt(measurement.value);
+
+//   const kelvin = convertNumb + 273;
+//   return kelvin;
+// };
+
+// console.log(measureKelvin());
+
+// =========================================================================== //
+// =========================================================================== //
+// ========================== Debugger 2 (Video 61) ========================== //
+// =========================================================================== //
+// =========================================================================== //
+
+/* ------------- Version original sans bug ------------- */
+// const calcTempAmplitude = function (t1, t2) {
+//   const temps = t1.concat(t2);
+//   console.log(temps);
+
+//   let max = temps[0];
+//   let min = temps[0];
+
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
+
+//     if (typeof curTemp !== 'number') continue;
+
+//     if (curTemp > max) max = curTemp;
+//     if (curTemp < min) min = curTemp;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// const amplitude = calcTempAmplitude([3, 5, 1], [9, 4, 5]);
+// console.log(amplitude); // 8
+
+/* ------------- Version avec bug ------------- */
+/* 1 - Identification du bug : console.log(max, min) retourne 9 et 0 alors que le chiffre le plus bas est 1 (et pas 0)
+2 -  */
+// const calcTempAmplitudeBug = function (t1, t2) {
+//   const temps = t1.concat(t2);
+//   console.log(temps);
+
+//   let max = 0;
+//   let min = 0;
+
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
+
+//     if (typeof curTemp !== 'number') continue;
+
+//     if (curTemp > max) max = curTemp;
+//     if (curTemp < min) min = curTemp;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
+// console.log(amplitudeBug); // 8
+
+// ====================================================================== //
+// ====================================================================== //
+// ========================== Coding Challenge ========================== //
+// ====================================================================== //
+// ====================================================================== //
+
+/* Ma Solution */
+// const arr = [17, 21, 23];
+// let day = [1];
+
+// const printForecast = function () {
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(`... ${arr[i]}° in ${day++} days`);
+//   }
+// };
+
+// console.log(printForecast());
+
+/* Solution de Jonas */
+// 1) Understanding the problem
+// - Array transformed to string, separated by ...
+// - What is the X days -> index de l'array + 1
+
+// 2) Breaking up into sub-problem
+// - Transform array into string
+// - Transform each element to string with °C
+// - String need to contain day (index + 1)
+// - Add ... between elements and start and end of string
+// - Log string to the console
+
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let str = '';
+  for (let i = 0; i < arr.length; i++) {
+    str += `${arr[i]}°C in ${i + 1} days... `;
   }
-  return max - min;
+  console.log(str);
 };
 
-/* Je met 2 arrays en input afin de simuler le fonctionnement du .concat Method */
-const amplitude = calcTempAmplitude([3, 5, 1], [9, 0, 5]);
-console.log(amplitude); // 9
-
-// ========================================================================== //
-// ========================================================================== //
-// ========================== Debugging (Video 61) ========================== //
-// ========================================================================== //
-// ========================================================================== //
+printForecast(data1);
