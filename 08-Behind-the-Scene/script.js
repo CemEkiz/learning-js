@@ -185,36 +185,36 @@ at this point because of hoisting. Undefined => False so the console log the mes
 // =========================================================================== //
 // =========================================================================== //
 
-let lastName = "Williams";
-let oldLastName = lastName;
-lastName = "Davis";
-console.log(lastName, oldLastName); // Davis, Williams
+// let lastName = "Williams";
+// let oldLastName = lastName;
+// lastName = "Davis";
+// console.log(lastName, oldLastName); // Davis, Williams
 
-const jessica = {
-	firstName: "Jessica",
-	lastName: "Williams",
-	age: 27,
-};
+// const jessica = {
+// 	firstName: "Jessica",
+// 	lastName: "Williams",
+// 	age: 27,
+// };
 
-const marriedJessica = jessica;
-marriedJessica.lastName = "Davis";
-console.log("Before mariage:", jessica); // lastName: Davis, age: 27
-console.log("After mariage:", marriedJessica); // lastName: Davis, age 27
+// const marriedJessica = jessica;
+// marriedJessica.lastName = "Davis";
+// console.log("Before mariage:", jessica); // lastName: Davis, age: 27
+// console.log("After mariage:", marriedJessica); // lastName: Davis, age 27
 
-// Copying Objects
+// // Copying Objects
 
-const jessica2 = {
-	firstName: "Jessica",
-	lastName: "Williams",
-	age: 27,
-	family: ["Alice", "Bob"],
-};
+// const jessica2 = {
+// 	firstName: "Jessica",
+// 	lastName: "Williams",
+// 	age: 27,
+// 	family: ["Alice", "Bob"],
+// };
 
-const jessicaCopy = Object.assign({}, jessica2);
-jessicaCopy.lastName = "Davis";
+// const jessicaCopy = Object.assign({}, jessica2);
+// jessicaCopy.lastName = "Davis";
 
-jessicaCopy.family.push("Mary");
-jessicaCopy.family.push("John");
+// jessicaCopy.family.push("Mary");
+// jessicaCopy.family.push("John");
 
-console.log("Before mariage:", jessica2); // lastName: Williams, age: 27
-console.log("After mariage:", jessicaCopy); // lastName: Davis, age: 27
+// console.log("Before mariage:", jessica2); // lastName: Williams, age: 27
+// console.log("After mariage:", jessicaCopy); // lastName: Davis, age: 27

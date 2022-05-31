@@ -565,3 +565,11 @@ Exemples => String qui ne sont pas vide, Number autres que 0, etc. */
 
 // const age3 = 18;
 // console.log(`I like to drink ${age3 >= 18 ? "wine 🍷" : "water 💧"}`);
+
+///// Assignments 1 : Values and Variables
+// let myCountry = "France";
+// let myContinent = "Europe";
+// let frenchPopulation = 67000000;
+// console.log(myCountry);
+// console.log(myContinent);
+// console.log(frenchPopulation);
