@@ -1001,239 +1001,239 @@ const flights =
 // ========================== Working with Strings ========================== //
 // ========================================================================== //
 // ========================================================================== //
-/* La plupart des Methods que nous allons voir ne change pas le String d'origine car pour rappel
-un String est une Primitive Data est n'est pas PAS MUTABLE. Donc lorsqu'on va utiliser les Methods
-pour manipuler un String, cela crée et renvoie un nouveau String (qu'on peut stocker dans une nouvelle Variable) */
+// /* La plupart des Methods que nous allons voir ne change pas le String d'origine car pour rappel
+// un String est une Primitive Data est n'est pas PAS MUTABLE. Donc lorsqu'on va utiliser les Methods
+// pour manipuler un String, cela crée et renvoie un nouveau String (qu'on peut stocker dans une nouvelle Variable) */
 
-const airline = "TAP Air Portugal";
-const plane = "A320";
+// const airline = "TAP Air Portugal";
+// const plane = "A320";
 
-// /* -------------------------- Les Methods de String  -------------------------- */
+// // /* -------------------------- Les Methods de String  -------------------------- */
 
-/* Retourner la première lettre indexé d'un String */
-console.log(plane[0]); // A
-console.log(plane[1]); // 1 (String)
-console.log("Cem"[0]); // C
+// /* Retourner la première lettre indexé d'un String */
+// console.log(plane[0]); // A
+// console.log(plane[1]); // 1 (String)
+// console.log("Cem"[0]); // C
 
-/* Retourner la taille d'un String */
-console.log(airline.length); // 16
-console.log("Cem".length); // 3
+// /* Retourner la taille d'un String */
+// console.log(airline.length); // 16
+// console.log("Cem".length); // 3
 
-/* Retourner l'index d'un caractère du String */
-console.log(airline.indexOf("r")); // 6
-console.log(airline.lastIndexOf("r")); // 10
+// /* Retourner l'index d'un caractère du String */
+// console.log(airline.indexOf("r")); // 6
+// console.log(airline.lastIndexOf("r")); // 10
 
-/* Retourner le mot d'un String */
-console.log(airline.indexOf("Portugal")); // 8
+// /* Retourner le mot d'un String */
+// console.log(airline.indexOf("Portugal")); // 8
 
-/* Extraire les caractères d'un String, le String devient alors un Sub-String */
-console.log(airline.slice(4)); // Air Portugal
-console.log(airline.slice(4, 7)); // Air
+// /* Extraire les caractères d'un String, le String devient alors un Sub-String */
+// console.log(airline.slice(4)); // Air Portugal
+// console.log(airline.slice(4, 7)); // Air
 
-/* Extraire le premier mot d'un String ayant plusieurs mots */
-console.log(airline.slice(0, airline.indexOf(" "))); // TAP
-/* Extraire le dernier mot d'un String ayant plusieurs mots */
-console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // TAP
+// /* Extraire le premier mot d'un String ayant plusieurs mots */
+// console.log(airline.slice(0, airline.indexOf(" "))); // TAP
+// /* Extraire le dernier mot d'un String ayant plusieurs mots */
+// console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // TAP
 
-/* Extraire les caractères d'un String en partant de la fin */
-console.log(airline.slice(-2)); // al
-/* Extraire la dernière lettre d'un String */
-console.log(airline.slice(-1)); // l
+// /* Extraire les caractères d'un String en partant de la fin */
+// console.log(airline.slice(-2)); // al
+// /* Extraire la dernière lettre d'un String */
+// console.log(airline.slice(-1)); // l
 
-/* Extraire tous les caractères (même si on peut le faire plus simplement) */
-console.log(airline.slice(1, -1) + 1); // TAP Air Portugal
+// /* Extraire tous les caractères (même si on peut le faire plus simplement) */
+// console.log(airline.slice(1, -1) + 1); // TAP Air Portugal
 
-// /* -------------------------- Exercie avec Fonction/String/Method  -------------------------- */
+// // /* -------------------------- Exercie avec Fonction/String/Method  -------------------------- */
 
-/* Fonction pour retourner si la place est Middle Seat ou pas */
-/* Partie gauche de l'avion : ABC ___ Partie droite de l'avion : DEF
-   Donc les places B et E sont les Middle Seat */
+// /* Fonction pour retourner si la place est Middle Seat ou pas */
+// /* Partie gauche de l'avion : ABC ___ Partie droite de l'avion : DEF
+//    Donc les places B et E sont les Middle Seat */
 
-const checkMiddleSeat = function (seat) {
-	const s = seat.slice(-1);
-	if (s === "B" || s === "E") {
-		console.log(`The place ${seat} is a Middle Seat`);
-	} else {
-		console.log(`The place ${seat} is not a Middle Seat`);
-	}
-};
+// const checkMiddleSeat = function (seat) {
+// 	const s = seat.slice(-1);
+// 	if (s === "B" || s === "E") {
+// 		console.log(`The place ${seat} is a Middle Seat`);
+// 	} else {
+// 		console.log(`The place ${seat} is not a Middle Seat`);
+// 	}
+// };
 
-checkMiddleSeat("11B"); // The place 11B is a Middle Seat
-checkMiddleSeat("23C"); // The place 23C is not a Middle Seat
-checkMiddleSeat("3E"); // The place 3E is a Middle Seat
+// checkMiddleSeat("11B"); // The place 11B is a Middle Seat
+// checkMiddleSeat("23C"); // The place 23C is not a Middle Seat
+// checkMiddleSeat("3E"); // The place 3E is a Middle Seat
 
-// /* ----------- Comment se fait-il qu'une Primitive Data comme un String ait des Methods ----------- */
+// // /* ----------- Comment se fait-il qu'une Primitive Data comme un String ait des Methods ----------- */
 
-/* Cette partie n'est pas à retenir par coeur c'est juste à titre d'information ;) */
-/* En réalité, lorsque nous appelons une Method sur un String (comme .slice ou .indexOf), JavaScript
-convertit le String Primitive en String Object (c'est ce qu'on appelle le "Boxing") avec le même contenu,
-et c'est sur le String Object que la Method est call en réalité (et non pas sur le String Primitive)
-et une fois que la Method a été appliqué, JS retourne le nouveau String sous forme de String Primitive */
+// /* Cette partie n'est pas à retenir par coeur c'est juste à titre d'information ;) */
+// /* En réalité, lorsque nous appelons une Method sur un String (comme .slice ou .indexOf), JavaScript
+// convertit le String Primitive en String Object (c'est ce qu'on appelle le "Boxing") avec le même contenu,
+// et c'est sur le String Object que la Method est call en réalité (et non pas sur le String Primitive)
+// et une fois que la Method a été appliqué, JS retourne le nouveau String sous forme de String Primitive */
 
-/* String "Object" */
-console.log(new String("Cem")); // cf. Console
-console.log(typeof new String("Cem")); // object
+// /* String "Object" */
+// console.log(new String("Cem")); // cf. Console
+// console.log(typeof new String("Cem")); // object
 
-/* Exemple : le String "Cem" va être convertit en String Object afin d'appliquer la Method .slice puis il sera
-retourné sous forme de String Primitive à nouveau */
-console.log(new String("Cem").slice(-1)); // m
-console.log(typeof new String("Cem").slice(1)); // string
+// /* Exemple : le String "Cem" va être convertit en String Object afin d'appliquer la Method .slice puis il sera
+// retourné sous forme de String Primitive à nouveau */
+// console.log(new String("Cem").slice(-1)); // m
+// console.log(typeof new String("Cem").slice(1)); // string
 
-// /* -------------------------- String et Case -------------------------- */
+// // /* -------------------------- String et Case -------------------------- */
 
-/* Changer la Case d'un String */
-console.log(airline.toLowerCase()); // tap air portugal
-console.log(airline.toUpperCase()); // TAP AIR PORTUGAL
+// /* Changer la Case d'un String */
+// console.log(airline.toLowerCase()); // tap air portugal
+// console.log(airline.toUpperCase()); // TAP AIR PORTUGAL
 
-// /* -------------------------- Exercie : Définir une Case personnalisé  -------------------------- */
+// // /* -------------------------- Exercie : Définir une Case personnalisé  -------------------------- */
 
-/* Cas pratique : un passager a pas respecté les Case "Cem" par exemple, il a écrit "jOnAS" il faut réctifier cela */
-/* En bonus je peux faire une fonction pour cela */
-const passenger = "jOnAS";
-// 1.
-const passengerLower = passenger.toLowerCase();
-// 2.
-const passengerCorrect =
-	passengerLower[0].toUpperCase() + passengerLower.slice(1);
-// 3.
-console.log(passengerCorrect); // Jonas
+// /* Cas pratique : un passager a pas respecté les Case "Cem" par exemple, il a écrit "jOnAS" il faut réctifier cela */
+// /* En bonus je peux faire une fonction pour cela */
+// const passenger = "jOnAS";
+// // 1.
+// const passengerLower = passenger.toLowerCase();
+// // 2.
+// const passengerCorrect =
+// 	passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// // 3.
+// console.log(passengerCorrect); // Jonas
 
-// /* -------------------------- Exercice : Formater un String  -------------------------- */
+// // /* -------------------------- Exercice : Formater un String  -------------------------- */
 
-/* Comparer des e-mails */
-const email = "hello@jonas.io";
-const loginEmail = " Hello@Jonas.Io \n";
+// /* Comparer des e-mails */
+// const email = "hello@jonas.io";
+// const loginEmail = " Hello@Jonas.Io \n";
 
-// 1.
-// const lowerEmail = loginEmail.toLowerCase();
-// 2.
-// const trimmedEmail = lowerEmail.trim();
-// 3.
-// console.log(trimmedEmail); // hello@jonas.io
+// // 1.
+// // const lowerEmail = loginEmail.toLowerCase();
+// // 2.
+// // const trimmedEmail = lowerEmail.trim();
+// // 3.
+// // console.log(trimmedEmail); // hello@jonas.io
 
-// En une étape
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail); // hello@jonas.io
-/* Pour comparer les 2 e-mails */
-console.log(email === normalizedEmail); // true
+// // En une étape
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail); // hello@jonas.io
+// /* Pour comparer les 2 e-mails */
+// console.log(email === normalizedEmail); // true
 
-// /* -------------------------- Replacer des parties d'un String -------------------------- */
+// // /* -------------------------- Replacer des parties d'un String -------------------------- */
 
-/* Je veux remplacer le "$" par "€" et le "," par "." */
-const priceGB = "288,97$";
-const priceEU = priceGB.replace("$", "€").replace(",", ".");
-console.log(priceEU); // 288.97€
+// /* Je veux remplacer le "$" par "€" et le "," par "." */
+// const priceGB = "288,97$";
+// const priceEU = priceGB.replace("$", "€").replace(",", ".");
+// console.log(priceEU); // 288.97€
 
-/* Remplacer TOUTES (et non pas que le premier commme le fait .replace) */
-const announcement =
-	"All passengers come to boarding door 23. Boarding door 23!";
-console.log(announcement); // All passengers come to boarding door 23. Boarding door 23!
-// Méthode 1 : avec l'utilisation de la Method .replaceAll
-const announcementNew = announcement.replaceAll("door", "gate");
-console.log(announcementNew); // All passengers come to boarding gate 23. Boarding gate 23!
-// Méthode 2 : avec l'utilisation de Regular Expression
-const announcementNew2 = announcement.replace(/door/g, "gate");
-console.log(announcementNew2); // All passengers come to boarding gate 23. Boarding gate 23!
+// /* Remplacer TOUTES (et non pas que le premier commme le fait .replace) */
+// const announcement =
+// 	"All passengers come to boarding door 23. Boarding door 23!";
+// console.log(announcement); // All passengers come to boarding door 23. Boarding door 23!
+// // Méthode 1 : avec l'utilisation de la Method .replaceAll
+// const announcementNew = announcement.replaceAll("door", "gate");
+// console.log(announcementNew); // All passengers come to boarding gate 23. Boarding gate 23!
+// // Méthode 2 : avec l'utilisation de Regular Expression
+// const announcementNew2 = announcement.replace(/door/g, "gate");
+// console.log(announcementNew2); // All passengers come to boarding gate 23. Boarding gate 23!
 
-// /* -------------------------- Les Methods de String qui retournent des Booleans -------------------------- */
+// // /* -------------------------- Les Methods de String qui retournent des Booleans -------------------------- */
 
-const plane2 = "Airbus A320neo";
+// const plane2 = "Airbus A320neo";
 
-/* La Method .includes */
-console.log(plane2.includes("A320")); // true
-console.log(plane.includes("Boeing")); // false
+// /* La Method .includes */
+// console.log(plane2.includes("A320")); // true
+// console.log(plane.includes("Boeing")); // false
 
-/* La Method .startsWith */
-console.log(plane2.startsWith("Air")); // true
-console.log(plane2.startsWith("A320")); // false
+// /* La Method .startsWith */
+// console.log(plane2.startsWith("Air")); // true
+// console.log(plane2.startsWith("A320")); // false
 
-/* P'tit exercice pratique : vérifier si le nouvel avion fait partie de la famille "Airbus" */
-if (plane2.startsWith("Airbus") && plane2.endsWith("neo")) {
-	console.log("Part of the New Airbus family");
-}
+// /* P'tit exercice pratique : vérifier si le nouvel avion fait partie de la famille "Airbus" */
+// if (plane2.startsWith("Airbus") && plane2.endsWith("neo")) {
+// 	console.log("Part of the New Airbus family");
+// }
 
-/* Exercice : vérifier si le bagage est autorisé dans l'avion */
-/* Je transforme l'input (item) en lowercase avec la Method toLowerCase pour faciliter le if statement qui va suivre
-Dans cette situation il est important de transformer l'input de l'utilisateur en lowercase car JS est sensible à la casse
-et donc "Knife" et "knife" n'est pas considéré comme étant le même String pour JavaScript. */
-const checkBaggage = function (items) {
-	const baggage = items.toLowerCase();
-	if (baggage.includes("knife") || baggage.includes("gun")) {
-		console.log("You are not allowed on board");
-	} else {
-		console.log("Welcome aboard!");
-	}
-};
+// /* Exercice : vérifier si le bagage est autorisé dans l'avion */
+// /* Je transforme l'input (item) en lowercase avec la Method toLowerCase pour faciliter le if statement qui va suivre
+// Dans cette situation il est important de transformer l'input de l'utilisateur en lowercase car JS est sensible à la casse
+// et donc "Knife" et "knife" n'est pas considéré comme étant le même String pour JavaScript. */
+// const checkBaggage = function (items) {
+// 	const baggage = items.toLowerCase();
+// 	if (baggage.includes("knife") || baggage.includes("gun")) {
+// 		console.log("You are not allowed on board");
+// 	} else {
+// 		console.log("Welcome aboard!");
+// 	}
+// };
 
-checkBaggage("I have a laptop, some Food and a pocket Knife"); // You are not allowed on board
-checkBaggage("Socks and camera"); // Welcome aboard!
-checkBaggage("Got some snacks and a gun for protection"); // You are not allowed on board
+// checkBaggage("I have a laptop, some Food and a pocket Knife"); // You are not allowed on board
+// checkBaggage("Socks and camera"); // Welcome aboard!
+// checkBaggage("Got some snacks and a gun for protection"); // You are not allowed on board
 
-// /* -------------------------- Autres Methods de String -------------------------- */
+// // /* -------------------------- Autres Methods de String -------------------------- */
 
-/* La Method .split */
-/* Pour cette Method il faut un "divider" dans l'input qui séparera tous les caractères et les stockera dans un Array */
-console.log("a+very+nice+string".split("+")); //  ['a', 'very', 'nice', 'string']
+// /* La Method .split */
+// /* Pour cette Method il faut un "divider" dans l'input qui séparera tous les caractères et les stockera dans un Array */
+// console.log("a+very+nice+string".split("+")); //  ['a', 'very', 'nice', 'string']
 
-const [firstName, lastName] = "Cem Ekiz".split(" ");
-console.log(firstName); // Cem
-console.log(lastName); // Ekiz
+// const [firstName, lastName] = "Cem Ekiz".split(" ");
+// console.log(firstName); // Cem
+// console.log(lastName); // Ekiz
 
-/* La Method .join */
-/* C'est l'opposé de .split, elle permet de joindre un String à un autre */
-const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
-console.log(newName); // Mr. Cem EKIZ
+// /* La Method .join */
+// /* C'est l'opposé de .split, elle permet de joindre un String à un autre */
+// const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+// console.log(newName); // Mr. Cem EKIZ
 
-/* Je veux capitaliser ce prénom (les premières lettres en Majuscule) */
+// /* Je veux capitaliser ce prénom (les premières lettres en Majuscule) */
 
-/* 1. Je crée d'abord un Array avec chaque "mot" séparé par le divider " "
-   2. Je crée ensuite
-   3. Ensuite je crée une boucle qui va faire le tour de l'array (de chaque mot donc) pour :
-      - Push chaque mot dans un Array vide (namesUpper)
-	  - Transformer la première lettre [0] de chaque mot actuel (n) en Majuscule
-	  - Slice le reste de chaque mot [1] actuel (n)
-   4. Log ce qui a été entré dans l'Array (qui était vide au départ) en espacant chaque mot par " "  */
-const capitalizeName = function (name) {
-	const names = name.split(" ");
-	const namesUpper = [];
-	for (const n of names) {
-		namesUpper.push(n[0].toUpperCase() + n.slice(1));
-		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-	}
-	// console.log(namesUpper);
-	console.log(namesUpper.join(" "));
-};
+// /* 1. Je crée d'abord un Array avec chaque "mot" séparé par le divider " "
+//    2. Je crée ensuite
+//    3. Ensuite je crée une boucle qui va faire le tour de l'array (de chaque mot donc) pour :
+//       - Push chaque mot dans un Array vide (namesUpper)
+// 	  - Transformer la première lettre [0] de chaque mot actuel (n) en Majuscule
+// 	  - Slice le reste de chaque mot [1] actuel (n)
+//    4. Log ce qui a été entré dans l'Array (qui était vide au départ) en espacant chaque mot par " "  */
+// const capitalizeName = function (name) {
+// 	const names = name.split(" ");
+// 	const namesUpper = [];
+// 	for (const n of names) {
+// 		namesUpper.push(n[0].toUpperCase() + n.slice(1));
+// 		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+// 	}
+// 	// console.log(namesUpper);
+// 	console.log(namesUpper.join(" "));
+// };
 
-capitalizeName("jessica ann smith davis");
-capitalizeName("cem ekiz");
-capitalizeName("jonas schmedtmann");
+// capitalizeName("jessica ann smith davis");
+// capitalizeName("cem ekiz");
+// capitalizeName("jonas schmedtmann");
 
-/* La Method .padStart et .padEnd */
-/* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
-const myName = "Cem Ekiz";
-const teacherName = "Jonas Schmedtmann";
-console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
-console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
+// /* La Method .padStart et .padEnd */
+// /* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
+// const myName = "Cem Ekiz";
+// const teacherName = "Jonas Schmedtmann";
+// console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
+// console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
 
-/* Cacher le numéro de carte bancaire sauf les 4 derniers chiffres */
-const maskCreditCard = function (number) {
-	const str = number + "";
-	const last = str.slice(-4);
-	return last.padStart(str.length, "*");
-};
+// /* Cacher le numéro de carte bancaire sauf les 4 derniers chiffres */
+// const maskCreditCard = function (number) {
+// 	const str = number + "";
+// 	const last = str.slice(-4);
+// 	return last.padStart(str.length, "*");
+// };
 
-console.log(maskCreditCard(11515666)); // ****5666
-console.log(maskCreditCard(45132197415)); // *******7415
-console.log(maskCreditCard(5421210320365161)); // ************5161
+// console.log(maskCreditCard(11515666)); // ****5666
+// console.log(maskCreditCard(45132197415)); // *******7415
+// console.log(maskCreditCard(5421210320365161)); // ************5161
 
-/* La Method .repeat */
-const message = "Bad weather... All departures Delayed... ";
-console.log(message.repeat(5)); // cf. Console
+// /* La Method .repeat */
+// const message = "Bad weather... All departures Delayed... ";
+// console.log(message.repeat(5)); // cf. Console
 
-const planesInLine = function (n) {
-	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
-};
+// const planesInLine = function (n) {
+// 	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+// };
 
-planesInLine(5);
-planesInLine(10);
-planesInLine(2);
+// planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
+// planesInLine(10); // There are 10 planes in line ✈️✈️✈️✈️✈️✈️✈️✈️✈️✈️
+// planesInLine(2); // There are 2 planes in line ✈️✈️
