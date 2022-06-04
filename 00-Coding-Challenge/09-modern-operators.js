@@ -146,3 +146,77 @@
 // 	const teamStr = team === "x" ? "draw" : `victory ${game[team]}`;
 // 	console.log(`Odd of ${teamStr} ${odd}`);
 // }
+
+/* -------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
+/* ------------------------------ Coding Challenge 2 ------------------------------ */
+/* -------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
+
+const gameEvents = new Map([
+	[17, "⚽ GOAL"],
+	[36, "🔁 Substitution"],
+	[47, "⚽ GOAL"],
+	[61, "🔁 Substitution"],
+	[64, "🔶 Yellow card"],
+	[69, "🔴 Red card"],
+	[70, "🔁 Substitution"],
+	[72, "🔁 Substitution"],
+	[76, "⚽ GOAL"],
+	[80, "⚽ GOAL"],
+	[92, "🔶 Yellow card"],
+]);
+
+// /* ________Ma solution________ */
+
+// // 1.
+// let events = [...gameEvents];
+// console.log(events);
+
+// // 2.
+// gameEvents.delete(64);
+// console.log(gameEvents);
+// events = [...gameEvents];
+// console.log(events);
+
+// // 3.
+// console.log(`An event happened, on average, every ${90 / 10} minutes`);
+
+// // 4.
+// for (const [key, value] of gameEvents) {
+// 	if (key <= 45) {
+// 		console.log(`[FIRST HALF]${key}: ${value}`);
+// 	} else {
+// 		console.log(`[SECOND HALF]${key}: ${value}`);
+// 	}
+// }
+
+/* ________Solution de Jonas________ */
+
+// 1.
+/* - Je veux des valeurs uniques => je dois utiliser new Set.
+   - Je veux uniquement les valeurs de Map (pas les Keys) => donc gameEvents.values()
+   - Je veux les stocker dans un Array => [... new Set(gameEvents.values())] */
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+
+// 3.
+console.log(
+	`An event happened, on average, every ${90 / gameEvents.size} minutes`
+); // An event happened, on average, every 9 minutes
+
+// 3. Bonus
+const time = [...gameEvents.keys()].pop();
+console.log(time); // 92
+console.log(
+	`An event happened, on average, every ${time / gameEvents.size} minutes`
+); // An event happened, on average, every 9.2 minutes
+
+// 4.
+for (const [min, event] of gameEvents) {
+	const half = min <= 45 ? "FIRST" : "SECOND";
+	console.log(`[${half} HALF] ${min}: ${event}`);
+}
