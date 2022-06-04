@@ -196,12 +196,10 @@ const flights =
 
 // /* -------------------------- || -------------------------- */
 
-// /* Lors de l'utilisation de Logical Operators il est possible d'utiliser toutes sortes de
-// types de données, retourner tout types de données et peut réaliser un "short-circuiting"
-// Pour rappel, lors d'un test booléen si une valeur true ou truthy est détecté alors elle
+// /* Pour rappel, lors d'un test booléen si une valeur true ou truthy est détecté alors elle
 // le test s'arrête et la valeur en question est retourné
-// En fait || cherche à renvoyer une valeur true, il renverra alors la première valeur true sur laquelle elle tombera
-// mais si il y en a plusieurs d'affilés elle retournera le dernier */
+// En fait || cherche à renvoyer une valeur true, il renverra alors la première valeur true
+// sur laquelle elle tombera mais si il y en a plusieurs d'affilés elle retournera le dernier */
 
 // console.log(3 || "Cem"); // 3
 // console.log("" || "Cem"); // Jonas
@@ -227,7 +225,8 @@ const flights =
 // /* En fait le Nullish Operator ne considère pas 0 et "" comme falsy */
 
 // /* En comparaison avec && */
-// /* Ici on a un problème car on veut retourner le nombre d'élèves même si il est égal à 0*/
+// /* Ici on a un problème car on veut retourner le nombre d'élèves même si il est égal à 0
+// mais étant considéré comme falsy il ne sera pas renvoyé */
 // const studentNumber = 0;
 // const students = studentNumber || 10;
 // console.log(students); // 10
@@ -261,22 +260,22 @@ const flights =
 // /* -------------------------- ||= et ??= -------------------------- */
 
 // /* Pour rappel avec le OR Logical Operator || */
-// // rest1.numGuests = rest1.numGuests || 10;
-// // rest2.numGuests = rest2.numGuests || 10;
-// // rest3.numGuests = rest3.numGuests || 10;
-// // console.log(rest1.numGuests); // 20
-// // console.log(rest2.numGuests); // 10
-// // console.log(rest3.numGuests); // 10
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest3.numGuests = rest3.numGuests || 10;
+// console.log(rest1.numGuests); // 20
+// console.log(rest2.numGuests); // 10
+// console.log(rest3.numGuests); // 10
 
 // /* Avec le OR Assignment Operator ||= */
 // /* C'est la même chose que ci-dessus mais de manière + concise mais le problème c'est que dans l'exemple
 // du rest3 nous voulons retourner 0 mais il est considéré comme falsy donc 10 sera retourné...  */
-// // rest1.numGuests ||= 10;
-// // rest2.numGuests ||= 10;
-// // rest3.numGuests ||= 10;
-// // console.log(rest1); // 20
-// // console.log(rest2); // 10
-// // console.log(rest3); // 10
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// rest3.numGuests ||= 10;
+// console.log(rest1); // 20
+// console.log(rest2); // 10
+// console.log(rest3); // 10
 
 // /* Pour résoudre le problème du rest3 et retourner 0 au lieu de 10 on utilisera le Nullish Assignment Operator */
 // rest1.numGuests ??= 10;
@@ -289,10 +288,10 @@ const flights =
 // /* -------------------------- ||= et ??= -------------------------- */
 
 // /* Pour rappel avec le AND Logical Operator && */
-// // rest1.owner = rest1.owner && "<ANONYMOUS>";
-// // rest2.owner = rest2.owner && "<ANONYMOUS>";
-// // console.log(rest1); // undefined (mais la Key a été crée dans l'Object rest1)
-// // console.log(rest2); // <ANONYMOUS>
+// rest1.owner = rest1.owner && "<ANONYMOUS>";
+// rest2.owner = rest2.owner && "<ANONYMOUS>";
+// console.log(rest1); // undefined (mais la Key a été crée dans l'Object rest1)
+// console.log(rest2); // <ANONYMOUS>
 
 // /* Avec le AND Assignment Operator (&&=) */
 // /* L'avantage de cet opérateur réside dans le fait qu'il sert à modifier une Key existante (Truthy) et contrairement
@@ -449,6 +448,7 @@ const flights =
 // /* Avec l'Optional Chaining (?.) : si la propriété avant le "?." n'existe pas alors le reste qui suit ne sera pas lu */
 // console.log(restaurant5.openingHours.mon?.open); // undefined
 // console.log(restaurant5.openingHours?.mon?.open); // undefined
+// console.log(restaurant5.openingHours?.thu?.open); // 12
 
 // /* Exemple */
 // const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
@@ -462,11 +462,11 @@ const flights =
 // sinon on applique ce qui est après le "??", c'est donc une sorte de test if simplifié très pratique !
 // La combinaison de l'opérateur ?. et ?? est donc très utile. */
 
-// /* Optional Chaining et Method */
+// /* Optional Chaining avec Method */
 // console.log(restaurant5.order?.(0, 1) ?? "Method does not exist"); // (2) ['Focaccia', 'Pasta']
 // console.log(restaurant5.orderRisotto?.(0, 1) ?? "Method does not exist"); // Method does not exist
 
-// /* Optional Chaining et Array */
+// /* Optional Chaining avec Array */
 // const users = [{ name: "Jonas", email: "hello@jonas.io" }];
 // console.log(users[0]?.name ?? "User array empty");
 
@@ -524,9 +524,307 @@ const flights =
 
 // /* [key, {open, close}] = Destructuring assez compliqué car la valeur de la key est un Object
 // mais avec de la pratique et en cherchant à vraiment comprendre ce qu'il se passe c'est plutôt simple ;) */
-// for (const [key, { open, close }] of entries) {
+// for (const [key, { open, close }] of Object.entries(openingHours)) {
 // 	console.log(`On the ${key} we open at ${open} and close at ${close}`);
 // }
+
+// ========================================================= //
+// ========================================================= //
+// ========================== Set ========================== //
+// ========================================================= //
+// ========================================================= //
+// /* Set est un built-in Data Structure (comme Array et Object)
+// - La particularité de Set c'est que les valeurs dupliquées ne sont pas prises en comptes
+// - C'est similaire à un Array au niveau de la structure (pas de key)
+// - Set est lui-même un itérable
+// - Il n'est pas possible de récupérer un élément d'un Set car il n'y a pas d'index
+// - Le but principale de Set n'est pas donc de stocker des éléments pour les récupérer plus tard mais plutôt de savoir
+// si un élément est dans un Set ou non (avec la Method .has), si on veut stocker des éléments dans le but de les récupérer
+// afin de les utiliser plus tard : il vaut mieux créer un Array */
+
+// /* Voici comment créer un Set, à l'intérieur de ([]) il doit y avoir un itérable (pas obligatoirement un Array) */
+// const orderSet = new Set([
+// 	"Pasta",
+// 	"Pizza",
+// 	"Pizza",
+// 	"Risotto",
+// 	"Pasta",
+// 	"Pizza",
+// ]);
+
+// /* La structure est similaire à un Array et il n'y a pas de valeurs dupliquées */
+// console.log(orderSet); // Set(3) {'Pasta', 'Pizza', 'Risotto'}
+
+// /* Method .size : pour connaître la longueur d'un Set */
+// console.log(orderSet.size); // 3
+
+// /* Method .has : pour vérifier si une valeur existe dans un Set (similaire à la Method .include pour les Arrays) */
+// console.log(orderSet.has("Pizza")); // true
+// console.log(orderSet.has("Bread")); // false
+
+// /* Method .add : pour ajouter un élément à un Set */
+// orderSet.add("Garlic Bread");
+// orderSet.add("Garlic Bread");
+// console.log(orderSet); // Set(4) {'Pasta', 'Pizza', 'Risotto', 'Garlic Bread'}
+
+// /* Method .delete : pour supprimer un élément d'un Set */
+// orderSet.delete("Risotto");
+// console.log(orderSet); // Set(3) {'Pasta', 'Pizza', 'Garlic Bread'}
+
+// for (const order of orderSet) {
+// 	console.log(order);
+// } // cf. Console
+
+// /* Method .clear : supprimer tous les éléments d'un Set */
+// const myFriends = new Set(["Dwight", "Jim", "Michael"]);
+// myFriends.clear();
+// console.log(myFriends); // Set(0) {size: 0}
+
+// /* On peut aussi rentrer d'autres itérables dans un Set, comme un string par exemple */
+// const myName = new Set("Cem");
+// console.log(myName); // Set(3) {'C', 'e', 'm'}
+// /* Pour savoir le nombre de lettre qu'il y a dans un String */
+// console.log(myName.size); // 3
+
+// /* -------------------------- Convertir un Set en Array -------------------------- */
+
+// /* Je crée un Array */
+// const myArray = [1, 2, 3, 3, 4, 5, 5, 5];
+// console.log(myArray); // (8) [1, 2, 3, 3, 4, 5, 5, 5]
+
+// /* L'Array a été converti en Set (donc les dupliqués ont été supprimés) */
+// const mySet = new Set(...[myArray]);
+// console.log(mySet); // Set(5) {1, 2, 3, 4, 5}
+
+// /* Je rebalance les données du Set avec les données uniques dans un nouvel Array */
+// const uniqueArray = [...mySet];
+// console.log(uniqueArray); // (5) [1, 2, 3, 4, 5]
+
+// /* -------------------------- Exemple d'utilisation de Set -------------------------- */
+// /* Dans cet exemple nous avons 2 Chef, 3 Waiter et 1 Manager. Le problème est le suivant :
+// Nous voulons savoir combien de poste différent il existe. */
+// const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+
+// /* Solution : On va créer un Set et le convertir en même temps en Array grâce au Spread Operator
+// afin de supprimer les dupliqués tout en stockant les données dans un Array */
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique); // (3) ['Waiter', 'Chef', 'Manager']
+
+// /* Il existe donc 3 postes différents */
+// console.log(staffUnique.length); // 3
+
+// /* Une autre solution pour résoudre ce problème */
+// console.log(
+// 	new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+// ); // 3
+
+// ========================================================= //
+// ========================================================= //
+// ========================== Map ========================== //
+// ========================================================= //
+// ========================================================= //
+// /* Map est un built-in Data Structure (comme Array, Object et Set)
+// - Map est similaire à object car il permet de lier des valeurs à des keys
+// - La différence de Map : les keys peuvent être de n'importe quel type (les keys des Objects étant des Strings) */
+
+// /* Créer une Map */
+// const rest = new Map();
+
+// /* La Method .set : permet de remplir la Map */
+// /* Explication : "name" est mapé à "Classico Italiano" etc. */
+// rest.set("name", "Classico Italiano");
+// rest.set(1, "Firenze, Italy");
+// rest.set(2, "Lisbon, Portugal");
+
+// /* Lorsqu'on ajoute des données à Map avec la Method .set, celle-ci ne fait pas que ajouter des données mais elle retourne
+// également la Map */
+// // console.log(rest.set());
+
+// /* Il est possible d'enchaîner l'utilisation de la Method .set */
+// rest
+// 	.set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+// 	.set("open", 11)
+// 	.set("close", 23)
+// 	.set(true, "We are open :D")
+// 	.set(false, "We are closed :(");
+
+// console.log(rest); // cf. Console
+
+// /* Créer une Map avec des éléments */
+// const myMap = new Map([
+// 	["name", "John"],
+// 	["surname", "Doe"],
+// ]);
+// console.log(myMap); // Map(2) {'name' => 'John', 'surname' => 'Doe'}
+
+// // /* _____Les Methods_____ */
+
+// /* La Method .get : retourne l'élément spécifié de la Map */
+// console.log(rest.get("name")); // Classico Italiano
+// console.log(rest.get(true)); // We are open :D
+
+// /* Cet exemple sert à montrer les possibilités de Map en utilisant d'autres Types que String en Keys (ici des Booleans)
+// mais ce code n'est pas très pratique dans la réalité car pas assez lisible/explicite */
+// const time = 21;
+// console.log(rest.get(time > rest.get("open") && time < rest.get("close"))); // We are open :D
+
+// /* La Method .has : permet de savoir si un élément existe ou non dans la Map  */
+// console.log(rest.has("categories")); // true
+// console.log(rest.has("guest")); // false
+
+// /* La Method .delete : permet de supprimer une Key de la Map */
+// rest.delete(2);
+// console.log(rest); // cf. Console
+
+// /* La Method .size : permet de connaître le nombre d'éléments qu'il y a dans une Map */
+// console.log(rest.size); // 7
+
+/* La Method .clear :  permet de supprimer tous les éléments de la Map */
+// rest.clear();
+// console.log(rest); // Map(0) {size: 0}
+
+// /* -------------------------- Utiliser un Array en Key -------------------------- */
+
+// /* Erreur à ne pas commettre */
+// /* Explication : ici nous avons rentré exactement le même Array sur les 2 lignes (.set pour ajouter, et .get pour retourner)
+// mais les deux Arrays sont distinctes dans le heap (dans la mémoire) ce ne sont pas les mêmes ! C'est pour cela que undefined est retourné */
+// rest.set([1, 2], "Test");
+// console.log(rest.get([1, 2])); // undefined
+
+// /* La bonne manière de faire */
+// /* Explication : il faut d'abord créer un Array et la stocker dans une Variable et ensuite l'utiliser dans la Map */
+// const arr = [1, 2];
+// rest.set(arr, "Test");
+// console.log(rest.get(arr)); // Test
+
+// /* -------------------------- Utiliser un Object en Key -------------------------- */
+
+// /* Pour cet exemple on va utiliser le DOM (qui est un Object) */
+// rest.set(document.querySelector("h1"), "Heading");
+// console.log(rest); // cf. Console
+
+// /* -------------------------- Créer un simple Quizz -------------------------- */
+
+// /* Cette structure fait penser à "Object.entries" qui est un "Array d'un Array" */
+// const question = new Map([
+// 	["question", "What is the best programming language in the World ?"],
+// 	[1, "C"],
+// 	[2, "Java"],
+// 	[3, "JavaScript"],
+// 	["correct", 3],
+// 	[true, "Correct !"],
+// 	[false, "Try again !"],
+// ]);
+
+// console.log(question); // cf. Console
+
+// /* Pour rappel, Map est un Iterable donc il est possible de faire des Boucles dans une Map */
+
+// /* Petite précision : un Object n'est pas un itérables mais Object.entries est un itérable, c'est pourquoi
+// après le "of" nous devions mettre Object.entries, mais Map est un itérable donc on peut directement entrer
+// le nom de la Map (ici "question") */
+
+// /* _____Quizz App_____ */
+
+// console.log(question.get("question")); // What is the best programming language in the World ?
+
+// for (const [key, value] of question) {
+// 	if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+// }
+// // Answer 1: C
+// // Answer 2: Java
+// // Answer 3: JavaScript
+
+// const answer = Number(prompt("Your answer"));
+// console.log(answer); // cf. Console
+
+// /* Sans l'utilisation du if Statement */
+// console.log(question.get(question.get("correct") === answer));
+
+// /* Avec l'utilisation du if Statement */
+// // if (answer === true) {
+// // 	console.log(question.get(true));
+// // } else {
+// // 	console.log(question.get(false));
+// // }
+
+// /* -------------------------- Convertir Object.entries en Map -------------------------- */
+
+// const openingHours = {
+// 	thu: {
+// 		open: 12,
+// 		close: 22,
+// 	},
+// 	fri: {
+// 		open: 11,
+// 		close: 23,
+// 	},
+// 	sat: {
+// 		open: 0,
+// 		close: 24,
+// 	},
+// };
+
+// /* Avant la conversion */
+// console.log(Object.entries(openingHours)); // cf. Console
+
+// /* Après la conversion */
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap); // cf. Console
+
+// /* -------------------------- Convertir Map en Array -------------------------- */
+
+// const question = new Map([
+// 	["question", "What is the best programming language in the World ?"],
+// 	[1, "C"],
+// 	[2, "Java"],
+// 	[3, "JavaScript"],
+// 	["correct", 3],
+// 	[true, "Correct !"],
+// 	[false, "Try again !"],
+// ]);
+
+// /* Avant conversion */
+// console.log(question); // cf. Console
+
+// /* Après conversion */
+// const newArr = [...question];
+// console.log(newArr); // cf. Console
+
+// /* -------------------------- Plusieurs Object en Key : Object VS Map  -------------------------- */
+
+/* _____Dans le cas d'un Object_____*/
+
+/* Je crée un Object avec 2 propriétés */
+const myObject = {
+	myName: "Cem",
+	surname: "Ekiz",
+};
+
+/* Je crée 2 Objects vide */
+const a = {};
+const b = {};
+
+/* J'ajoute un par un les 2 derniers Objects (l'Object étant la Key, "a" étant la valeur pairé) */
+/* Le problème est le suivant : seulement le dernier Object ajouté en tant que Key sera compté,
+c'est là que Map résout ce problème car il n'a pas cette contrainte. */
+myObject[a] = "a";
+myObject[b] = "b";
+console.log(myObject);
+
+/* _____Dans le cas d'une Map_____ */
+
+/* Je crée 2 Objects vide */
+const c = {};
+const d = {};
+
+/* Je crée ma Map : j'y ajoute les 2 Objects que je viens de créer ci-dessus (c et d) et je paire des Strings ("c" et "d") */
+const myMap = new Map([
+	[c, "c"],
+	[d, "d"],
+]);
+
+console.log(myMap);
 
 // ================================================================================ //
 // ================================================================================ //
