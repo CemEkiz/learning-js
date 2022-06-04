@@ -792,39 +792,41 @@ const flights =
 // console.log(newArr); // cf. Console
 
 // /* -------------------------- Plusieurs Object en Key : Object VS Map  -------------------------- */
+// /* - Un Object ne peut contenir qu'un seul Object en Key, dans le cas où il y en a plusieurs : seulement le dernier sera pris en compte
+//    - Une Map peut contenir plusieurs Objects en Key sans conflit, c'est un de ses avantages par rapport à Object */
 
-/* _____Dans le cas d'un Object_____*/
+// /* _____Dans le cas d'un Object_____*/
 
-/* Je crée un Object avec 2 propriétés */
-const myObject = {
-	myName: "Cem",
-	surname: "Ekiz",
-};
+// /* Je crée un Object avec 2 propriétés */
+// const myObject = {
+// 	myName: "Cem",
+// 	surname: "Ekiz",
+// };
 
-/* Je crée 2 Objects vide */
-const a = {};
-const b = {};
+// /* Je crée 2 Objects vide */
+// const a = {};
+// const b = {};
 
-/* J'ajoute un par un les 2 derniers Objects (l'Object étant la Key, "a" étant la valeur pairé) */
-/* Le problème est le suivant : seulement le dernier Object ajouté en tant que Key sera compté,
-c'est là que Map résout ce problème car il n'a pas cette contrainte. */
-myObject[a] = "a";
-myObject[b] = "b";
-console.log(myObject);
+// /* J'ajoute un par un les 2 Objects que j'ai crée ci-dessus (l'Object étant la Key auquel je paire un String ("a" et "b")) */
+// /* Le problème est le suivant : seulement le dernier Object ajouté en tant que Key sera compté, c'est là que Map résout
+// ce problème car il n'a pas cette contrainte. */
+// myObject[a] = "a";
+// myObject[b] = "b";
+// console.log(myObject); // cf. Console
 
-/* _____Dans le cas d'une Map_____ */
+// /* _____Dans le cas d'une Map_____ */
 
-/* Je crée 2 Objects vide */
-const c = {};
-const d = {};
+// /* Je crée 2 Objects vide */
+// const c = {};
+// const d = {};
 
-/* Je crée ma Map : j'y ajoute les 2 Objects que je viens de créer ci-dessus (c et d) et je paire des Strings ("c" et "d") */
-const myMap = new Map([
-	[c, "c"],
-	[d, "d"],
-]);
+// /* Je crée ma Map : j'y ajoute les 2 Objects que je viens de créer ci-dessus (c et d) et je paire des Strings ("c" et "d") */
+// const myMap = new Map([
+// 	[c, "c"],
+// 	[d, "d"],
+// ]);
 
-console.log(myMap);
+// console.log(myMap); // cf. Console
 
 // ================================================================================ //
 // ================================================================================ //
