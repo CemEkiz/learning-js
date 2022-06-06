@@ -1001,14 +1001,14 @@
 // ========================== Working with Strings ========================== //
 // ========================================================================== //
 // ========================================================================== //
-// /* La plupart des Methods que nous allons voir ne change pas le String d'origine car pour rappel
-// un String est une Primitive Data est n'est pas PAS MUTABLE. Donc lorsqu'on va utiliser les Methods
-// pour manipuler un String, cela crée et renvoie un nouveau String (qu'on peut stocker dans une nouvelle Variable) */
+/* La plupart des Methods que nous allons voir ne change pas le String d'origine car pour rappel
+un String est une Primitive Data est n'est pas PAS MUTABLE. Donc lorsqu'on va utiliser les Methods
+pour manipuler un String, cela crée et renvoie un nouveau String (qu'on peut stocker dans une nouvelle Variable) */
 
-// const airline = "TAP Air Portugal";
-// const plane = "A320";
+const airline = "TAP Air Portugal";
+const plane = "A320";
 
-// // /* -------------------------- Les Methods de String  -------------------------- */
+// /* -------------------------- Les Methods de String  -------------------------- */
 
 // /* Retourner la première lettre indexé d'un String */
 // console.log(plane[0]); // A
@@ -1032,11 +1032,13 @@
 
 // /* Extraire le premier mot d'un String ayant plusieurs mots */
 // console.log(airline.slice(0, airline.indexOf(" "))); // TAP
+
 // /* Extraire le dernier mot d'un String ayant plusieurs mots */
-// console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // TAP
+// console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // Portugal
 
 // /* Extraire les caractères d'un String en partant de la fin */
 // console.log(airline.slice(-2)); // al
+
 // /* Extraire la dernière lettre d'un String */
 // console.log(airline.slice(-1)); // l
 
@@ -1085,53 +1087,73 @@
 // console.log(airline.toLowerCase()); // tap air portugal
 // console.log(airline.toUpperCase()); // TAP AIR PORTUGAL
 
-// // /* -------------------------- Exercie : Définir une Case personnalisé  -------------------------- */
+// /* -------------------------- Exercie : Définir une Case personnalisé  -------------------------- */
 
 // /* Cas pratique : un passager a pas respecté les Case "Cem" par exemple, il a écrit "jOnAS" il faut réctifier cela */
 // /* En bonus je peux faire une fonction pour cela */
 // const passenger = "jOnAS";
-// // 1.
+// 1.
 // const passengerLower = passenger.toLowerCase();
-// // 2.
+// 2.
 // const passengerCorrect =
 // 	passengerLower[0].toUpperCase() + passengerLower.slice(1);
-// // 3.
+// 3.
 // console.log(passengerCorrect); // Jonas
+// console.log(passengerLower.slice(1));
 
-// // /* -------------------------- Exercice : Formater un String  -------------------------- */
+// const upperCaser = function (name) {
+// 	const passengerLower = name.toLowerCase();
+// 	const passengerCorrect =
+// 		passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// 	console.log(passengerCorrect);
+// };
 
-// /* Comparer des e-mails */
+// upperCaser("jOnaS"); // Jonas
+// upperCaser("MICHAEL"); // Michael
+// upperCaser("dwiGHT"); // Dwight
+
+// /* -------------------------- Exercice : Formater un String  -------------------------- */
+
+// /* Créer et stocker les 2 e-mails */
 // const email = "hello@jonas.io";
-// const loginEmail = " Hello@Jonas.Io \n";
+// const loginEmail1 = " Hello@Jonas.Io \n";
+// const loginEmail2 = "  ekizCEM.PRO@gmail.com      ";
 
-// // 1.
-// // const lowerEmail = loginEmail.toLowerCase();
-// // 2.
+// // // 1.
+// // const lowerEmail = loginEmail1.toLowerCase();
+// // // 2.
 // // const trimmedEmail = lowerEmail.trim();
-// // 3.
+// // // 3.
 // // console.log(trimmedEmail); // hello@jonas.io
 
-// // En une étape
-// const normalizedEmail = loginEmail.toLowerCase().trim();
-// console.log(normalizedEmail); // hello@jonas.io
-// /* Pour comparer les 2 e-mails */
-// console.log(email === normalizedEmail); // true
+// /* Fonction pour définir la mise en forme du String */
+// const emailNormalizer = function (email) {
+// 	const normalizedEmail = email.toLowerCase().trim();
+// 	return normalizedEmail;
+// };
+
+// const newEmail = emailNormalizer(loginEmail1);
+// const newEmail2 = emailNormalizer(loginEmail2);
+// console.log(newEmail); // hello@jonas.io
+// console.log(newEmail2); // ekizcem.pro@gmail.com
 
 // // /* -------------------------- Replacer des parties d'un String -------------------------- */
 
-// /* Je veux remplacer le "$" par "€" et le "," par "." */
+// /* Remplacer le "$" par "€" et le "," par "." */
 // const priceGB = "288,97$";
 // const priceEU = priceGB.replace("$", "€").replace(",", ".");
 // console.log(priceEU); // 288.97€
 
-// /* Remplacer TOUTES (et non pas que le premier commme le fait .replace) */
+// /* Remplacer TOUTES les occurences du String "door" par "gate" */
 // const announcement =
 // 	"All passengers come to boarding door 23. Boarding door 23!";
 // console.log(announcement); // All passengers come to boarding door 23. Boarding door 23!
-// // Méthode 1 : avec l'utilisation de la Method .replaceAll
+
+// /* Méthode 1 : avec l'utilisation de la Method .replaceAll */
 // const announcementNew = announcement.replaceAll("door", "gate");
 // console.log(announcementNew); // All passengers come to boarding gate 23. Boarding gate 23!
-// // Méthode 2 : avec l'utilisation de Regular Expression
+
+// /* Méthode 2 : avec l'utilisation de Regular Expression */
 // const announcementNew2 = announcement.replace(/door/g, "gate");
 // console.log(announcementNew2); // All passengers come to boarding gate 23. Boarding gate 23!
 
@@ -1146,6 +1168,7 @@
 // /* La Method .startsWith */
 // console.log(plane2.startsWith("Air")); // true
 // console.log(plane2.startsWith("A320")); // false
+// console.log(plane2.endsWith("neo")); // true
 
 // /* P'tit exercice pratique : vérifier si le nouvel avion fait partie de la famille "Airbus" */
 // if (plane2.startsWith("Airbus") && plane2.endsWith("neo")) {
@@ -1172,71 +1195,78 @@
 // // /* -------------------------- Autres Methods de String -------------------------- */
 
 // /* La Method .split */
-// /* Pour cette Method il faut un "divider" dans l'input qui séparera tous les caractères et les stockera dans un Array */
+// /* La Method .split divise un string en une liste de substrings et met chacun de ces substring dans un array et retourne l’array
+// (elle nécessite un divider qui sert de repère pour diviser le string) */
+
+// /* Dans cet exemple le divider est le caractère "+" */
 // console.log("a+very+nice+string".split("+")); //  ['a', 'very', 'nice', 'string']
 
+// /* Dans cet exemple le divider est le caractère " " */
+// console.log("Mon nom est Cem".split(" ")); // (4) ['Mon', 'nom', 'est', 'Cem']
+
+// /* La Method .join */
+// /* La Method .join concatène les éléments d’un array et crée un nouveau string avec tous les éléments assemblés
+// puis retourne ce nouveau string */
+
+// const elements = ["Fire", "Air", "Water"];
+// console.log(elements.join()); // Fire,Air,Water
+// console.log(elements.join("")); // FireAirWater
+// console.log(elements.join(" ")); // Fire Air Water
+// console.log(elements.join("-")); // Fire-Air-Water
+
+// /* Exemple dans lequel j’utilise .split puis .join */
 // const [firstName, lastName] = "Cem Ekiz".split(" ");
 // console.log(firstName); // Cem
 // console.log(lastName); // Ekiz
 
-// /* La Method .join */
-// /* C'est l'opposé de .split, elle permet de joindre un String à un autre */
 // const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
 // console.log(newName); // Mr. Cem EKIZ
 
-// /* Je veux capitaliser ce prénom (les premières lettres en Majuscule) */
+/* Je veux capitaliser la première lettre de chaque mot */
+const capitalizeName = function (name) {
+	const names = name.split(" ");
+	const namesUpper = [];
+	for (const n of names) {
+		namesUpper.push(n[0].toUpperCase() + n.slice(1));
+		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+	}
+	// console.log(namesUpper);
+	console.log(namesUpper.join(" "));
+};
 
-// /* 1. Je crée d'abord un Array avec chaque "mot" séparé par le divider " "
-//    2. Je crée ensuite
-//    3. Ensuite je crée une boucle qui va faire le tour de l'array (de chaque mot donc) pour :
-//       - Push chaque mot dans un Array vide (namesUpper)
-// 	  - Transformer la première lettre [0] de chaque mot actuel (n) en Majuscule
-// 	  - Slice le reste de chaque mot [1] actuel (n)
-//    4. Log ce qui a été entré dans l'Array (qui était vide au départ) en espacant chaque mot par " "  */
-// const capitalizeName = function (name) {
-// 	const names = name.split(" ");
-// 	const namesUpper = [];
-// 	for (const n of names) {
-// 		namesUpper.push(n[0].toUpperCase() + n.slice(1));
-// 		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-// 	}
-// 	// console.log(namesUpper);
-// 	console.log(namesUpper.join(" "));
-// };
+capitalizeName("jessica ann smith davis"); // Jessica Ann Smith Davis
+capitalizeName("cem ekiz"); // Cem Ekiz
+capitalizeName("jonas schmedtmann"); // Jonas Schmedtmann
 
-// capitalizeName("jessica ann smith davis");
-// capitalizeName("cem ekiz");
-// capitalizeName("jonas schmedtmann");
+/* La Method .padStart et .padEnd */
+/* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
+const myName = "Cem Ekiz";
+const teacherName = "Jonas Schmedtmann";
+console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
+console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
 
-// /* La Method .padStart et .padEnd */
-// /* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
-// const myName = "Cem Ekiz";
-// const teacherName = "Jonas Schmedtmann";
-// console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
-// console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
+/* Cacher le numéro de carte bancaire sauf les 4 derniers chiffres */
+const maskCreditCard = function (number) {
+	const str = number + "";
+	const last = str.slice(-4);
+	return last.padStart(str.length, "*");
+};
 
-// /* Cacher le numéro de carte bancaire sauf les 4 derniers chiffres */
-// const maskCreditCard = function (number) {
-// 	const str = number + "";
-// 	const last = str.slice(-4);
-// 	return last.padStart(str.length, "*");
-// };
+console.log(maskCreditCard(11515666)); // ****5666
+console.log(maskCreditCard(45132197415)); // *******7415
+console.log(maskCreditCard(5421210320365161)); // ************5161
 
-// console.log(maskCreditCard(11515666)); // ****5666
-// console.log(maskCreditCard(45132197415)); // *******7415
-// console.log(maskCreditCard(5421210320365161)); // ************5161
+/* La Method .repeat */
+const message = "Bad weather... All departures Delayed... ";
+console.log(message.repeat(5)); // cf. Console
 
-// /* La Method .repeat */
-// const message = "Bad weather... All departures Delayed... ";
-// console.log(message.repeat(5)); // cf. Console
+const planesInLine = function (n) {
+	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+};
 
-// const planesInLine = function (n) {
-// 	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
-// };
-
-// planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
-// planesInLine(10); // There are 10 planes in line ✈️✈️✈️✈️✈️✈️✈️✈️✈️✈️
-// planesInLine(2); // There are 2 planes in line ✈️✈️
+planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
+planesInLine(10); // There are 10 planes in line ✈️✈️✈️✈️✈️✈️✈️✈️✈️✈️
+planesInLine(2); // There are 2 planes in line ✈️✈️
 
 /* String Methods Practice */
 
