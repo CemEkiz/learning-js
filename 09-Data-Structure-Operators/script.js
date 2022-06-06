@@ -1222,64 +1222,63 @@ const plane = "A320";
 // const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
 // console.log(newName); // Mr. Cem EKIZ
 
-/* Je veux capitaliser la première lettre de chaque mot */
-const capitalizeName = function (name) {
-	const names = name.split(" ");
-	const namesUpper = [];
-	for (const n of names) {
-		namesUpper.push(n[0].toUpperCase() + n.slice(1));
-		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-	}
-	// console.log(namesUpper);
-	console.log(namesUpper.join(" "));
-};
+// /* Je veux capitaliser la première lettre de chaque mot */
+// const capitalizeName = function (name) {
+// 	const names = name.split(" ");
+// 	const namesUpper = [];
+// 	for (const n of names) {
+// 		namesUpper.push(n[0].toUpperCase() + n.slice(1));
+// 		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+// 	}
+// 	// console.log(namesUpper);
+// 	console.log(namesUpper.join(" "));
+// };
 
-capitalizeName("jessica ann smith davis"); // Jessica Ann Smith Davis
-capitalizeName("cem ekiz"); // Cem Ekiz
-capitalizeName("jonas schmedtmann"); // Jonas Schmedtmann
+// capitalizeName("jessica ann smith davis"); // Jessica Ann Smith Davis
+// capitalizeName("cem ekiz"); // Cem Ekiz
+// capitalizeName("jonas schmedtmann"); // Jonas Schmedtmann
 
-/* La Method .padStart et .padEnd */
-/* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
-const myName = "Cem Ekiz";
-const teacherName = "Jonas Schmedtmann";
-console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
-console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
+// /* La Method .padStart et .padEnd */
+// /* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
+// const myName = "Cem Ekiz";
+// const teacherName = "Jonas Schmedtmann";
+// console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
+// console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
 
-/* Cacher le numéro de carte bancaire sauf les 4 derniers chiffres */
-const maskCreditCard = function (number) {
-	const str = number + "";
-	const last = str.slice(-4);
-	return last.padStart(str.length, "*");
-};
+// /* Cacher les chiffres d’une carte bancaire sauf les 4 derniers */
+// const maskCreditCard = function (number) {
+// 	const str = number + "";
+// 	const last = str.slice(-4);
+// 	return last.padStart(str.length, "*");
+// };
 
-console.log(maskCreditCard(11515666)); // ****5666
-console.log(maskCreditCard(45132197415)); // *******7415
-console.log(maskCreditCard(5421210320365161)); // ************5161
+// console.log(maskCreditCard(11515666)); // ****5666
+// console.log(maskCreditCard(45132197415)); // *******7415
+// console.log(maskCreditCard(5421210320365161)); // ************5161
 
-/* La Method .repeat */
-const message = "Bad weather... All departures Delayed... ";
-console.log(message.repeat(5)); // cf. Console
+// /* La Method .repeat */
+// const message = "Bad weather... All departures Delayed... ";
+// console.log(message.repeat(5)); // cf. Console
 
-const planesInLine = function (n) {
-	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
-};
+// const planesInLine = function (n) {
+// 	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+// };
 
-planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
-planesInLine(10); // There are 10 planes in line ✈️✈️✈️✈️✈️✈️✈️✈️✈️✈️
-planesInLine(2); // There are 2 planes in line ✈️✈️
+// planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
+// planesInLine(10); // There are 10 planes in line ✈️✈️✈️✈️✈️✈️✈️✈️✈️✈️
+// planesInLine(2); // There are 2 planes in line ✈️✈️
 
-/* String Methods Practice */
+// /* String Methods Practice */
 
-const flights =
-	"_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+// const flights =
+// 	"_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";00
+// const getCode = (str) => str.slice(0, 3).toUpperCase();
 
-const getCode = (str) => str.slice(0, 3).toUpperCase();
-
-for (const flight of flights.split("+")) {
-	const [type, from, to, time] = flight.split(";");
-	const output = `${type.startsWith("_Delayed") ? "🔴" : ""}${type.replaceAll(
-		"_",
-		" "
-	)} ${getCode(from)} to ${getCode(to)} ${time.replace(":", "h")}`.padStart(40);
-	console.log(output);
-}
+// for (const flight of flights.split("+")) {
+// 	const [type, from, to, time] = flight.split(";");
+// 	const output = `${type.startsWith("_Delayed") ? "🔴" : ""}${type.replaceAll(
+// 		"_",
+// 		" "
+// 	)} ${getCode(from)} to ${getCode(to)} ${time.replace(":", "h")}`.padStart(40);
+// 	console.log(output);
+// }
