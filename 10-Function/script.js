@@ -189,3 +189,40 @@
 // ce qui importe c'est la fonction "transformer".
 // - transformer(quoi ? => le string, comment ? => callback function).
 // - addEventListener(quel événement ? => au clic, qu'est-ce qu'il se passera ? => callback function), etc. */
+
+// =================================================================================== //
+// =================================================================================== //
+// ========================== Functions returning Functions ========================== //
+// =================================================================================== //
+// =================================================================================== //
+
+/* -------------------------- Avec Function Expression -------------------------- */
+
+const greet = function (greeting) {
+	return function (name) {
+		console.log(`${greeting} ${name}`);
+	};
+};
+
+/* En faisant cela, "greeterHey" devient une fonction qui stock la fonction "greet" */
+const greeterHey = greet("Hey");
+greeterHey("Cem"); // Hey Cem
+greeterHey("Elis"); // Hey Elis
+/* ou sinon */
+greet("Hello")("Jonas"); // Hello Jonas
+
+/* -------------------------- Avec Arrow Function -------------------------- */
+
+/* Méthode 1 (un peu confuse donc il faut préférer Function Expression) */
+const greetArrow1 = (greeting) => (name) => console.log(`${greeting} ${name}`);
+greetArrow1("Hello")("Cem"); // Hello Cem
+
+// /* Méthode 2 (pour information) */
+// const greetArrow2 = (greeting) => {
+// 	return function (name) {
+// 		console.log(`${greeting} ${name}`);
+// 	};
+// };
+
+// const greetHello2 = greetArrow2("Hello");
+// greetHello2("Cem"); // Hello Cem
