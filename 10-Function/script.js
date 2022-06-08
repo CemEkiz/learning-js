@@ -196,33 +196,99 @@
 // =================================================================================== //
 // =================================================================================== //
 
-/* -------------------------- Avec Function Expression -------------------------- */
+// /* -------------------------- Avec Function Expression -------------------------- */
 
-const greet = function (greeting) {
-	return function (name) {
-		console.log(`${greeting} ${name}`);
-	};
-};
-
-/* En faisant cela, "greeterHey" devient une fonction qui stock la fonction "greet" */
-const greeterHey = greet("Hey");
-greeterHey("Cem"); // Hey Cem
-greeterHey("Elis"); // Hey Elis
-/* ou sinon */
-greet("Hello")("Jonas"); // Hello Jonas
-
-/* -------------------------- Avec Arrow Function -------------------------- */
-
-/* Méthode 1 (un peu confuse donc il faut préférer Function Expression) */
-const greetArrow1 = (greeting) => (name) => console.log(`${greeting} ${name}`);
-greetArrow1("Hello")("Cem"); // Hello Cem
-
-// /* Méthode 2 (pour information) */
-// const greetArrow2 = (greeting) => {
+// const greet = function (greeting) {
 // 	return function (name) {
 // 		console.log(`${greeting} ${name}`);
 // 	};
 // };
 
-// const greetHello2 = greetArrow2("Hello");
-// greetHello2("Cem"); // Hello Cem
+// /* En faisant cela, "greeterHey" devient une fonction qui stock la fonction "greet" */
+// const greeterHey = greet("Hey");
+// greeterHey("Cem"); // Hey Cem
+// greeterHey("Elis"); // Hey Elis
+// /* ou sinon */
+// greet("Hello")("Jonas"); // Hello Jonas
+
+// /* -------------------------- Avec Arrow Function -------------------------- */
+
+// /* Méthode 1 (un peu confuse donc il faut préférer Function Expression) */
+// const greetArrow1 = (greeting) => (name) => console.log(`${greeting} ${name}`);
+// greetArrow1("Hello")("Cem"); // Hello Cem
+
+// // /* Méthode 2 (pour information) */
+// // const greetArrow2 = (greeting) => {
+// // 	return function (name) {
+// // 		console.log(`${greeting} ${name}`);
+// // 	};
+// // };
+
+// // const greetHello2 = greetArrow2("Hello");
+// // greetHello2("Cem"); // Hello Cem
+
+// // ================================================================================ //
+// // ================================================================================ //
+// // ========================== The Call and Apply Methods ========================== //
+// // ================================================================================ //
+// // ================================================================================ //
+
+// /* Je crée un Object pour l'Airline "Lufthansa" dans lequel il y aura une Method (book) */
+// const lufthansa = {
+// 	airline: "Lufthansa",
+// 	iataCode: "LH",
+// 	bookings: [],
+// 	book(flightNum, name) {
+// 		console.log(
+// 			`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+// 		);
+// 		this.bookings.push({
+// 			flight: `${this.iataCode}${flightNum}`,
+// 			name,
+// 		});
+// 	},
+// };
+
+// const eurowings = {
+// 	airline: "Eurowings",
+// 	iataCode: "EW",
+// 	bookings: [],
+// };
+
+// lufthansa.book(239, "Jonas Schmedtmann"); // Jonas Schmedtmann booked a seat on Lufthansa flight LH239
+// lufthansa.book(635, "John Smith"); // John Smith booked a seat on Lufthansa flight LH635
+// console.log(lufthansa); // cf. Console
+// console.log(lufthansa.bookings); // cf. Console
+
+// /* Je stocke dans la Method book dans une variable, la fonction devient alors une Regular Fonction,
+// ce n'est pas une Method qui appartient à l'Object lufthansa mais c'est une copie séparée */
+// const book = lufthansa.book;
+
+// /* -------------------------------- Call Method -------------------------------- */
+
+// /* ___Sans Call Method___ */
+// /* La fonctionne renvoie une erreur à cause du "this" keyword, il faut alors préciser à quel Object
+// le "this" correspond explicitement (avec les Methods des fonctions) */
+// // book(23, "Sarah Williams"); // TypeError
+
+// /* ___Avec Call Method___ */
+// /* Call Method : le premier argument désigne la cible du this keyword */
+// book.call(eurowings, 23, "Sarah Williams"); // Sarah Williams booked a seat on Eurowings flight EW23
+// console.log(eurowings); // cf. Console
+// console.log(eurowings.bookings); // cf. Console
+
+// book.call(lufthansa, 239, "Mary Cooper"); // Mary Cooper booked a seat on Lufthansa flight LH239
+// console.log(lufthansa); // cf. Console
+// console.log(lufthansa.bookings); // cf. Console
+
+// /* -------------------------------- Apply Method -------------------------------- */
+// /* C'est une Method similaire à Call Method mais il faut créer un Array d'abord qui sera le second argument
+// tandis que le premier restera (comme pour Call) la cible à designer pour le this keyword */
+
+// const flightData = [583, "George Cooper"];
+// book.apply(eurowings, flightData); // George Cooper booked a seat on Eurowings flight EW583
+// console.log(eurowings); // cf. Console
+// console.log(eurowings.bookings); // cf. Console
+
+// /* Mais il est conseillé d'utiliser call tout de même qui est la nouvelle Method en combinaison avec le Spread Operator */
+// book.call(eurowings, ...flightData); // George Cooper booked a seat on Eurowings flight EW583
