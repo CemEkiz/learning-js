@@ -258,13 +258,12 @@
 // lufthansa.book(239, "Jonas Schmedtmann"); // Jonas Schmedtmann booked a seat on Lufthansa flight LH239
 // lufthansa.book(635, "John Smith"); // John Smith booked a seat on Lufthansa flight LH635
 // console.log(lufthansa); // cf. Console
-// console.log(lufthansa.bookings); // cf. Console
 
-// /* Je stocke la Method .book dans une variable, la fonction devient alors une Regular Fonction,
+// /* Je stocke la Method .book dans une variable, la Method devient alors une Regular Fonction,
 // ce n'est pas une Method qui appartient à l'Object lufthansa mais c'est une copie séparée */
 // const book = lufthansa.book;
 
-// /* -------------------------------- .call Method -------------------------------- */
+// // // /* -------------------------------- .call Method -------------------------------- */
 
 // /* ___Sans .call Method___ */
 // /* La fonctionne renvoie une erreur à cause du "this" keyword, il faut alors préciser à quel Object
@@ -275,11 +274,9 @@
 // /* .call Method : le premier argument désigne la cible du this keyword */
 // book.call(eurowings, 23, "Sarah Williams"); // Sarah Williams booked a seat on Eurowings flight EW23
 // console.log(eurowings); // cf. Console
-// console.log(eurowings.bookings); // cf. Console
 
 // book.call(lufthansa, 239, "Mary Cooper"); // Mary Cooper booked a seat on Lufthansa flight LH239
 // console.log(lufthansa); // cf. Console
-// console.log(lufthansa.bookings); // cf. Console
 
 // /* -------------------------------- .apply Method -------------------------------- */
 // /* C'est une Method similaire à .call Method mais il faut créer un Array d'abord qui sera le second argument
@@ -288,10 +285,10 @@
 // const flightData = [583, "George Cooper"];
 // book.apply(eurowings, flightData); // George Cooper booked a seat on Eurowings flight EW583
 // console.log(eurowings); // cf. Console
-// console.log(eurowings.bookings); // cf. Console
 
 // /* Mais il est conseillé d'utiliser call tout de même qui est la nouvelle Method en combinaison avec le Spread Operator */
-// book.call(eurowings, ...flightData); // George Cooper booked a seat on Eurowings flight EW583
+// const flightData2 = [583, "Tom Nell"];
+// book.call(eurowings, ...flightData2); // George Cooper booked a seat on Eurowings flight EW583
 
 // ================================================================== //
 // ================================================================== //
@@ -328,7 +325,7 @@
 // /* 1 - Il faut d'abord stocker la Method dans une variable afin de la convertir en Regular Function (comme pour .call et .apply) */
 // const book = lufthansa.book;
 
-// /* 2 - Il faut ensuite stocker la fonction dans une autre variable en utilisant la Method .bind */
+// /* 2 - Utilisation de la Method .bind qui permet de rediriger le this keyword vers l'Object souhaité tout en créant une nouvelle fonction */
 // const bookEW = book.bind(eurowings);
 // const bookLUF = book.bind(lufthansa);
 
