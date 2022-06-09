@@ -396,3 +396,39 @@
 // document
 // 	.querySelector(".buy")
 // 	.addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+
+// ===================================================================================================== //
+// ===================================================================================================== //
+// ========================== Immediately Invoked Function Expressions (IIFE) ========================== //
+// ===================================================================================================== //
+// ===================================================================================================== //
+/* Les IIFE sont des fonctions qui sont crée pour être call qu'une seule fois */
+
+/* IIFE */
+(function () {
+	console.log("This will never run again");
+	const isPrivate = 23;
+})(); // This will never run again
+
+/* IIFE avec l'Arrow Function */
+(() => console.log("This will ALSO never run again"))(); // This will ALSO never run again
+
+/* Pourquoi l'IIFE existe ?
+Pour rappel dans le Global Scope on peut pas accéder aux données encapsulé (privé).
+Dans la première IIFE j'ai crée une variable qui est encapsulé dans une fonction, 
+je ne peux pas y accéder via le Globale Scope (cf. ci-dessous) */
+// console.log(isPrivate); // ReferenceError
+/* Par contre dans la Scope d'une fonction il est possible d'accéder aux données du Global Scope,
+cela marche donc dans un sens mais pas dans l'autre. Donc pour répondre à la question initiale, les IIFE
+existe dans le but d'encapsuler des variables, données, etc. */
+
+/* Mais dans le Modern JavaScript si on veut seulement encapsuler des données il suffit de le faire avec un 
+bloc d'instruction (cf. ci-dessous), les IIFE ne sont plus utilisés pour cela (on les utilise uniquement 
+lorsqu'on a besoin d'éxectuer une fonction qu'une seule fois) */
+{
+	const isPrivate = 23;
+	var notPrivate = 46;
+}
+
+// console.log(isPrivate); // ReferenceError
+console.log(notPrivate); // 46
