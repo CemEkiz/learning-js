@@ -6,30 +6,29 @@
 // ===================================================================== //
 // ===================================================================== //
 
-// function calcAge(birthYear) {
-// 	const age = 2037 - birthYear;
+function calcAge(birthYear) {
+	const age = 2037 - birthYear;
 
-// 	function printAge() {
-// 		const output = `You are ${age}, born in ${birthYear}`;
-// 		console.log(output);
+	function printAge() {
+		const output = `You are ${age}, born in ${birthYear}`;
+		console.log(output);
 
-// 		if (birthYear >= 1981 && birthYear <= 1996) {
-// 			var millenial = true;
-// 			// const firstName = "Steven";
-// 			const str = `Oh, and you're a millenial, ${firstName}`;
-// 			console.log(str);
-// 		}
+		if (birthYear >= 1981 && birthYear <= 1996) {
+			var millenial = true;
+			// const firstName = "Steven";
+			const str = `Oh, and you're a millenial, ${firstName}`;
+			console.log(str);
+		}
 
-// 		console.log(millenial);
-// 	}
+		console.log(millenial);
+	}
 
-// 	printAge();
+	printAge();
+	return age;
+}
 
-// 	return age;
-// }
-
-// const firstName = "Jonas";
-// calcAge(1991);
+const firstName = "Jonas";
+calcAge(1991);
 
 // ======================================================================= //
 // ======================================================================= //
