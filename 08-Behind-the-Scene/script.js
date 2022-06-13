@@ -6,29 +6,29 @@
 // ===================================================================== //
 // ===================================================================== //
 
-function calcAge(birthYear) {
-	const age = 2037 - birthYear;
+// function calcAge(birthYear) {
+// 	const age = 2037 - birthYear;
 
-	function printAge() {
-		const output = `You are ${age}, born in ${birthYear}`;
-		console.log(output);
+// 	function printAge() {
+// 		const output = `You are ${age}, born in ${birthYear}`;
+// 		console.log(output);
 
-		if (birthYear >= 1981 && birthYear <= 1996) {
-			var millenial = true;
-			// const firstName = "Steven";
-			const str = `Oh, and you're a millenial, ${firstName}`;
-			console.log(str);
-		}
+// 		if (birthYear >= 1981 && birthYear <= 1996) {
+// 			var millenial = true;
+// 			// const firstName = "Steven";
+// 			const str = `Oh, and you're a millenial, ${firstName}`;
+// 			console.log(str);
+// 		}
 
-		console.log(millenial);
-	}
+// 		console.log(millenial);
+// 	}
 
-	printAge();
-	return age;
-}
+// 	printAge();
+// 	return age;
+// }
 
-const firstName = "Jonas";
-calcAge(1991);
+// const firstName = "Jonas";
+// calcAge(1991);
 
 // ======================================================================= //
 // ======================================================================= //
@@ -36,20 +36,21 @@ calcAge(1991);
 // ======================================================================= //
 // ======================================================================= //
 
-/******************** Variables ********************/
-// console.log(me);
-// // console.log(job);
-// // console.log(year);
+// /******************** Variables ********************/
+// console.log(me); // undefined
+// console.log(job); // ReferenceError : Cannot access "job" before initialization
+// console.log(year); // ReferenceError : Cannot access "year" before initialization
+// console.log(x); // ReferenceError : x is not defined
 
 // var me = "Jonas";
-// // let job = "Teacher";
-// // const year = 1991;
+// let job = "Teacher";
+// const year = 1991;
 
-/******************** Functions ********************/
+// /******************** Functions ********************/
 
-// console.log(addDecl(2, 3));
-// // console.log(addEzpr(2, 3));
-// // console.log(addArrow(2, 3));
+// console.log(addDecl(2, 3)); // 5
+// console.log(addExpr(2, 3)); // ReferenceError : Cannot access 'addExpr' before initialization
+// console.log(addArrow(2, 3)); // ReferenceError: Cannot access 'addArrow' before initialization
 
 // function addDecl(a, b) {
 // 	return a + b;
@@ -61,15 +62,18 @@ calcAge(1991);
 
 // const addArrow = (a, b) => a + b;
 
-/******************** Example of Error ********************/
+// /******************** Exemple d'erreur possible ********************/
 
-/* In this situation, the console log "All products deleted" while the numProducts variable is true...
-Why ? Because the if statement is in the TDZ of the var Variable and the numProducts is set to undefined 
-at this point because of hoisting. Undefined => False so the console log the message. */
+// /* Le if Statement est-il truthy ou falsy ?
+// Il est falsy car même si la variable numProducts contient 10, le if Statement a été utilisé
+// avant la déclaration de la variable var donc au moment du hoisting, JS considère sa valeur
+// comme étant undefined (qui est falsy).  */
 
-// if (!numProducts) deleteShoppingCart();
+// if (!numProducts) {
+// 	deleteShoppingCart();
+// }
 
-// // console.log(numProducts); // undefined
+// console.log(numProducts); // undefined
 
 // var numProducts = 10;
 
@@ -77,8 +81,8 @@ at this point because of hoisting. Undefined => False so the console log the mes
 // 	console.log("All products deleted");
 // }
 
-/******************** var & Window Object ********************/
-/* var crée une propriété dans le Window Object contrairement à let et const */
+// /******************** var & Window Object ********************/
+// /* var crée une propriété dans le Window Object contrairement à let et const */
 
 // var x = 1;
 // let y = 2;
@@ -94,42 +98,42 @@ at this point because of hoisting. Undefined => False so the console log the mes
 // ================================================================== //
 // ================================================================== //
 
-// // console.log(this); // Window Object
+// console.log(this); // Window Object
 
-// // this keyword with function
-// const calcAge = function (birthYear) {
-// 	console.log(2037 - birthYear);
-// 	console.log(this);
-// };
+// this keyword with function
+const calcAge = function (birthYear) {
+	console.log(2037 - birthYear);
+	console.log(this);
+};
 
-// // this keyword with arrow function
-// const calcAgeArrow = (birthYear) => {
-// 	console.log(2037 - birthYear);
-// 	console.log(this);
-// };
+// this keyword with arrow function
+const calcAgeArrow = (birthYear) => {
+	console.log(2037 - birthYear);
+	console.log(this);
+};
 
-// calcAge(1991); // 46 & Undefined (function)
-// calcAgeArrow(1991); // 46 & Window Object (arrow function)
+calcAge(1991); // 46 & Undefined (function)
+calcAgeArrow(1991); // 46 & Window Object (arrow function)
 
 /**************** with Object ****************/
 
-// const jonas = {
-// 	year: 1991,
-// 	calcAge: function () {
-// 		console.log(this); // jonas Object
-// 		console.log(2037 - this.year); // 46
-// 	},
-// };
+const jonas = {
+	year: 1991,
+	calcAge: function () {
+		console.log(this); // jonas Object
+		console.log(2037 - this.year); // 46
+	},
+};
 
-// jonas.calcAge();
+jonas.calcAge();
 
-// const matilda = {
-// 	year: 2017,
-// };
+const matilda = {
+	year: 2017,
+};
 
-// matilda.calcAge = jonas.calcAge;
+matilda.calcAge = jonas.calcAge;
 
-// matilda.calcAge();
+matilda.calcAge();
 
 // ================================================================================================= //
 // ================================================================================================= //
