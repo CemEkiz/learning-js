@@ -98,42 +98,42 @@
 // ================================================================== //
 // ================================================================== //
 
-// console.log(this); // Window Object
+// // console.log(this); // Window Object
 
-// this keyword with function
-const calcAge = function (birthYear) {
-	console.log(2037 - birthYear);
-	console.log(this);
-};
+// // this keyword with function
+// const calcAge = function (birthYear) {
+// 	console.log(2037 - birthYear);
+// 	console.log(this);
+// };
 
-// this keyword with arrow function
-const calcAgeArrow = (birthYear) => {
-	console.log(2037 - birthYear);
-	console.log(this);
-};
+// // this keyword with arrow function
+// const calcAgeArrow = (birthYear) => {
+// 	console.log(2037 - birthYear);
+// 	console.log(this);
+// };
 
-calcAge(1991); // 46 & Undefined (function)
-calcAgeArrow(1991); // 46 & Window Object (arrow function)
+// calcAge(1991); // 46 & Undefined (function)
+// calcAgeArrow(1991); // 46 & Window Object (arrow function)
 
-/**************** with Object ****************/
+// /**************** with Object ****************/
 
-const jonas = {
-	year: 1991,
-	calcAge: function () {
-		console.log(this); // jonas Object
-		console.log(2037 - this.year); // 46
-	},
-};
+// const jonas = {
+// 	year: 1991,
+// 	calcAge: function () {
+// 		console.log(this); // jonas Object
+// 		console.log(2037 - this.year); // 46
+// 	},
+// };
 
-jonas.calcAge();
+// jonas.calcAge();
 
-const matilda = {
-	year: 2017,
-};
+// const matilda = {
+// 	year: 2017,
+// };
 
-matilda.calcAge = jonas.calcAge;
+// matilda.calcAge = jonas.calcAge;
 
-matilda.calcAge();
+// matilda.calcAge();
 
 // ================================================================================================= //
 // ================================================================================================= //
@@ -141,46 +141,77 @@ matilda.calcAge();
 // ================================================================================================= //
 // ================================================================================================= //
 
-// // Regular Functions vs. Arrow Functions
-// // var firstName = 'Matilda';
+// /* ---------------- Cas de bug 1  ---------------- */
+
+// // var firstName = "Matilda";
+
 // const jonas = {
 // 	firstName: "Jonas",
 // 	year: 1991,
 // 	calcAge: function () {
-// 		// console.log(this);
+// 		console.log(this);
 // 		console.log(2037 - this.year);
-// 		// Solution 1
-// 		// const self = this; // self or that
+// 	},
+// 	greet: () => console.log(`Hey ${this.firstName}`),
+// };
+
+// jonas.greet(); // Hey undefined
+// console.log(this.firstName); // undefined
+
+// /* ---------------- Cas de bug 2  ---------------- */
+// const jonas = {
+// 	firstName: "Jonas",
+// 	year: 1991,
+// 	calcAge: function () {
+// 		console.log(this);
+// 		console.log(2037 - this.year);
+
+// 		/* Solution 1 */
+// 		// const self = this;
 // 		// const isMillenial = function () {
-// 		//   console.log(self);
-// 		//   console.log(self.year >= 1981 && self.year <= 1996);
+// 		// 	console.log(self);
+// 		// 	console.log(self.year >= 1981 && self.year <= 1996);
 // 		// };
-// 		// Solution 2
+
+// 		/* Solution 2 */
 // 		const isMillenial = () => {
 // 			console.log(this);
 // 			console.log(this.year >= 1981 && this.year <= 1996);
 // 		};
+
 // 		isMillenial();
 // 	},
-// 	greet: () => {
-// 		console.log(this);
-// 		console.log(`Hey ${this.firstName}`);
-// 	},
+
+// 	greet: () => console.log(`Hey ${this.firstName}`),
 // };
-// jonas.greet();
+
 // jonas.calcAge();
-// // arguments keyword
+// // jonas Object
+// // 46
+// // jonas Object
+// // true
+
+// /* ---------------- arguments keyword ---------------- */
+// /* Le "arguments" Keyword existe seulement pour les Regular Functions et pas pour les Arrow Functions  */
+
+// /* ---------------- Regular Function  ---------------- */
+
 // const addExpr = function (a, b) {
 // 	console.log(arguments);
 // 	return a + b;
 // };
-// addExpr(2, 5);
-// addExpr(2, 5, 8, 12);
-// var addArrow = (a, b) => {
+
+// addExpr(2, 5); // cf. Console
+// addExpr(2, 5, 8, 12); // cf. Console
+
+// /* ---------------- Arrow Function  ---------------- */
+
+// const addArrow = (a, b) => {
 // 	console.log(arguments);
 // 	return a + b;
 // };
-// addArrow(2, 5, 8);
+
+// addArrow(2, 5, 8); // arguments is not defined
 
 // =========================================================================== //
 // =========================================================================== //
@@ -191,7 +222,8 @@ matilda.calcAge();
 // let lastName = "Williams";
 // let oldLastName = lastName;
 // lastName = "Davis";
-// console.log(lastName, oldLastName); // Davis, Williams
+// console.log(lastName); // Davis
+// console.log(oldLastName); // Williams
 
 // const jessica = {
 // 	firstName: "Jessica",
@@ -201,23 +233,26 @@ matilda.calcAge();
 
 // const marriedJessica = jessica;
 // marriedJessica.lastName = "Davis";
-// console.log("Before mariage:", jessica); // lastName: Davis, age: 27
-// console.log("After mariage:", marriedJessica); // lastName: Davis, age 27
+// console.log(jessica.lastName); // Davis
+// console.log(marriedJessica.lastName); // Davis
 
 // // Copying Objects
 
-// const jessica2 = {
-// 	firstName: "Jessica",
+// const elena = {
+// 	firstName: "Elena",
 // 	lastName: "Williams",
 // 	age: 27,
 // 	family: ["Alice", "Bob"],
 // };
 
-// const jessicaCopy = Object.assign({}, jessica2);
-// jessicaCopy.lastName = "Davis";
+// const elenaCopy = Object.assign({}, elena);
+// elenaCopy.lastName = "Davis";
 
-// jessicaCopy.family.push("Mary");
-// jessicaCopy.family.push("John");
+// elenaCopy.family.push("Mary");
+// elenaCopy.family.push("John");
 
-// console.log("Before mariage:", jessica2); // lastName: Williams, age: 27
-// console.log("After mariage:", jessicaCopy); // lastName: Davis, age: 27
+// console.log(elena.lastName); // Williams
+// console.log(elena.family); // (4) ['Alice', 'Bob', 'Mary', 'John']
+
+// console.log(elenaCopy.lastName); // Davis
+// console.log(elenaCopy.family); // (4) ['Alice', 'Bob', 'Mary', 'John']
