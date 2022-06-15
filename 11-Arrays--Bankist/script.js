@@ -85,9 +85,8 @@ et/ou à la limite créer un cheatsheet */
 /* Cette section va illustrer quelques exemples de manipulation d'array avec
 les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 
-/* ---------------------------------------------------------------------------- */
-/* .slice Method : extraire une partie d'un array sans modifier l'array orignal */
-/* ---------------------------------------------------------------------------- */
+// /* ---------------------------- .slice Method ---------------------------- */
+/* Elle permet d'extraire une partie d'un array sans modifier l'array orignal */
 
 // let arr = ["a", "b", "c", "d", "e"];
 
@@ -103,11 +102,8 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // // Array original : il n'a pas été modifié
 // console.log(arr); // (5) ['a', 'b', 'c', 'd', 'e']
 
-/* ----------------------------------------------------------------------- */
-/* .splice Method : extraire une partie d'un array en modifiant l'original */
-/* ----------------------------------------------------------------------- */
-
-// // Utilité principale de .splice : supprimer certaines parties de l'array original */
+// /* ---------------------------- .splice Method ---------------------------- */
+// /* Elle permet d'extraire une partie d'un array en modifiant l'original */
 
 // const arr2 = ["a", "b", "c", "d", "e"];
 
@@ -123,9 +119,8 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // console.log(arr22.slice(1, 3)); // ['b', 'c']
 // console.log(arr22.splice(1, 3)); // ['b', 'c', 'd']
 
-/* --------------------------------------------------------- */
-/* .reverse Method : inverse l'ordre des éléments d'un array */
-/* --------------------------------------------------------- */
+// /* ---------------------------- .reverse Method ---------------------------- */
+// /* Elle permet d'inverser l'ordre des éléments d'un array */
 
 // const arr3 = [1, 2, 3, 4, 5];
 
@@ -134,9 +129,8 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // // Array original : il a été modifié
 // console.log(arr3); // (5) [5, 4, 3, 2, 1]
 
-/* ---------------------------------- */
-/* .concat Method : fusionne 2 arrays */
-/* ---------------------------------- */
+// /* ---------------------------- .concat Method ---------------------------- */
+// /* Elle permet de fusionner 2 arrays */
 
 // const arr4 = [1, 2, 3, 4, 5];
 // const arr5 = [6, 7, 8, 9, 10];
@@ -147,9 +141,8 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // console.log(arr4); // (5) [1, 2, 3, 4, 5]
 // console.log(arr5); // (5) [6, 7, 8, 9, 10]
 
-/* --------------------------------------------------- */
-/* .join Method : fusionne 2 arrays avec un séparateur */
-/* --------------------------------------------------- */
+// /* ---------------------------- .join Method ---------------------------- */
+// /* Elle permet de joindre les éléments en un seul avec un séparateur */
 
 // const arr6 = [1, 2, 3, 4, 5];
 // const arr7 = [6, 7, 8, 9, 10];
@@ -182,3 +175,87 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // // .at Method sur un String
 // console.log("Cem".at(2)); // m
 // console.log("Cem".at(-1)); // m
+
+// ========================================================================= //
+// ========================================================================= //
+// ========================== forEach with Arrays ========================== //
+// ========================================================================= //
+// ========================================================================= //
+
+// const movementArr = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// /* --------------- Rappel pour comparaison : avec la for-of Loop --------------- */
+
+// for (const [i, mov] of movementArr.entries()) {
+// 	if (mov > 0) {
+// 		console.log(`Movement ${i} : You deposited ${Math.abs(mov)}`);
+// 	} else {
+// 		console.log(`Movement ${i} : You withdrew ${Math.abs(mov)}`);
+// 	}
+// } //> cf. Console
+
+// /* -------------------------------- Avec forEach -------------------------------- */
+
+/* Ici forEach est une higher-order function qui va exécuter la Callback function.
+À chaque itération, forEach va call l'élément, l'index, et l'array (mov, i, arr) */
+// movementArr.forEach(function (mov, i, arr) {
+// 	if (movement > 0) {
+// 		console.log(`Movement ${i} : You deposited ${Math.abs(mov)}`);
+// 	} else {
+// 		console.log(`Movement ${i} : You withdrew ${Math.abs(mov)}`);
+// 	}
+// }); //> cf. mov
+
+// /* C'est comme si à chaque itération, il se passait ceci */
+// // 0: function(200)
+// // 1: function(450)
+// // 2: function(400)
+
+// /* Question : au final, for-of et forEach donné le même résultat dans ces situations, que choisir ?
+// -> forEach est plus clean mais sinon ça dépend des préférences de chacun. */
+
+// /* Note : les emplacements des mots pour [i, mov] dans la for-of loop et (mov, i, arr) dans forEach
+// sont inversés. Mais "i" cible l'index et mov cible l'élément. */
+// /* Note 2 : forEach fait obligatoirement tout le tour de l'array */
+
+// ================================================================================ //
+// ================================================================================ //
+// ========================== forEach with Maps and Sets ========================== //
+// ================================================================================ //
+// ================================================================================ //
+
+/* -------------------------------- Avec Map -------------------------------- */
+
+const currenciesMap = new Map([
+	["USD", "United States dollar"],
+	["EUR", "Euro"],
+	["GBP", "Pound sterling"],
+]);
+
+console.log(currenciesMap);
+//> Map(3) {'USD' => 'United States dollar', 'EUR' => 'Euro', 'GBP' => 'Pound sterling'}
+
+/* Ici forEach va call la valeur, la clé et la map (comme pour l'array) */
+currencies.forEach(function (value, key, map) {
+	console.log(`${key}: ${value}`);
+});
+//> USD: United States dollar
+//> EUR: Euro
+//> GBP: Pound sterling
+
+/* -------------------------------- Avec Set -------------------------------- */
+
+const currenciesSet = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+
+console.log(currenciesSet);
+//> Set(3) {'USD', 'GBP', 'EUR'}
+
+currenciesSet.forEach(function (value, _, map) {
+	console.log(`${_}: ${value}`);
+});
+//> USD, USD
+//> GBP, GBP
+//> EUR, EUR
+
+/* Note : Pour rappel, Set n'a pas de Key ni d'index mais le pattern des paramètres pour forEach étant
+fonctionnel pour les arrays et maps, il a été décidé par les développeur de JS de le garder ainsi */
