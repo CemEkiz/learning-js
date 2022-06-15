@@ -4,6 +4,11 @@
 /////////////////////////////////////////////////
 // BANKIST APP
 
+/* Note : cette application est très simplifié mais elle permet de pratiquer tout ce que j'ai
+appris jusque là. */
+/* Note 2 : on aurait pu utiliser les Maps durant ce projet mais ici Jonas veut simuler une situation
+où les données viennent d'un API. Et les données venant d'un API arrivent sous forme d'Object. */
+
 // Data
 const account1 = {
 	owner: "Jonas Schmedtmann",
@@ -224,38 +229,38 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 // ================================================================================ //
 // ================================================================================ //
 
-/* -------------------------------- Avec Map -------------------------------- */
+// /* -------------------------------- Avec Map -------------------------------- */
 
-const currenciesMap = new Map([
-	["USD", "United States dollar"],
-	["EUR", "Euro"],
-	["GBP", "Pound sterling"],
-]);
+// const currenciesMap = new Map([
+// 	["USD", "United States dollar"],
+// 	["EUR", "Euro"],
+// 	["GBP", "Pound sterling"],
+// ]);
 
-console.log(currenciesMap);
-//> Map(3) {'USD' => 'United States dollar', 'EUR' => 'Euro', 'GBP' => 'Pound sterling'}
+// console.log(currenciesMap);
+// //> Map(3) {'USD' => 'United States dollar', 'EUR' => 'Euro', 'GBP' => 'Pound sterling'}
 
-/* Ici forEach va call la valeur, la clé et la map (comme pour l'array) */
-currencies.forEach(function (value, key, map) {
-	console.log(`${key}: ${value}`);
-});
-//> USD: United States dollar
-//> EUR: Euro
-//> GBP: Pound sterling
+// /* Ici forEach va call la valeur, la clé et la map (comme pour l'array) */
+// currencies.forEach(function (value, key, map) {
+// 	console.log(`${key}: ${value}`);
+// });
+// //> USD: United States dollar
+// //> EUR: Euro
+// //> GBP: Pound sterling
 
-/* -------------------------------- Avec Set -------------------------------- */
+// /* -------------------------------- Avec Set -------------------------------- */
 
-const currenciesSet = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+// const currenciesSet = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
 
-console.log(currenciesSet);
-//> Set(3) {'USD', 'GBP', 'EUR'}
+// console.log(currenciesSet);
+// //> Set(3) {'USD', 'GBP', 'EUR'}
 
-currenciesSet.forEach(function (value, _, map) {
-	console.log(`${_}: ${value}`);
-});
-//> USD, USD
-//> GBP, GBP
-//> EUR, EUR
+// currenciesSet.forEach(function (value, _, map) {
+// 	console.log(`${_}: ${value}`);
+// });
+// //> USD, USD
+// //> GBP, GBP
+// //> EUR, EUR
 
-/* Note : Pour rappel, Set n'a pas de Key ni d'index mais le pattern des paramètres pour forEach étant
-fonctionnel pour les arrays et maps, il a été décidé par les développeur de JS de le garder ainsi */
+// /* Note : Pour rappel, Set n'a pas de Key ni d'index mais le pattern des paramètres pour forEach étant
+// fonctionnel pour les arrays et maps, il a été décidé par les développeur de JS de le garder ainsi */
