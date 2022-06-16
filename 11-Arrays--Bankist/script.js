@@ -66,17 +66,41 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+const displayMovements = function (movements) {
+	// Supprimer le contenu HTML de base (c'est fréquent de le faire)
+	containerMovements.innerHTML = "";
+
+	// Boucle sur tous les éléments de l'array "movements"
+	movements.forEach(function (mov, i) {
+		// Afin de déterminer quel contenu HTML ajouter
+		const type = mov > 0 ? "deposit" : "withdrawal";
+
+		// Cibler le contenu HTML à ajouter
+		const html = `
+		<div class="movements__row">
+		<div class="movements__type movements__type--${type}">
+		${i + 1} ${type}
+		</div>
+		<div class="movements__value">${mov} </div>
+		</div>
+		`;
+
+		// Fonction qui ajoute le contenu HTML ciblé ci-dessus
+		containerMovements.insertAdjacentHTML("afterbegin", html);
+	});
+};
+
+displayMovements(account1.movements);
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-// LECTURES
+// Notes
 
-const currencies = new Map([
-	["USD", "United States dollar"],
-	["EUR", "Euro"],
-	["GBP", "Pound sterling"],
-]);
+/* innerHTML vs. textContent */
+// console.log(containerMovements.innerHTML); //> cf. Console
+// console.log(containerMovements.textContent); //> cf. Console
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/* Utilisation de la fonction "insertAdjacentHTML" --> cf. MDN */
 
 // ========================================================================== //
 // ========================================================================== //
@@ -84,14 +108,14 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // ========================================================================== //
 // ========================================================================== //
 
-/* Pas besoin de retenir toutes les Methods par coeur, il faut aller sur MDN 
-et/ou à la limite créer un cheatsheet */
+// /* Pas besoin de retenir toutes les Methods par coeur, il faut aller sur MDN
+// et/ou à la limite créer un cheatsheet */
 
-/* Cette section va illustrer quelques exemples de manipulation d'array avec
-les Methods (c'est assez similaire aux Methods de String pour la plupart) */
+// /* Cette section va illustrer quelques exemples de manipulation d'array avec
+// les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 
 // /* ---------------------------- .slice Method ---------------------------- */
-/* Elle permet d'extraire une partie d'un array sans modifier l'array orignal */
+// /* Elle permet d'extraire une partie d'un array sans modifier l'array orignal */
 
 // let arr = ["a", "b", "c", "d", "e"];
 
@@ -201,8 +225,8 @@ les Methods (c'est assez similaire aux Methods de String pour la plupart) */
 
 // /* -------------------------------- Avec forEach -------------------------------- */
 
-/* Ici forEach est une higher-order function qui va exécuter la Callback function.
-À chaque itération, forEach va call l'élément, l'index, et l'array (mov, i, arr) */
+// /* Ici forEach est une higher-order function qui va exécuter la Callback function.
+// À chaque itération, forEach va call l'élément, l'index, et l'array (mov, i, arr) */
 // movementArr.forEach(function (mov, i, arr) {
 // 	if (movement > 0) {
 // 		console.log(`Movement ${i} : You deposited ${Math.abs(mov)}`);
