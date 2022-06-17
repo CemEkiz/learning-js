@@ -90,7 +90,7 @@ const displayMovements = function (movements) {
 	});
 };
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -228,7 +228,7 @@ displayMovements(account1.movements);
 // /* Ici forEach est une higher-order function qui va exécuter la Callback function.
 // À chaque itération, forEach va call l'élément, l'index, et l'array (mov, i, arr) */
 // movementArr.forEach(function (mov, i, arr) {
-// 	if (movement > 0) {
+// 	if (mov > 0) {
 // 		console.log(`Movement ${i} : You deposited ${Math.abs(mov)}`);
 // 	} else {
 // 		console.log(`Movement ${i} : You withdrew ${Math.abs(mov)}`);
