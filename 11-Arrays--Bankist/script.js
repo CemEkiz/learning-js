@@ -294,64 +294,64 @@ const displayMovements = function (movements) {
 // ========================== The .map Method ========================== //
 // ===================================================================== //
 // ===================================================================== //
-/* Cette Method permet de loop over un array mais contrairement à forEach,
-il va retourner un nouvel array et appliquer une callback function. */
+// /* Cette Method permet de loop over un array mais contrairement à forEach,
+// il va retourner un nouvel array et appliquer une callback function. */
 
-/* Exemple : nous voulons convertir ces mouvements € en $ */
+// /* Exemple : nous voulons convertir ces mouvements € en $ */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUSD = 1.1;
+// const eurToUSD = 1.1;
 
-/* ---------------------------- Exemple avec Regular Function ---------------------------- */
+// /* ---------------------------- Exemple avec Regular Function ---------------------------- */
 
-const movementsToUSD = movements.map(function (mov) {
-	return Math.trunc(mov * eurToUSD);
-});
-
-// Array d'origine
-console.log(movements); //> (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
-
-console.log(movementsToUSD); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
-
-/* ---------------------------- Exemple avec Arrow Function ---------------------------- */
-
-// const movementsToUSD2 = movements.map((mov) => Math.trunc(mov * eurToUSD));
+// const movementsToUSD = movements.map(function (mov) {
+// 	return Math.trunc(mov * eurToUSD);
+// });
 
 // // Array d'origine
 // console.log(movements); //> (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// // Nouvel array
-// console.log(movementsToUSD2); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
+// console.log(movementsToUSD); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
 
-/* ---------------------------- Exemple avec for of ---------------------------- */
-/* Cet exemple aura le même résultat que ci-dessus mais avec la for of loop. */
+// /* ---------------------------- Exemple avec Arrow Function ---------------------------- */
 
-const movementsUSDfor = [];
+// // const movementsToUSD2 = movements.map((mov) => Math.trunc(mov * eurToUSD));
 
-for (const mov of movements) {
-	movementsUSDfor.push(Math.trunc(mov * eurToUSD));
-}
+// // // Array d'origine
+// // console.log(movements); //> (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-console.log(movementsUSDfor);
+// // // Nouvel array
+// // console.log(movementsToUSD2); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
 
-/* Note : En confrontant l'utilisation de la boucle of (sans fonction donc assez linéaire) à l'utilisation
-de la .map Method avec une callback function on peut noter que ce sont 2 paradigmes assez différents 
-(Linear programming VS Functionnal programming) et il faut savoir que la tendance se tourne au Functionnal
-Programming avec l'utilisation de Methods, et de Callback Functions. */
+// /* ---------------------------- Exemple avec for of ---------------------------- */
+// /* Cet exemple aura le même résultat que ci-dessus mais avec la for of loop. */
 
-/* ---------------------------- .map Method avec les 3 Parameters ---------------------------- */
+// const movementsUSDfor = [];
 
-const movementsDescriptions = movements.map(
-	(mov, i, arr) =>
-		`Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
-			mov
-		)} `
-);
+// for (const mov of movements) {
+// 	movementsUSDfor.push(Math.trunc(mov * eurToUSD));
+// }
 
-console.log(movementsDescriptions); //> Cf. Console
+// console.log(movementsUSDfor);
 
-/* Note : Différence entre forEach et .map Method
-Bien que les 2 features permettent de loop over un array et d'utiliser une callback function sur les 3 paramètres (mov, i, arr)
-il y une différence au niveau de l'output. Avec forEach on crée un "side effect" car elle retourne un output un par un (elle retourne
-autant de ligne qu'il y a d'élément dans l'array) tandis que la .map Method va retourner les outputs dans un seul et même nouvel array. */
+// /* Note : En confrontant l'utilisation de la boucle of (sans fonction donc assez linéaire) à l'utilisation
+// de la .map Method avec une callback function on peut noter que ce sont 2 paradigmes assez différents
+// (Linear programming VS Functionnal programming) et il faut savoir que la tendance se tourne au Functionnal
+// Programming avec l'utilisation de Methods, et de Callback Functions. */
+
+// /* ---------------------------- .map Method avec les 3 Parameters ---------------------------- */
+
+// const movementsDescriptions = movements.map(
+// 	(mov, i, arr) =>
+// 		`Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+// 			mov
+// 		)} `
+// );
+
+// console.log(movementsDescriptions); //> Cf. Console
+
+// /* Note : Différence entre forEach et .map Method
+// Bien que les 2 features permettent de loop over un array et d'utiliser une callback function sur les 3 paramètres (mov, i, arr)
+// il y une différence au niveau de l'output. Avec forEach on crée un "side effect" car elle retourne un output un par un (elle retourne
+// autant de ligne qu'il y a d'élément dans l'array) tandis que la .map Method va retourner les outputs dans un seul et même nouvel array. */
