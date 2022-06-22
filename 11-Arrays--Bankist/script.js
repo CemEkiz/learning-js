@@ -92,6 +92,24 @@ const displayMovements = function (movements) {
 
 // displayMovements(account1.movements);
 
+const user = "Steven Thomas Williams"; // On veut "stw"
+
+/* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
+On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
+const createUsernames = function (account) {
+	account.forEach(function (acc) {
+		acc.username = acc.owner
+			.toLowerCase()
+			.split(" ")
+			.map((name) => name[0])
+			.join("");
+	});
+};
+
+createUsernames(accounts);
+
+console.log(accounts); //> cf. Console
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 // Notes
