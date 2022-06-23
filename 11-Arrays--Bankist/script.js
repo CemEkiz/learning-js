@@ -94,7 +94,16 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
-////////////////// displayMovements Function //////////////////
+////////////////// calcDisplayBalance Function //////////////////
+
+const calcDisplayBalance = function (movements) {
+	const balance = movements.reduce((acc, mov) => acc + mov, 0);
+	labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
+////////////////// createUsernames Function //////////////////
 
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
 On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
@@ -111,16 +120,6 @@ const createUsernames = function (account) {
 createUsernames(accounts);
 
 console.log(accounts); //> cf. Console
-
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-// Notes
-
-/* innerHTML vs. textContent */
-// console.log(containerMovements.innerHTML); //> cf. Console
-// console.log(containerMovements.textContent); //> cf. Console
-
-/* Utilisation de la fonction "insertAdjacentHTML" --> cf. MDN */
 
 // ========================================================================== //
 // ========================================================================== //
@@ -429,17 +428,17 @@ console.log(accounts); //> cf. Console
 // ========================== The .reduce Method ========================== //
 // ======================================================================== //
 // ======================================================================== //
-/* Cette Method permet de faire la somme de tous les éléments d'un array en une seule
-et unique valeur (effet boule de neige). */
+// /* Cette Method permet de faire la somme de tous les éléments d'un array en une seule
+// et unique valeur (effet boule de neige). */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-console.log(movements);
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements);
 
-/* acc = Accumulateur = boule de neige */
-/* 0 = L'accumulation commence à 0 */
-const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+// /* acc = Accumulateur = boule de neige */
+// /* 0 = L'accumulation commence à 0 */
+// const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
 
-console.log(balance); // 3840
+// console.log(balance); // 3840
 
 // /* ---------------------------- Exemple avec for of ---------------------------- */
 
