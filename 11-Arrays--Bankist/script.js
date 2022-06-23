@@ -373,3 +373,51 @@ console.log(accounts); //> cf. Console
 // Bien que les 2 features permettent de loop over un array et d'utiliser une callback function sur les 3 paramètres (mov, i, arr)
 // il y une différence au niveau de l'output. Avec forEach on crée un "side effect" car elle retourne un output un par un (elle retourne
 // autant de ligne qu'il y a d'élément dans l'array) tandis que la .map Method va retourner les outputs dans un seul et même nouvel array. */
+
+// ======================================================================== //
+// ======================================================================== //
+// ========================== The .filter Method ========================== //
+// ======================================================================== //
+// ======================================================================== //
+/* Cette Method permet de loop over un array et de filtrer des éléments. Dans l'exemple ci-dessous 
+nous voulons un nouvel array ("deposits") qui contiendra seulement des nombres positifs. */
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/* ---------------------------- Exemple avec Regular Function ---------------------------- */
+
+const deposits = movements.filter((mov) => mov > 0);
+
+console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+console.log(deposits); // (5) [200, 450, 3000, 70, 1300]
+
+const withdrawals = movements.filter((mov) => mov < 0);
+
+console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+console.log(withdrawals); // (3) [-400, -650, -130]
+
+// /* ---------------------------- Exemple avec for of ---------------------------- */
+
+// const depositsFor = [];
+
+// for (const mov of movements) {
+// 	if (mov > 0) {
+// 		depositsFor.push(mov);
+// 	}
+// }
+
+// const withdrawalsFor = [];
+
+// for (const mov of movements) {
+// 	if (mov < 0) {
+// 		withdrawalsFor.push(mov);
+// 	}
+// }
+
+// console.log(withdrawalsFor); // (3) [-400, -650, -130]
+// console.log(depositsFor); // (5) [200, 450, 3000, 70, 1300]
+
+// /* Note : Pourquoi utiliser les methods .map, .filter, .reduce au lieu de la for-loop ?
+// 1) Les Methods sont plus simple à coder et à comprendre.
+// 2) C'est la tendance vers laquelle la majorité des développeurs vont.
+// 3) Cela permet de faire des grandes chaînes de Methods -> variable.method().method().method */
