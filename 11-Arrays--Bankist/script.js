@@ -66,6 +66,8 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+////////////////// displayMovements Function //////////////////
+
 const displayMovements = function (movements) {
 	// Supprimer le contenu HTML de base (c'est fréquent de le faire)
 	containerMovements.innerHTML = "";
@@ -90,9 +92,9 @@ const displayMovements = function (movements) {
 	});
 };
 
-// displayMovements(account1.movements);
+displayMovements(account1.movements);
 
-const user = "Steven Thomas Williams"; // On veut "stw"
+////////////////// displayMovements Function //////////////////
 
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
 On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
@@ -379,22 +381,22 @@ console.log(accounts); //> cf. Console
 // ========================== The .filter Method ========================== //
 // ======================================================================== //
 // ======================================================================== //
-/* Cette Method permet de loop over un array et de filtrer des éléments. Dans l'exemple ci-dessous 
-nous voulons un nouvel array ("deposits") qui contiendra seulement des nombres positifs. */
+// /* Cette Method permet de loop over un array et de filtrer des éléments. Dans l'exemple ci-dessous
+// nous voulons un nouvel array ("deposits") qui contiendra seulement des nombres positifs. */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/* ---------------------------- Exemple avec Regular Function ---------------------------- */
+// /* ---------------------------- Exemple avec Regular Function ---------------------------- */
 
-const deposits = movements.filter((mov) => mov > 0);
+// const deposits = movements.filter((mov) => mov > 0);
 
-console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
-console.log(deposits); // (5) [200, 450, 3000, 70, 1300]
+// console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// console.log(deposits); // (5) [200, 450, 3000, 70, 1300]
 
-const withdrawals = movements.filter((mov) => mov < 0);
+// const withdrawals = movements.filter((mov) => mov < 0);
 
-console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
-console.log(withdrawals); // (3) [-400, -650, -130]
+// console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// console.log(withdrawals); // (3) [-400, -650, -130]
 
 // /* ---------------------------- Exemple avec for of ---------------------------- */
 
@@ -421,3 +423,29 @@ console.log(withdrawals); // (3) [-400, -650, -130]
 // 1) Les Methods sont plus simple à coder et à comprendre.
 // 2) C'est la tendance vers laquelle la majorité des développeurs vont.
 // 3) Cela permet de faire des grandes chaînes de Methods -> variable.method().method().method */
+
+// ======================================================================== //
+// ======================================================================== //
+// ========================== The .reduce Method ========================== //
+// ======================================================================== //
+// ======================================================================== //
+/* Cette Method permet de faire la somme de tous les éléments d'un array en une seule
+et unique valeur (effet boule de neige). */
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+
+/* acc = Accumulateur = boule de neige */
+/* 0 = L'accumulation commence à 0 */
+const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+
+console.log(balance); // 3840
+
+// /* ---------------------------- Exemple avec for of ---------------------------- */
+
+// let balance2 = 0;
+// for (const mov of movements) {
+// 	balance2 += mov;
+// }
+
+// console.log(balance2); // 3840
