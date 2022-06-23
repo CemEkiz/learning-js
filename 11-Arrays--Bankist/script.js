@@ -448,3 +448,20 @@ console.log(accounts); //> cf. Console
 // }
 
 // console.log(balance2); // 3840
+
+// /* ---------------------------- Maximum Value ---------------------------- */
+// /* La .reduce Method permet de faire beaucoup de choses, dans cet exemple on va chercher
+// et retourner la valeur la plus grande d'un array, il faut toujours se demander "quel sera le rôle
+// du paramètre "acc" */
+
+// const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const max = movements.reduce((acc, mov) => {
+// 	if (acc > mov) {
+// 		return acc;
+// 	} else {
+// 		return mov;
+// 	}
+// }, movements[0]);
+
+// console.log(max); // 3000
