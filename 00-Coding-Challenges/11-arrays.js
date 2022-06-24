@@ -93,7 +93,6 @@
 // 	console.log(humanAges);
 // 	console.log(adults);
 
-// 	// const average = adults.reduce((acc, age) => acc + age, 0) / adults.length;
 // 	const average = adults.reduce(
 // 		(acc, age, i, arr) => acc + age / arr.length,
 // 		0
@@ -111,3 +110,37 @@
 
 // console.log(avg1); // 44
 // console.log(avg2); // 47.333333333333336
+
+/* -------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
+/* ------------------------------ Coding Challenge 2 ------------------------------ */
+/* -------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------- */
+
+// __________________ Ma Solution __________________
+
+const dogsAge1 = [5, 2, 4, 1, 15, 8, 3];
+const dogsAge2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge2 = (ages) => {
+	const humanAges = ages
+		.map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+		.filter((age) => age >= 18)
+		.reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+	return humanAges;
+};
+
+const avg1 = calcAverageHumanAge2(dogsAge1);
+// (7) [36, 4, 32, 2, 76, 48, 28]
+// (5) [36, 32, 76, 48, 28]
+const avg2 = calcAverageHumanAge2(dogsAge2);
+// (7) [80, 40, 56, 36, 40, 2, 32]
+// (6) [80, 40, 56, 36, 40, 32]
+
+console.log(avg1); // 44
+console.log(avg2); // 47.333333333333336
+
+// __________________ Solution de Jonas __________________
+
+/* cf. Ma Solution */
