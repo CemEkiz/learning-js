@@ -119,7 +119,7 @@ const createUsernames = function (account) {
 
 createUsernames(accounts);
 
-console.log(accounts); //> cf. Console
+// console.log(accounts); //> cf. Console
 
 // ========================================================================== //
 // ========================================================================== //
@@ -335,13 +335,13 @@ console.log(accounts); //> cf. Console
 
 // /* ---------------------------- Exemple avec Arrow Function ---------------------------- */
 
-// // const movementsToUSD2 = movements.map((mov) => Math.trunc(mov * eurToUSD));
+// const movementsToUSD2 = movements.map((mov) => Math.trunc(mov * eurToUSD));
 
-// // // Array d'origine
-// // console.log(movements); //> (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// // Array d'origine
+// console.log(movements); //> (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// // // Nouvel array
-// // console.log(movementsToUSD2); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
+// // Nouvel array
+// console.log(movementsToUSD2); //> (8) [220, 495, -440, 3300, -715, -143, 77, 1430]
 
 // /* ---------------------------- Exemple avec for of ---------------------------- */
 // /* Cet exemple aura le même résultat que ci-dessus mais avec la for of loop. */
@@ -465,3 +465,35 @@ console.log(accounts); //> cf. Console
 // }, movements[0]);
 
 // console.log(max); // 3000
+
+// ====================================================================== //
+// ====================================================================== //
+// ========================== Chaining Methods ========================== //
+// ====================================================================== //
+// ====================================================================== //
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUSD = 1.1;
+
+// const totalDepositsUSD = movements
+// 	.filter((mov) => mov > 0)
+// 	.map((mov) => mov * eurToUSD)
+// 	.reduce((acc, mov) => acc + mov, 0);
+
+// console.log(totalDepositsUSD); // 5522.000000000001
+
+/* Pour débuguer il faudrait utiliser console.log afin de déterminer d'où provient la source de l'erreur */
+/* Admettons que nous avons mis le signe "<" au lieu de ">" lors de l'étape de la Method .filter
+cf. l'étape de la Method .map qui résulte de la Method .filter (c'est comme une pipeline/cascade/effet domino) */
+/* Ici on peut donc déduire que l'erreur viens de l'étape de la Method .filter qui a filtrer seulement les nombres négatifs. */
+
+const totalDepositsUSD = movements
+	.filter((mov) => mov < 0)
+	.map((mov, i, arr) => {
+		console.log(arr);
+		return mov * eurToUSD;
+	})
+	.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD); // -1298.0000000000002
