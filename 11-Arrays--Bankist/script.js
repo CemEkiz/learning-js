@@ -103,6 +103,30 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 
+////////////////// calcDisplaySummary Function //////////////////
+
+const calcDisplaySummary = function (movements) {
+	const incomes = movements
+		.filter((mov) => mov > 0)
+		.reduce((acc, mov) => acc + mov, 0);
+	labelSumIn.textContent = `${incomes}€`;
+
+	const out = movements
+		.filter((mov) => mov < 0)
+		.reduce((acc, mov) => acc + mov, 0);
+	labelSumOut.textContent = `${Math.abs(out)}€`;
+
+	const interest = movements
+		.filter((mov) => mov > 0)
+		.map((deposit) => deposit * (1.2 / 100))
+		.filter((int) => int >= 1)
+		.reduce((acc, int) => acc + int, 0);
+
+	labelSumInterest.textContent = `${interest}`;
+};
+
+calcDisplaySummary(account1.movements);
+
 ////////////////// createUsernames Function //////////////////
 
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
@@ -472,28 +496,28 @@ createUsernames(accounts);
 // ====================================================================== //
 // ====================================================================== //
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUSD = 1.1;
+// const eurToUSD = 1.1;
+
+// // const totalDepositsUSD = movements
+// // 	.filter((mov) => mov > 0)
+// // 	.map((mov) => mov * eurToUSD)
+// // 	.reduce((acc, mov) => acc + mov, 0);
+
+// // console.log(totalDepositsUSD); // 5522.000000000001
+
+// /* Pour débuguer il faudrait utiliser console.log afin de déterminer d'où provient la source de l'erreur */
+// /* Admettons que nous avons mis le signe "<" au lieu de ">" lors de l'étape de la Method .filter
+// cf. l'étape de la Method .map qui résulte de la Method .filter (c'est comme une pipeline/cascade/effet domino) */
+// /* Ici on peut donc déduire que l'erreur viens de l'étape de la Method .filter qui a filtrer seulement les nombres négatifs. */
 
 // const totalDepositsUSD = movements
-// 	.filter((mov) => mov > 0)
-// 	.map((mov) => mov * eurToUSD)
+// 	.filter((mov) => mov < 0)
+// 	.map((mov, i, arr) => {
+// 		console.log(arr);
+// 		return mov * eurToUSD;
+// 	})
 // 	.reduce((acc, mov) => acc + mov, 0);
 
-// console.log(totalDepositsUSD); // 5522.000000000001
-
-/* Pour débuguer il faudrait utiliser console.log afin de déterminer d'où provient la source de l'erreur */
-/* Admettons que nous avons mis le signe "<" au lieu de ">" lors de l'étape de la Method .filter
-cf. l'étape de la Method .map qui résulte de la Method .filter (c'est comme une pipeline/cascade/effet domino) */
-/* Ici on peut donc déduire que l'erreur viens de l'étape de la Method .filter qui a filtrer seulement les nombres négatifs. */
-
-const totalDepositsUSD = movements
-	.filter((mov) => mov < 0)
-	.map((mov, i, arr) => {
-		console.log(arr);
-		return mov * eurToUSD;
-	})
-	.reduce((acc, mov) => acc + mov, 0);
-
-console.log(totalDepositsUSD); // -1298.0000000000002
+// console.log(totalDepositsUSD); // -1298.0000000000002
