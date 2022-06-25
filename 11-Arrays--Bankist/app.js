@@ -141,9 +141,9 @@ createUsernames(accounts);
 
 ////////////////// Implementing Login //////////////////
 
-// Event Handlers
 let currentAccount;
 
+// Event Handlers
 btnLogin.addEventListener("click", function (e) {
 	e.preventDefault();
 
