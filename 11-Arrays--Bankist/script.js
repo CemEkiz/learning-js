@@ -521,3 +521,61 @@ createUsernames(accounts);
 // 	.reduce((acc, mov) => acc + mov, 0);
 
 // console.log(totalDepositsUSD); // -1298.0000000000002
+
+// ====================================================================== //
+// ====================================================================== //
+// ========================== The .find Method ========================== //
+// ====================================================================== //
+// ====================================================================== //
+// /* Cela permet de récupérer l'élément d'un array en se basant sur une condition */
+// /* Cette Method ressemble à .filter mais contrairement à ce dernier, .find ne va pas
+// retourner un array avec tous les éléments true mais seulement le premier élément true */
+
+// /* ---------------------------- Exemple 1 ---------------------------- */
+// /* Trouver le premier withdrawal */
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const firstWithdrawal = movements.find((mov) => mov < 0);
+
+// console.log(movements); // (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// console.log(firstWithdrawal); // -400
+
+// /* ---------------------------- Exemple 2 ---------------------------- */
+// /* Trouver un compte (Object) en se basant sur le nom du propriétaire */
+
+// const account11 = {
+// 	owner: "Michael",
+// 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+// };
+
+// const account22 = {
+// 	owner: "Dwight",
+// 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+// };
+
+// const account33 = {
+// 	owner: "Phyllis",
+// 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
+// };
+
+// const accountsNew = [account11, account22, account33];
+
+// const accountsFind = accountsNew.find((acc) => acc.owner === "Dwight");
+
+// console.log(accountsFind); // {owner: 'Dwight', movements: Array(8)}
+
+// /* ---------------------------- Exemple avec for of ---------------------------- */
+
+// const accountsNewFor = [account11, account22, account33];
+
+// let accountfor;
+
+// for (const account of accountsNewFor) {
+// 	if (account.owner === "Michael") {
+// 		accountfor = account;
+// 		break;
+// 	}
+// }
+
+// console.log(accountfor); // {owner: 'Michael', movements: Array(8)}
