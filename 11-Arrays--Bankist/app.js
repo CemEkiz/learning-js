@@ -66,7 +66,7 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-////////////////// displayMovements Function //////////////////
+///////////////////////////// displayMovements Function /////////////////////////////
 
 const displayMovements = function (movements) {
 	// Supprimer le contenu HTML de base (c'est fréquent de le faire)
@@ -92,14 +92,14 @@ const displayMovements = function (movements) {
 	});
 };
 
-////////////////// calcDisplayBalance Function //////////////////
+///////////////////////////// calcDisplayBalance Function /////////////////////////////
 
-const calcDisplayBalance = function (movements) {
-	const balance = movements.reduce((acc, mov) => acc + mov, 0);
-	labelBalance.textContent = `${balance} EUR`;
+const calcDisplayBalance = function (acc) {
+	acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+	labelBalance.textContent = `${acc.balance} EUR`;
 };
 
-////////////////// calcDisplaySummary Function //////////////////
+///////////////////////////// calcDisplaySummary Function /////////////////////////////
 
 const calcDisplaySummary = function (account) {
 	const incomes = account.movements
@@ -121,10 +121,10 @@ const calcDisplaySummary = function (account) {
 	labelSumInterest.textContent = `${interest}`;
 };
 
-////////////////// createUsernames Function //////////////////
-
+///////////////////////////// createUsernames Function /////////////////////////////
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
 On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
+
 const createUsernames = function (account) {
 	account.forEach(function (acc) {
 		acc.username = acc.owner
@@ -139,7 +139,18 @@ createUsernames(accounts);
 
 // console.log(accounts); //> cf. Console
 
-////////////////// Implementing Login //////////////////
+///////////////////////////// Implementing Login /////////////////////////////
+
+const updateUI = function (acc) {
+	// Display Movements
+	displayMovements(acc.movements);
+
+	// Display Balance
+	calcDisplayBalance(acc);
+
+	// Display Summary
+	calcDisplaySummary(acc);
+};
 
 let currentAccount;
 
@@ -151,26 +162,47 @@ btnLogin.addEventListener("click", function (e) {
 		(acc) => acc.username === inputLoginUsername.value
 	);
 
-	console.log(currentAccount);
+	// console.log(currentAccount);
 
 	if (currentAccount?.pin === Number(inputLoginPin.value)) {
 		// Display UI and Welcome Message
+		containerApp.style.opacity = 100;
 		labelWelcome.textContent = `Welcome back, ${
 			currentAccount.owner.split(" ")[0]
 		}`;
-		containerApp.style.opacity = 100;
 
 		// Clear input fields
 		inputLoginUsername.value = inputLoginPin.value = "";
 		inputLoginPin.blur();
 
-		// Display Movements
-		displayMovements(currentAccount.movements);
+		// Update UI
+		updateUI(currentAccount);
+	}
+});
 
-		// Display Balance
-		calcDisplayBalance(currentAccount.movements);
+///////////////////////////// Implementing Transfers /////////////////////////////
 
-		// Display Summary
-		calcDisplaySummary(currentAccount);
+btnTransfer.addEventListener("click", function (e) {
+	e.preventDefault();
+	const amount = Number(inputTransferAmount.value);
+	const receiverAcc = accounts.find(
+		(acc) => acc.username === inputTransferTo.value
+	);
+	inputTransferAmount.value = inputTransferTo.value = "";
+
+	// console.log(amount, receiverAcc);
+
+	if (
+		amount > 0 &&
+		receiverAcc &&
+		currentAccount.balance >= amount &&
+		receiverAcc?.username !== currentAccount.username
+	) {
+		// Doing the transfer
+		currentAccount.movements.push(-amount);
+		receiverAcc.movements.push(amount);
+
+		// Update UI
+		updateUI(currentAccount);
 	}
 });
