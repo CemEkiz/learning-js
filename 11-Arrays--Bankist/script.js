@@ -470,48 +470,112 @@
 
 // console.log(firstFemale); // 2
 
-// ================================================================================= //
-// ================================================================================= //
-// ========================== The .some and .every Method ========================== //
-// ================================================================================= //
-// ================================================================================= //
+// ================================================================================== //
+// ================================================================================== //
+// ========================== The .some and .every Methods ========================== //
+// ================================================================================== //
+// ================================================================================== //
 
-/* ---------------------------- Rappel : .includes Method ---------------------------- */
-// EQUALITY
-/* Cette Method permet de savoir si un élément existe dans un array mais elle test avec
-une strict égalité (===) */
+// /* ---------------------------- Rappel : .includes Method ---------------------------- */
+// // EQUALITY
+// /* Cette Method permet de savoir si un élément existe dans un array mais elle test avec
+// une strict égalité (===) */
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-console.log(movements.includes(-130)); // true
+// console.log(movements.includes(-130)); // true
 
-/* ---------------------------- .some Method ---------------------------- */
-// CONDITION : au moins un élément
-/* Cela permet de faire un test conditionnel qui retournera true ou false */
-/* Il suffit qu'au moins un élément soit true pour valider la condition */
+// /* ---------------------------- .some Method ---------------------------- */
+// // CONDITION : au moins un élément
+// /* Cela permet de faire un test conditionnel qui retournera true ou false */
+// /* Il suffit qu'au moins un élément soit true pour valider la condition */
 
-const movements0 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements0 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const anyDeposits = movements.some((mov) => mov > 1500);
-console.log(anyDeposits); // true
+// const anyDeposits = movements.some((mov) => mov > 1500);
+// console.log(anyDeposits); // true
 
-/* ---------------------------- .every Method ---------------------------- */
-/* CONDITION : tous les éléments */
-/* Comme avec .some, ici un test conditionnel est réalisé pour retourner true ou false */
-/* Il faut que tous les éléments soit true afin de valider la condition */
+// /* ---------------------------- .every Method ---------------------------- */
+// /* CONDITION : tous les éléments */
+// /* Comme avec .some, ici un test conditionnel est réalisé pour retourner true ou false */
+// /* Il faut que tous les éléments soit true afin de valider la condition */
 
-const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const movements2 = [200, 450, 3000, 70, 1300];
+// const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements2 = [200, 450, 3000, 70, 1300];
 
-console.log(movements1.every((mov) => mov > 0)); // false
-console.log(movements2.every((mov) => mov > 0)); // true
+// console.log(movements1.every((mov) => mov > 0)); // false
+// console.log(movements2.every((mov) => mov > 0)); // true
 
-/* ---------------------------- DRY Tips ---------------------------- */
-/* Il peut être pratique de stocker la callback function dans une variable */
+// /* ---------------------------- DRY Tips ---------------------------- */
+// /* Il peut être pratique de stocker la callback function dans une variable */
 
-const movements3 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements3 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const deposit = (mov) => mov > 0;
-console.log(movements3.some(deposit)); // true
-console.log(movements3.every(deposit)); // false
-console.log(movements3.filter(deposit)); // (5) [200, 450, 3000, 70, 1300]
+// const deposit = (mov) => mov > 0;
+// console.log(movements3.some(deposit)); // true
+// console.log(movements3.every(deposit)); // false
+// console.log(movements3.filter(deposit)); // (5) [200, 450, 3000, 70, 1300]
+
+// ==================================================================================== //
+// ==================================================================================== //
+// ========================== The .flat and .flatMap Methods ========================== //
+// ==================================================================================== //
+// ==================================================================================== //
+
+/* ---------------------------- .flat ---------------------------- */
+/* Flat permet de transformer un array imbriqué en un seul et même array */
+
+/* ______Avec un Array d'une profondeur de 1 */
+const arrNested = [[1, 2, 3], [4, 5, 6], 7, 8];
+
+/* .flat() est considéré comme par défaut au level 1 */
+const flatArrLevel1 = arrNested.flat();
+console.log(flatArrLevel1); // (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+/* ______Avec un Array d'une profondeur de 2 */
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+
+/* Ici la profondeur étant plus élevé il faut définir le level à 2 */
+const flatArrLevel2 = arrDeep.flat(2);
+console.log(flatArrLevel2); //
+
+/* ---------------------------- .flat VS .flatMap ---------------------------- */
+
+const account11 = {
+	owner: "Jonas Schmedtmann",
+	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+};
+
+const account22 = {
+	owner: "Jessica Davis",
+	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+};
+
+const account33 = {
+	owner: "Steven Thomas Williams",
+	movements: [200, -200, 340, -300, -20, 50, 400, -460],
+};
+
+const account44 = {
+	owner: "Sarah Smith",
+	movements: [430, 1000, 700, 50, 90],
+	interestRate: 1,
+	pin: 4444,
+};
+
+const accountsNew = [account11, account22, account33, account44];
+
+// Avec flat : on peut avoir accès au level grâce à flat(), il suffit d'entrer la valeur de profondeur
+const accountMovementsFlat = accountsNew
+	.map((acc) => acc.movements)
+	.flat()
+	.reduce((acc, mov) => acc + mov, 0);
+
+console.log(accountMovementsFlat); //> 17840
+
+// Avec flatMap : on ne peut pas avoir accès au level grâce à flatMap mais c'est + performant
+const accountMovementsFlatMap = accountsNew
+	.flatMap((acc) => acc.movements)
+	.reduce((acc, mov) => acc + mov, 0);
+
+console.log(accountMovementsFlatMap); //> 17840
