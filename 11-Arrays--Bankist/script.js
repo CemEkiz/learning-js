@@ -435,37 +435,60 @@
 
 // console.log(accountfor); // {owner: 'Michael', movements: Array(8)}
 
-// ====================================================================== //
-// ====================================================================== //
+// =========================================================================== //
+// =========================================================================== //
 // ========================== The .findIndex Method ========================== //
+// =========================================================================== //
+// =========================================================================== //
+// /* Il fonctionne de la même manière que .find Method : il fonctionne avec une callback
+// function qui prend en charge une condition, si celle-ci est true alors l'index sera retourné
+// (rappel : dans le cas de .find c'est l'élément qui est retourné) */
+
+// const character1 = {
+// 	name: "Michael",
+// 	sexe: "Male",
+// };
+
+// const character2 = {
+// 	name: "Dwight",
+// 	sexe: "Male",
+// };
+
+// const character3 = {
+// 	name: "Angela",
+// 	sexe: "Female",
+// };
+
+// const character4 = {
+// 	name: "Erin",
+// 	sexe: "Male",
+// };
+
+// const allCharacters = [character1, character2, character3, character4];
+
+// const firstFemale = allCharacters.findIndex((all) => all.sexe === "Female");
+
+// console.log(firstFemale); // 2
+
 // ====================================================================== //
 // ====================================================================== //
-/* Il fonctionne de la même manière que .find Method : il fonctionne avec une callback
-function qui prend en charge une condition, si celle-ci est true alors l'index sera retourné
-(rappel : dans le cas de .find c'est l'élément qui est retourné) */
+// ========================== The .some Method ========================== //
+// ====================================================================== //
+// ====================================================================== //
 
-const character1 = {
-	name: "Michael",
-	sexe: "Male",
-};
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const character2 = {
-	name: "Dwight",
-	sexe: "Male",
-};
+/* ---------------------------- Rappel : .includes Method ---------------------------- */
+// EQUALITY
+/* Cette Method permet de savoir si un élément existe dans un array mais elle test avec
+une strict égalité (===) */
 
-const character3 = {
-	name: "Angela",
-	sexe: "Female",
-};
+console.log(movements.includes(-130)); // true
 
-const character4 = {
-	name: "Erin",
-	sexe: "Male",
-};
+/* ---------------------------- .some Method ---------------------------- */
+// CONDITION
+/* Cela permet de faire un test conditionnel qui retournera true ou false */
+/* Il suffit qu'au moins un élément soit true pour valider la condition */
 
-const allCharacters = [character1, character2, character3, character4];
-
-const firstFemale = allCharacters.findIndex((all) => all.sexe === "Female");
-
-console.log(firstFemale); // 2
+const anyDeposits = movements.some((mov) => mov > 1500);
+console.log(anyDeposits); // true
