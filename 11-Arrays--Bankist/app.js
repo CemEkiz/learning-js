@@ -180,8 +180,9 @@ btnLogin.addEventListener("click", function (e) {
 	}
 });
 
-// Event Handler : Close Account
+///////////////////////////// Implementing Close Account /////////////////////////////
 
+// Event Handler : Close Account
 btnClose.addEventListener("click", function (e) {
 	e.preventDefault();
 
@@ -207,6 +208,7 @@ btnClose.addEventListener("click", function (e) {
 
 ///////////////////////////// Implementing Transfers /////////////////////////////
 
+// Event Handler : Transfer Money
 btnTransfer.addEventListener("click", function (e) {
 	e.preventDefault();
 	const amount = Number(inputTransferAmount.value);
@@ -232,4 +234,23 @@ btnTransfer.addEventListener("click", function (e) {
 	}
 });
 
-///////////////////////////// Implementing Close Account /////////////////////////////
+///////////////////////////// Implementing Loan /////////////////////////////
+
+btnLoan.addEventListener("click", function (e) {
+	e.preventDefault();
+
+	const amount = Number(inputLoanAmount.value);
+
+	if (
+		amount > 0 &&
+		currentAccount.movements.some((mov) => mov >= amount * 0.1)
+	) {
+		// Add movement
+		currentAccount.movements.push(amount);
+
+		// Update UI
+		updateUI(currentAccount);
+	}
+
+	inputLoanAmount.value = "";
+});
