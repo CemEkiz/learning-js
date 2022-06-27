@@ -68,12 +68,15 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 ///////////////////////////// displayMovements Function /////////////////////////////
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
 	// Supprimer le contenu HTML de base (c'est fréquent de le faire)
 	containerMovements.innerHTML = "";
 
+	// Sort
+	const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
 	// Boucle sur tous les éléments de l'array "movements"
-	movements.forEach(function (mov, i) {
+	movs.forEach(function (mov, i) {
 		// Afin de déterminer quel contenu HTML ajouter
 		const type = mov > 0 ? "deposit" : "withdrawal";
 
@@ -253,4 +256,15 @@ btnLoan.addEventListener("click", function (e) {
 	}
 
 	inputLoanAmount.value = "";
+});
+
+///////////////////////////// Implementing Sort /////////////////////////////
+
+let sorted = false;
+
+btnSort.addEventListener("click", function (e) {
+	e.preventDefault();
+
+	displayMovements(currentAccount.movements, !sorted);
+	sorted = !sorted;
 });
