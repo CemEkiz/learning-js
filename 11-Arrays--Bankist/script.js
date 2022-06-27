@@ -522,60 +522,98 @@
 // ==================================================================================== //
 // ==================================================================================== //
 
-/* ---------------------------- .flat ---------------------------- */
-/* Flat permet de transformer un array imbriqué en un seul et même array */
+// /* ---------------------------- .flat ---------------------------- */
+// /* Flat permet de transformer un array imbriqué en un seul et même array */
 
-/* ______Avec un Array d'une profondeur de 1 */
-const arrNested = [[1, 2, 3], [4, 5, 6], 7, 8];
+// /* ______Avec un Array d'une profondeur de 1 */
+// const arrNested = [[1, 2, 3], [4, 5, 6], 7, 8];
 
-/* .flat() est considéré comme par défaut au level 1 */
-const flatArrLevel1 = arrNested.flat();
-console.log(flatArrLevel1); // (8) [1, 2, 3, 4, 5, 6, 7, 8]
+// /* .flat() est considéré comme par défaut au level 1 */
+// const flatArrLevel1 = arrNested.flat();
+// console.log(flatArrLevel1); // (8) [1, 2, 3, 4, 5, 6, 7, 8]
 
-/* ______Avec un Array d'une profondeur de 2 */
-const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// /* ______Avec un Array d'une profondeur de 2 */
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 
-/* Ici la profondeur étant plus élevé il faut définir le level à 2 */
-const flatArrLevel2 = arrDeep.flat(2);
-console.log(flatArrLevel2); //
+// /* Ici la profondeur étant plus élevé il faut définir le level à 2 */
+// const flatArrLevel2 = arrDeep.flat(2);
+// console.log(flatArrLevel2); //
 
-/* ---------------------------- .flat VS .flatMap ---------------------------- */
+// /* ---------------------------- .flat VS .flatMap ---------------------------- */
 
-const account11 = {
-	owner: "Jonas Schmedtmann",
-	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-};
+// const account11 = {
+// 	owner: "Jonas Schmedtmann",
+// 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+// };
 
-const account22 = {
-	owner: "Jessica Davis",
-	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-};
+// const account22 = {
+// 	owner: "Jessica Davis",
+// 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+// };
 
-const account33 = {
-	owner: "Steven Thomas Williams",
-	movements: [200, -200, 340, -300, -20, 50, 400, -460],
-};
+// const account33 = {
+// 	owner: "Steven Thomas Williams",
+// 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
+// };
 
-const account44 = {
-	owner: "Sarah Smith",
-	movements: [430, 1000, 700, 50, 90],
-	interestRate: 1,
-	pin: 4444,
-};
+// const account44 = {
+// 	owner: "Sarah Smith",
+// 	movements: [430, 1000, 700, 50, 90],
+// 	interestRate: 1,
+// 	pin: 4444,
+// };
 
-const accountsNew = [account11, account22, account33, account44];
+// const accountsNew = [account11, account22, account33, account44];
 
-// Avec flat : on peut avoir accès au level grâce à flat(), il suffit d'entrer la valeur de profondeur
-const accountMovementsFlat = accountsNew
-	.map((acc) => acc.movements)
-	.flat()
-	.reduce((acc, mov) => acc + mov, 0);
+// // Avec flat : on peut avoir accès au level grâce à flat(), il suffit d'entrer la valeur de profondeur
+// const accountMovementsFlat = accountsNew
+// 	.map((acc) => acc.movements)
+// 	.flat()
+// 	.reduce((acc, mov) => acc + mov, 0);
 
-console.log(accountMovementsFlat); //> 17840
+// console.log(accountMovementsFlat); //> 17840
 
-// Avec flatMap : on ne peut pas avoir accès au level grâce à flatMap mais c'est + performant
-const accountMovementsFlatMap = accountsNew
-	.flatMap((acc) => acc.movements)
-	.reduce((acc, mov) => acc + mov, 0);
+// // Avec flatMap : on ne peut pas avoir accès au level grâce à flatMap mais c'est + performant
+// const accountMovementsFlatMap = accountsNew
+// 	.flatMap((acc) => acc.movements)
+// 	.reduce((acc, mov) => acc + mov, 0);
 
-console.log(accountMovementsFlatMap); //> 17840
+// console.log(accountMovementsFlatMap); //> 17840
+
+// ==================================================================== //
+// ==================================================================== //
+// ========================== Sorting Arrays ========================== //
+// ==================================================================== //
+// ==================================================================== //
+// /* Il existe divers moyen de faire un tri dans un array */
+
+// /* ---------------------------- Method .sort ---------------------------- */
+// /* Cette Method permet de trier un array (attention elle mutate l'array d'origine) */
+
+// // Strings
+// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// console.log(owners.sort());
+// console.log(owners);
+
+// // Numbers
+// const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// /* Ascending */
+// // return < 0 alors A puis B (keep order)
+// // return > 0 alors B puis A (switch order)
+// // movements1.sort((a, b) => {
+// // 	if (a > b) return 1;
+// // 	if (b > a) return -1;
+// // });
+// movements1.sort((a, b) => a - b);
+// console.log(movements1); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+// /* Descending */
+// // return < 0 alors B puis A (switch order)
+// // return > 0 alors A puis B (kepe order)
+// // movements1.sort((a, b) => {
+// // 	if (a > b) return -1;
+// // 	if (b > a) return 1;
+// // });
+// movements1.sort((a, b) => b - a);
+// console.log(movements1); // (8) [3000, 1300, 450, 200, 70, -130, -400, -650]
