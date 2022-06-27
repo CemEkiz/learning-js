@@ -470,25 +470,48 @@
 
 // console.log(firstFemale); // 2
 
-// ====================================================================== //
-// ====================================================================== //
-// ========================== The .some Method ========================== //
-// ====================================================================== //
-// ====================================================================== //
-
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// ================================================================================= //
+// ================================================================================= //
+// ========================== The .some and .every Method ========================== //
+// ================================================================================= //
+// ================================================================================= //
 
 /* ---------------------------- Rappel : .includes Method ---------------------------- */
 // EQUALITY
 /* Cette Method permet de savoir si un élément existe dans un array mais elle test avec
 une strict égalité (===) */
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 console.log(movements.includes(-130)); // true
 
 /* ---------------------------- .some Method ---------------------------- */
-// CONDITION
+// CONDITION : au moins un élément
 /* Cela permet de faire un test conditionnel qui retournera true ou false */
 /* Il suffit qu'au moins un élément soit true pour valider la condition */
 
+const movements0 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
 const anyDeposits = movements.some((mov) => mov > 1500);
 console.log(anyDeposits); // true
+
+/* ---------------------------- .every Method ---------------------------- */
+/* CONDITION : tous les éléments */
+/* Comme avec .some, ici un test conditionnel est réalisé pour retourner true ou false */
+/* Il faut que tous les éléments soit true afin de valider la condition */
+
+const movements1 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements2 = [200, 450, 3000, 70, 1300];
+
+console.log(movements1.every((mov) => mov > 0)); // false
+console.log(movements2.every((mov) => mov > 0)); // true
+
+/* ---------------------------- DRY Tips ---------------------------- */
+/* Il peut être pratique de stocker la callback function dans une variable */
+
+const movements3 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposit = (mov) => mov > 0;
+console.log(movements3.some(deposit)); // true
+console.log(movements3.every(deposit)); // false
+console.log(movements3.filter(deposit)); // (5) [200, 450, 3000, 70, 1300]
