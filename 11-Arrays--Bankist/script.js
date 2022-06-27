@@ -434,3 +434,38 @@
 // }
 
 // console.log(accountfor); // {owner: 'Michael', movements: Array(8)}
+
+// ====================================================================== //
+// ====================================================================== //
+// ========================== The .findIndex Method ========================== //
+// ====================================================================== //
+// ====================================================================== //
+/* Il fonctionne de la même manière que .find Method : il fonctionne avec une callback
+function qui prend en charge une condition, si celle-ci est true alors l'index sera retourné
+(rappel : dans le cas de .find c'est l'élément qui est retourné) */
+
+const character1 = {
+	name: "Michael",
+	sexe: "Male",
+};
+
+const character2 = {
+	name: "Dwight",
+	sexe: "Male",
+};
+
+const character3 = {
+	name: "Angela",
+	sexe: "Female",
+};
+
+const character4 = {
+	name: "Erin",
+	sexe: "Male",
+};
+
+const allCharacters = [character1, character2, character3, character4];
+
+const firstFemale = allCharacters.findIndex((all) => all.sexe === "Female");
+
+console.log(firstFemale); // 2
