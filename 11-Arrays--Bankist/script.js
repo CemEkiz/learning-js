@@ -617,3 +617,51 @@
 // // });
 // movements1.sort((a, b) => b - a);
 // console.log(movements1); // (8) [3000, 1300, 450, 200, 70, -130, -400, -650]
+
+// =================================================================================== //
+// =================================================================================== //
+// ========================== More Ways for Creating Arrays ========================== //
+// =================================================================================== //
+// =================================================================================== //
+// /* Cette section a pour but de montrer plusieurs moyens de créer de arrays */
+
+// /* ---------------------------- Manière classique ---------------------------- */
+
+// const arr1 = [1, 2, 3, 4, 5];
+
+// /* .fill Method --> (définir la valeur, le début, la fin) */
+// arr1.fill("Cem", 0, 1);
+// console.log(arr1);
+
+// /* ---------------------------- Array Function ---------------------------- */
+
+// const arr2 = new Array(10, 20, 30, 40, 50);
+// console.log(arr2); // (5) [10, 20, 30, 40, 50]
+
+// /* Cependant elle a une particularité lorsque l'on met un seul élément */
+// const arr3 = new Array(7);
+// console.log(arr3); // (7) [empty × 7]
+
+// /* .fill Method --> (définir la valeur, le début, la fin) */
+// arr3.fill("Cem", 3, 5);
+// console.log(arr3); // 7) [empty × 3, 'Cem', 'Cem', empty × 2]
+
+// /* ---------------------------- .from Method ---------------------------- */
+
+// /* Cela permet de construire un array avec 7 slot et les fill avec la valeur "1" */
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y); // (7) [1, 1, 1, 1, 1, 1, 1]
+
+// /* Ici je crée un array avec 7 slots qui va à chaque itération augmenter de + 1 */
+// /* Index 0 + 1 = 1 puis Index 1 + 1 = 2, puis Index 2 + 1 = 3, etc. */
+// /* Signification du "_" --> normalement c'est "cur" (current element) mais je ne l'utilise
+// pas dans cette fonction donc j'indique un "_" à la place (c'est une bonne pratique) */
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z); // (7) [1, 2, 3, 4, 5, 6, 7]
+
+// /* Dice */
+// const dice = Array.from(
+// 	{ length: 10 },
+// 	(_, i) => Math.trunc(Math.random() * 6) + 1
+// );
+// console.log(dice);
