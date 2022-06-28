@@ -665,3 +665,114 @@
 // 	(_, i) => Math.trunc(Math.random() * 6) + 1
 // );
 // console.log(dice);
+
+// =================================================================================== //
+// =================================================================================== //
+// ========================== More Arrays Practice ========================== //
+// =================================================================================== //
+// =================================================================================== //
+
+// const account100 = {
+// 	owner: "Jonas Schmedtmann",
+// 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+// };
+
+// const account200 = {
+// 	owner: "Jessica Davis",
+// 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+// };
+
+// const account300 = {
+// 	owner: "Steven Thomas Williams",
+// 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
+// };
+
+// const account400 = {
+// 	owner: "Sarah Smith",
+// 	movements: [430, 1000, 700, 50, 90],
+// };
+
+// const accounts00 = [account100, account200, account300, account400];
+
+// /* ---------------------------- Exercice 1 ---------------------------- */
+
+// // 1 - Faire la somme de tous les Deposits de tous les comptes bancaires
+
+// const bankDepositSum = accounts00
+// 	.flatMap((acc) => acc.movements)
+// 	.filter((mov) => mov > 0)
+// 	.reduce((sum, cur) => sum + cur, 0);
+
+// console.log(bankDepositSum); // 25180
+
+// /* ---------------------------- Exercice 2 ---------------------------- */
+
+// // 2 - Trouver le nombre de Deposits > 1000€
+
+// /* Solution 1 */
+// // const numDeposits1000 = accounts00
+// // 	.flatMap((acc) => acc.movements)
+// // 	.filter((mov) => mov >= 1000).length;
+// // console.group(numDeposits1000); // 5
+
+// /* Solution 2 */
+// const numDeposits1000 = accounts00
+// 	.flatMap((acc) => acc.movements)
+// 	.reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+// console.log(numDeposits1000);
+
+// /* Différence entre variable++ et ++variable */
+
+// // variable++
+// /* Lorsque a++ est utilisé, elle mute la valeur d'origine mais retourne la valeur
+// d'origine SANS l'incrémentation */
+// let a = 1;
+// console.log(a++); // 1
+// console.log(a); // 2
+
+// // ++variable
+// /* Lorsque ++b est utilisé, elle mute la valeur d'origine et retourne la valeur muté */
+// let b = 1;
+// console.log(++b); // 2
+// console.log(b); // 2
+
+// /* ---------------------------- Exercice 3 ---------------------------- */
+
+// // 3 - Advanced Example with .reduce (Create an Object)
+
+// const { deposits, withdrawals } = accounts00
+// 	.flatMap((acc) => acc.movements)
+// 	.reduce(
+// 		(sums, cur) => {
+// 			// cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+// 			sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+// 			return sums;
+// 		},
+// 		{ deposits: 0, withdrawals: 0 }
+// 	);
+
+// console.log(deposits); // 25180
+// console.log(withdrawals); // -7340
+
+// /* ---------------------------- Exercice 4 ---------------------------- */
+
+// // 4 - Convertir "this is a nice title" à "This Is a Nice Title"
+
+// const convertTitleCase = function (title) {
+// 	const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+// 	const expections = ["a", "an", "the", "but", "or", "on", "in", "with"];
+
+// 	const titleCase = title
+// 		.toLowerCase()
+// 		.split(" ")
+// 		.map((word) => (expections.includes(word) ? word : capitalize(word)))
+// 		.join(" ");
+
+// 	return capitalize(titleCase);
+// };
+
+// console.log(convertTitleCase("this is a nice title case")); // This Is a Nice Title Case
+// console.log(convertTitleCase("this is a LONG title but not too long")); // This Is a Long Title but Not Too Long
+// console.log(convertTitleCase("and here is another title with an EXAMPLE")); // And Here Is Another Title with an Example
