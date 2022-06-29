@@ -263,3 +263,89 @@
 // /* Divisions */
 // console.log(11n / 3n); // 3n
 // console.log(10 / 3); // 3.3333333333333335
+
+// ==================================================================== //
+// ==================================================================== //
+// ========================== Creating Dates ========================== //
+// ==================================================================== //
+// ==================================================================== //
+
+// /* Créer une Date */
+
+// const now = new Date();
+// console.log(now); // Wed Jun 29 2022 20:31:39 GMT+0200
+
+// /* Autres exemples */
+
+// console.log(new Date("Wed Jun 29 2022 20:31:44")); // Wed Jun 29 2022 20:31:44 GMT+0200
+
+// console.log(new Date("December 24, 2015")); // Thu Dec 24 2015 00:00:00 GMT+0100
+
+// /* 2037 --> année
+//    10 --> 11ème mois (janvier = 0, février = 1, etc.)
+//    19 --> jour
+//    15, 23, 5 --> heure, minute, seconde */
+// console.log(new Date(2037, 10, 19, 15, 23, 5)); // Thu Nov 19 2037 15:23:05 GMT+0100
+
+// console.log(new Date(3 * 24 * 60 * 60 * 1000)); // Sun Jan 04 1970 01:00:00 GMT+0100
+
+// /* ---------------------------- Les Methods de Date ---------------------------- */
+
+// const future = new Date(2037, 10, 19, 15, 23);
+// console.log(future); // Thu Nov 19 2037 15:23:00 GMT+0100
+
+// /***** Pour obtenir une donnée ******/
+
+// /* Pour obtenir l'année */
+// console.log(future.getFullYear()); // 2037
+
+// /* Pour obtenir le mois */
+// console.log(future.getMonth()); // 10
+
+// /* Pour obtenir le jour du mois */
+// console.log(future.getDate()); // 19
+
+// /* Pour obtenir le jour de la semaine */
+// console.log(future.getDay()); // 4
+
+// /* Pour obtenir l'heure */
+// console.log(future.getHours()); // 15
+
+// /* Pour obtenir la minute */
+// console.log(future.getMinutes()); // 23
+
+// /* Pour obtenir la secodne */
+// console.log(future.getSeconds()); // 0
+
+// /* Pour convertir en format ISOS */
+// console.log(future.toISOString()); // 2037-11-19T14:23:00.000Z
+
+// /* Pour obtenir le timestamp (de la variable "future") */
+// console.log(future.getTime()); // 2142253380000
+
+// /* Obtenir le timestamp de maintenant */
+// console.log(Date.now()); // 1656536395496
+
+// /***** Pour modifer une donnée ******/
+
+// /* Modifier l'année */
+// future.setFullYear(2040); //
+// /* Modifier le mois */
+// future.setMonth(11);
+
+// /* Modifier le jour du mois */
+// // future.setDate;
+
+// /* Modifier le jour de la semaine */
+// // future.setDay();
+
+// /* Modifier l'heure */
+// // future.setHours();
+
+// /* Modifier la minute */
+// // future.setMinutes();
+
+// /* Modifier la seconde */
+// // future.setSeconds();
+
+// console.log(future);
