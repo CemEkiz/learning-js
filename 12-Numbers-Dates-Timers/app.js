@@ -140,6 +140,7 @@ const calcDisplaySummary = function (account) {
 };
 
 ///////////////////////////// createUsernames Function /////////////////////////////
+
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
 On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
 
@@ -157,7 +158,11 @@ createUsernames(accounts);
 
 // console.log(accounts); //> cf. Console
 
-///////////////////////////// Implementing Login /////////////////////////////
+// ==================================================================== //
+// ========================== EVENT HANDLERS ========================== //
+// ==================================================================== //
+
+///////////////////////////// Login /////////////////////////////
 
 const updateUI = function (acc) {
 	// Display Movements
@@ -172,7 +177,6 @@ const updateUI = function (acc) {
 
 let currentAccount;
 
-// Event Handler : Login
 btnLogin.addEventListener("click", function (e) {
 	e.preventDefault();
 
@@ -198,9 +202,8 @@ btnLogin.addEventListener("click", function (e) {
 	}
 });
 
-///////////////////////////// Implementing Close Account /////////////////////////////
+///////////////////////////// Close Account /////////////////////////////
 
-// Event Handler : Close Account
 btnClose.addEventListener("click", function (e) {
 	e.preventDefault();
 
@@ -224,9 +227,8 @@ btnClose.addEventListener("click", function (e) {
 	inputCloseUsername.value = inputClosePin.value = "";
 });
 
-///////////////////////////// Implementing Transfers /////////////////////////////
+///////////////////////////// Transfers /////////////////////////////
 
-// Event Handler : Transfer Money
 btnTransfer.addEventListener("click", function (e) {
 	e.preventDefault();
 	const amount = +inputTransferAmount.value;
@@ -252,7 +254,7 @@ btnTransfer.addEventListener("click", function (e) {
 	}
 });
 
-///////////////////////////// Implementing Loan /////////////////////////////
+///////////////////////////// Loan /////////////////////////////
 
 btnLoan.addEventListener("click", function (e) {
 	e.preventDefault();
@@ -273,7 +275,7 @@ btnLoan.addEventListener("click", function (e) {
 	inputLoanAmount.value = "";
 });
 
-///////////////////////////// Implementing Sort /////////////////////////////
+///////////////////////////// Sort /////////////////////////////
 
 let sorted = false;
 
@@ -283,7 +285,3 @@ btnSort.addEventListener("click", function (e) {
 	displayMovements(currentAccount.movements, !sorted);
 	sorted = !sorted;
 });
-
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
