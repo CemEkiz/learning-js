@@ -132,3 +132,35 @@
 // 	return Math.trunc(Math.random() * (max - min) + 1) + min;
 // };
 // console.log(randomInt(10, 20)); // Number entre 10 et 20
+
+// ======================================================================== //
+// ======================================================================== //
+// ========================== Remainder Operator ========================== //
+// ======================================================================== //
+// ======================================================================== //
+// /* Cet opérateur retourne le "reste". */
+
+// /* ---------------------------- Exemples ---------------------------- */
+
+// /* 2 x 2 = 4 --> il reste 1 */
+// /* "2 entier peut entrer 2 fois dans 5, il restera alors 1" */
+// console.log(5 % 2); // 1
+
+// /* 4 x 7 = 28 --> il reste 2 */
+// /* 4 entier peut entrer 7 fois dans 30, il restera alors 2 */
+// console.log(30 % 4); // 2
+
+// /* Un nombre est "pair" s'il retourne 0 */
+// console.log(6 % 2); // 0
+// console.log(30 % 2); // 0
+// console.log(102 % 2); // 0
+
+// /* ---------------------------- Fonction isEven ---------------------------- */
+// /* Création d'une fonction pour savoir si un nombre est pair ou non */
+
+// const isEven = (n) => n % 2 === 0;
+
+// console.log(isEven(8)); // true
+// console.log(isEven(30)); // true
+// console.log(isEven(23)); // false
+// console.log(isEven(17)); // false
