@@ -164,3 +164,39 @@
 // console.log(isEven(30)); // true
 // console.log(isEven(23)); // false
 // console.log(isEven(17)); // false
+
+// ======================================================================== //
+// ======================================================================== //
+// ========================== Numeric Separators ========================== //
+// ======================================================================== //
+// ======================================================================== //
+// /* Les Numeric Separators permettent de lire plus facilement les nombres trop longs
+//    --> 27000000000 = 27 000 000 000
+//    --> 27000000000 = 27,000,000,000
+//    --> 27000000000 = 27.000.000.000 */
+
+// /* JS ne prends pas en compte les "_" donc on peut l'utiliser dans notre code afin
+// de faciliter la lisibilité */
+
+// // /* ---------------------------- Exemples ---------------------------- */
+
+// const diameter = 287_460_000_000;
+// console.log(diameter); // 287460000000
+
+// const price = 345_99;
+// console.log(price); // 34599
+
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
+// console.log(transferFee1); // 1500
+// console.log(transferFee2); // 1500
+
+// // /* ---------------------------- Erreurs à éviter ---------------------------- */
+
+// // console.log(3_.1415);
+// // console.log(3._1415);
+// // console.log(_3.1415);
+// // console.log(3.1415_);
+
+// console.log(Number("230_000")); // NaN
+// console.log(parseInt("230_000")); // 230
