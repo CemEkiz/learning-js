@@ -200,3 +200,66 @@
 
 // console.log(Number("230_000")); // NaN
 // console.log(parseInt("230_000")); // 230
+
+// ========================================================================= //
+// ========================================================================= //
+// ========================== Working with BigInt ========================== //
+// ========================================================================= //
+// ========================================================================= //
+// /* JS représente les Numbers en 64 bits. Cela signifie qu'il y a 64 "1" ou "0" (binaire)
+// pour représenter un Number. En réalité 53 bits sont utilisés pour stocker les chiffres
+// eux même, le reste est dédié au points décimaux et aux signes. */
+
+// /* - Le plus grand nombre pouvant être représenté par JS de manière safe est 9007199254740991
+// - 2 --> pour le binaire (0 et 1)
+// - 1 --> on retire 1 pour ne pas comptabiliser "0" */
+// console.log(2 ** 53 - 1); // 9007199254740991
+// console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+
+// /* Pourquoi est-il important d'avoir connaissance de nombre maximum ?
+// --> Car les calculs effectués sur des nombres plus grands que le nombre maximum manqueront de précision */
+// console.log(2 ** 53); // 9007199254740992
+// console.log(2 ** 53 + 1); // 9007199254740992
+// console.log(2 ** 53 + 3); // 9007199254740996
+// console.log(2 ** 53 + 2); // 9007199254740994
+// console.log(2 ** 53 + 4); // 9007199254740996
+
+// /* ---------------------------- BigInt ---------------------------- */
+
+// /* Comment faire alors pour stocker des nombres + grand que le nombre maximum ?
+// --> Depuis ES2020, une nouvelle Primitive a été ajouté à JS : BigInt qui permet de stocker
+// des nombres infiniment plus long que le nombre max. */
+
+// /* Créer un BigInt Number */
+// console.log(6465463116516165446163131n); // 6465463116516165446163131
+// console.log(typeof 6465463116516165446163131n); // bigint
+
+// /* ---------------------------- Opération avec des BigInt ---------------------------- */
+
+// /* Opérations sur BigInt */
+// console.log(10000n + 10000n); // 20000n
+// console.log(1545844164596460000n * 10004654564654945645645640n); // 15465636877575184661692613485846758434400000n
+
+// /* Il n'est pas possible de faire des opérations entre un Number et un BigInt */
+// const hugeNum = 3654545615610651646549879849n;
+// const num = 23;
+// // console.group(hugeNum * num); // TypeError
+// console.group(hugeNum * BigInt(num)); // script.js:245 84054549159044987870647236527n
+
+// /* ---------------------------- Exceptions ---------------------------- */
+// /* Exceptions des opérations qui fonctionnent entre Number et BigInt */
+
+// console.log(20n > 15); // true
+// console.log(20n === 20); // false
+// console.log(typeof 20n); // bigint
+// console.log(typeof 20); // number
+
+// /* Sans Type Coercion */
+// console.log(20n == 20); // true
+
+// /* Concaténation */
+// console.log(3215616515614561361651616n + "is REALLY big");
+
+// /* Divisions */
+// console.log(11n / 3n); // 3n
+// console.log(10 / 3); // 3.3333333333333335
