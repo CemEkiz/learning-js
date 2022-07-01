@@ -385,6 +385,8 @@
 // qui donnera le nom du mois ou "2-digit" qui donnera le numéro du mois avec 2 digits. */
 
 // const now = new Date();
+
+// /* Voir + d'options sur MDN */
 // const options = {
 // 	hour: "numeric",
 // 	minute: "numeric",
@@ -409,3 +411,23 @@
 // /* Pour adapter au langage du navigateur de l'utilisateur */
 // const locale = navigator.language;
 // console.log(new Intl.DateTimeFormat(locale, options).format(now)); // vendredi 1 juillet 2022 à 17:22
+
+// ===================================================================================== //
+// ===================================================================================== //
+// ========================== Internationalizing Dates (Intl) ========================== //
+// ===================================================================================== //
+// ===================================================================================== //
+
+// const num = 3884764.23;
+
+// /* Voir + d'options sur MDN */
+// const options = {
+// 	style: "unit",
+// 	unit: "mile-per-hour",
+// 	// useGrouping: false,
+// };
+
+// console.log(new Intl.NumberFormat("en-US", options).format(num)); // 3,884,764.23 mph
+// console.log(new Intl.NumberFormat("de-DE", options).format(num)); // 3.884.764,23 mi/h
+// console.log(new Intl.NumberFormat("fr-FR", options).format(num)); // 3 884 764,23 mi/h
+// console.log(new Intl.NumberFormat(navigator.language, options).format(num)); // 3 884 764,23 mi/h
