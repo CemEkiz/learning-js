@@ -375,3 +375,37 @@
 
 // /* Il y a donc 10 jours alors dans la date 1 et la date 2 */
 // console.log(days1); // 10
+
+// ===================================================================================== //
+// ===================================================================================== //
+// ========================== Internationalizing Dates (Intl) ========================== //
+// ===================================================================================== //
+// ===================================================================================== //
+// /* Pour les options, il existe d'autres possibilités que "numeric", comme par exemple "long"
+// qui donnera le nom du mois ou "2-digit" qui donnera le numéro du mois avec 2 digits. */
+
+// const now = new Date();
+// const options = {
+// 	hour: "numeric",
+// 	minute: "numeric",
+// 	day: "numeric",
+// 	month: "long",
+// 	year: "numeric",
+// 	weekday: "long",
+// };
+
+// const locale = navigator.language;
+// labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
+
+// console.log(new Intl.DateTimeFormat("en-US", options).format(now)); // Friday, July 1, 2022 at 5:19 PM
+// console.log(new Intl.DateTimeFormat("en-US").format(now)); // 7/1/2022
+
+// console.log(new Intl.DateTimeFormat("en-GB", options).format(now)); // Friday, 1 July 2022 at 17:19
+// console.log(new Intl.DateTimeFormat("en-GB").format(now)); // 01/07/2022
+
+// console.log(new Intl.DateTimeFormat("eu-FR", options).format(now)); // vendredi 1 juillet 2022 à 17:19
+// console.log(new Intl.DateTimeFormat("eu-FR").format(now)); // 01/07/2022
+
+// /* Pour adapter au langage du navigateur de l'utilisateur */
+// const locale = navigator.language;
+// console.log(new Intl.DateTimeFormat(locale, options).format(now)); // vendredi 1 juillet 2022 à 17:22
