@@ -349,3 +349,29 @@
 // // future.setSeconds();
 
 // console.log(future);
+
+// ========================================================================== //
+// ========================================================================== //
+// ========================== Operation with Dates ========================== //
+// ========================================================================== //
+// ========================================================================== //
+// /* Il est possible de faire des opérations très facilement avec l'Object Date grâce
+// au Timestamp */
+
+// const future = new Date(2037, 10, 19, 15, 23);
+
+// /* Convertir Date en Timestamp */
+// console.log(Number(future)); // 2142253380000
+// console.log(+future); // 2142253380000
+
+// /* Fonction pour déterminer le nombre de jours qui sont passé entre 2 dates */
+// /* Explication : dans un premier date on soustrait la date 2 à la date 1 ce qui nous donne un résultat en time stamp.
+//    Ce dernier on va le diviser par :
+//    1000 (millisecondes) * 60 secondes * 60 minutes * 24 heures afin de convertir le timestamp en jour. */
+// const calcDaysPassed = (date1, date2) =>
+// 	Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
+
+// const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+
+// /* Il y a donc 10 jours alors dans la date 1 et la date 2 */
+// console.log(days1); // 10
