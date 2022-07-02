@@ -184,11 +184,11 @@ const calcDisplaySummary = function (acc) {
 /* Justification de l'utilisation de forEach : on veut pas retourner un nouvel array dans cette fonction.
 On veut surtout faire des modifications sur des éléments existants et forEach est parfait pour cela. */
 
-const createUsernames = function (account) {
-	account.forEach(function (acc) {
+const createUsernames = function (accs) {
+	accs.forEach(function (acc) {
 		acc.username = acc.owner
 			.toLowerCase()
-			.split('')
+			.split(' ')
 			.map((name) => name[0])
 			.join('');
 	});
@@ -197,6 +197,37 @@ const createUsernames = function (account) {
 createUsernames(accounts);
 
 // console.log(accounts); //> cf. Console
+
+/////////////////////////// LogOut Timer /////////////////////////////
+
+const startLogOutTimer = function () {
+	const tick = function () {
+		const min = String(Math.trunc(time / 60)).padStart(2, 0);
+		const sec = String(Math.trunc(time % 60)).padStart(2, 0);
+
+		// In each call, print the remaining time to UI
+		labelTimer.textContent = `${min}:${sec}`;
+
+		// When 0 seconds, stop timer and log out user
+		if (time === 0) {
+			clearInterval(timer);
+			labelWelcome.textContent = 'Log in to get started';
+			containerApp.style.opacity = 0;
+		}
+
+		// Decrease 1s
+		time--;
+	};
+
+	// Set time to 5 minutes
+	let time = 10;
+
+	// Call the timer every second
+	tick();
+	const timer = setInterval(tick, 1000);
+
+	return timer;
+};
 
 // ==================================================================== //
 // ========================== EVENT HANDLERS ========================== //
@@ -215,7 +246,12 @@ const updateUI = function (acc) {
 	calcDisplaySummary(acc);
 };
 
-let currentAccount;
+/* cf. startLogOutTimer -> afin que les timers/intervals n'entre pas en conflit sur les différents comptes
+j'ai "return" le timer et crée la variable "timer" dans la parent scope. À chaque login sur un nouveau
+compte (cf. btnLogin), il sera vérifié si un timer est déjà en route, si oui -> alors on le clear afin d'éviter
+les conflits de timer/interval. Il est donc très important parfois (comme ici avec le timer) qu'une variable soit
+présente sur la Globale Scope. */
+let currentAccount, timer;
 
 btnLogin.addEventListener('click', function (e) {
 	e.preventDefault();
@@ -257,6 +293,12 @@ btnLogin.addEventListener('click', function (e) {
 		// Clear input fields
 		inputLoginUsername.value = inputLoginPin.value = '';
 		inputLoginPin.blur();
+
+		// Timer
+		if (timer) {
+			clearInterval(timer);
+		}
+		timer = startLogOutTimer();
 
 		// Update UI
 		updateUI(currentAccount);
@@ -316,6 +358,10 @@ btnTransfer.addEventListener('click', function (e) {
 
 		// Update UI
 		updateUI(currentAccount);
+
+		// Reset the timer
+		clearInterval(timer);
+		timer = startLogOutTimer();
 	}
 });
 
@@ -339,6 +385,10 @@ btnLoan.addEventListener('click', function (e) {
 
 			// Update UI
 			updateUI(currentAccount);
+
+			// Reset the timer
+			clearInterval(timer);
+			timer = startLogOutTimer();
 		}, 2500);
 	}
 	inputLoanAmount.value = '';
@@ -354,10 +404,3 @@ btnSort.addEventListener('click', function (e) {
 	displayMovements(currentAccount, !sorted);
 	sorted = !sorted;
 });
-
-///////////////////////////////////////////////////////////////////////////////////
-
-// FAKE ALWAYS LOGGED IN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
