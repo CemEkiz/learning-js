@@ -431,3 +431,38 @@
 // console.log(new Intl.NumberFormat("de-DE", options).format(num)); // 3.884.764,23 mi/h
 // console.log(new Intl.NumberFormat("fr-FR", options).format(num)); // 3 884 764,23 mi/h
 // console.log(new Intl.NumberFormat(navigator.language, options).format(num)); // 3 884 764,23 mi/h
+
+// ==================================================================================== //
+// ==================================================================================== //
+// ========================== setTimeout() and setInterval() ========================== //
+// ==================================================================================== //
+// ==================================================================================== //
+
+// /* ---------------------------- setTimeout ---------------------------- */
+// /* Cette fonction a pour but de run une callback function après qu'un timer soit écoulé */
+
+// /* setTimeout va utiliser sa callback function pour appeler console.log au bout de 3 secondes (3000ms) */
+// setTimeout(() => console.log("I will be there after 3 seconds"), 3000);
+
+// /* Dans cet exemple, "olives" et "spinach" seront les arguments des paramètres "ing1" et "ing"2 */
+// const ingredients = ["olives", "spinach"];
+
+// const pizzaTimer = setTimeout(
+// 	(ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
+// 	3000,
+// 	...ingredients
+// );
+// console.log("Waiting...");
+
+// /* clearTimeout permet d'arrêter le Timeout */
+// if (ingredients.includes("spinach")) {
+// 	clearTimeout(pizzaTimer);
+// }
+
+// /* ---------------------------- setTimeout ---------------------------- */
+// /* Cette fonction a pour but de run une callback function après que chaque intervalle soit écoulée */
+
+// setInterval(() => {
+// 	const now = new Date();
+// 	console.log(now);
+// }, 1000);
