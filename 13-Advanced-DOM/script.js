@@ -1,7 +1,7 @@
 'use strict';
 
 ///////////////////////////////////////
-// Modal window
+// Modal Window
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -19,13 +19,14 @@ const closeModal = function () {
 	overlay.classList.add('hidden');
 };
 
-// for (let i = 0; i < btnsOpenModal.length; i++)
-// 	btnsOpenModal[i].addEventListener('click', openModal);
+// Open Modal
 btnsOpenModal.forEach((btn) => btn.addEventListener('click', openModal));
 
+// Close Modal
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
+// Close Modal w/Escape
 document.addEventListener('keydown', function (e) {
 	if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
 		closeModal();
