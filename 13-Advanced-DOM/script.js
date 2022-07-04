@@ -1,38 +1,5 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal Window
-
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-
-const openModal = function (e) {
-	e.preventDefault();
-	modal.classList.remove('hidden');
-	overlay.classList.remove('hidden');
-};
-
-const closeModal = function () {
-	modal.classList.add('hidden');
-	overlay.classList.add('hidden');
-};
-
-// Open Modal
-btnsOpenModal.forEach((btn) => btn.addEventListener('click', openModal));
-
-// Close Modal
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
-
-// Close Modal w/Escape
-document.addEventListener('keydown', function (e) {
-	if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-		closeModal();
-	}
-});
-
 // =============================================================================================== //
 // =============================================================================================== //
 // ========================== Selecting, Creating and Deleting Elements ========================== //
@@ -112,3 +79,104 @@ document.addEventListener('keydown', function (e) {
 // 		message.remove();
 // 		// message.parentElement.removeChild(message);
 // 	});
+
+// ==================================================================================== //
+// ==================================================================================== //
+// ========================== Styles, Attributes and Classes ========================== //
+// ==================================================================================== //
+// ==================================================================================== //
+
+// /* On reprend l'exemple du message de cookies */
+// const header = document.querySelector('.header');
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// message.innerHTML =
+// 	'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// header.append(message);
+// document
+// 	.querySelector('.btn--close-cookie')
+// 	.addEventListener('click', function () {
+// 		message.remove();
+// 	});
+
+// /* ---------------------------- Styles ---------------------------- */
+
+// /* Ajouter une propriété/valeur CSS */
+// message.style.backgroundColor = '#37383d';
+// // message.style.width = '120%';
+
+// /* Lire le style CSS d'un élémént */
+// console.log(message.style.backgroundColor); // rgb(55, 56, 61)
+// console.log(message.style.color); // Retourne rien car défini dans fichier .css
+// console.log(getComputedStyle(message).color); // rgb(187, 187, 187)
+// console.log(getComputedStyle(message).height); // 50px
+
+// /* Modifier un style CSS existant */
+// message.style.height =
+// 	Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// console.log(getComputedStyle(message).height); // 80px
+
+// /* Changer la valeur d'une variable CSS */
+// /* Les variables CSS sont stockés dans le :root, pour y accéder en JS : documentElement */
+// // document.documentElement.style.setProperty('--color-primary', 'blue');
+
+// /* ---------------------------- Attributs ---------------------------- */
+
+// const logo = document.querySelector('.nav__logo');
+// const btnLink = document.querySelector('.nav__link--btn');
+
+// /* Lire un attribut sans getAttribute */
+// console.log(logo.alt); // Bankist logo
+// console.log(logo.title); // Bankist Logo
+// console.log(logo.designer); // undefined (car non-standard)
+// console.log(logo.src); // http://127.0.0.1:5500/13-Advanced-DOM/img/logo.png
+// console.log(btnLink.href); // http://127.0.0.1:5500/13-Advanced-DOM/index.html#
+
+// /* Lire un attribut avec getAttribute */
+// console.log(logo.getAttribute('alt')); // Bankist logo
+// console.log(logo.getAttribute('title')); // Bankist Logo
+// console.log(logo.getAttribute('designer')); // Jonas
+// console.log(logo.getAttribute('src')); // img/logo.png
+// console.log(btnLink.getAttribute('href')); // #
+
+// /* Lire un attribut "data" */
+// console.log(logo.dataset.versionNumber); // 3.0
+
+// /* Ajouter un attribut */
+// logo.setAttribute('company', 'Bankist');
+// console.log(logo.getAttribute('company')); // Bankist
+
+// /* Supprimer un attribut */
+// logo.removeAttribute('company');
+// console.log(logo.getAttribute('company')); // null
+
+// /* Modifier la valeur d'un attribut */
+// logo.alt = 'Beautiful minimalist logo';
+// console.log(logo.alt); // Beautiful minimalist logo
+
+// /* ---------------------------- Classes ---------------------------- */
+
+// /* Lire la classe d'un élément */
+// console.log(logo.className); // nav__logo
+
+// /* Ajouter une classe à un élément */
+// logo.classList.add('cem');
+// console.log(logo.className); // nav__logo cem
+
+// /* Supprimer la classe d'un élément */
+// logo.classList.remove('cem');
+// console.log(logo.className); // nav__logo
+
+// /* Ajoute la classe si elle n'existe pas / Supprime la classe si elle existe */
+// logo.classList.toggle('visible');
+// console.log(logo.className); // nav__logo visible
+// logo.classList.toggle('visible');
+// console.log(logo.className); // nav__logo
+
+// /* Toggle en fonction de si la condition est true ou false */
+// logo.classList.toggle('test', 5 > 10);
+// console.log(logo.className); // nav__logo
+
+// /* Faire un test pour savoir si une classe existe ou pas (true ou false) */
+// console.log(logo.classList.contains('cem')); // false
+// console.log(logo.classList.contains('nav__logo')); // true
