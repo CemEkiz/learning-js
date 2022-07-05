@@ -252,3 +252,86 @@
 // setTimeout(() => {
 // 	navBtn.removeEventListener('mouseenter', alertNavBtn);
 // }, 5000);
+
+// ================================================================================================ //
+// ================================================================================================ //
+// ========================== Event Propagation : Bubbling and Capturing ========================== //
+// ================================================================================================ //
+// ================================================================================================ //
+
+// /* Pour générer des couleurs random */
+// const randomInt = (min, max) =>
+// 	Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+// 	`rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// console.log(randomColor(0, 255));
+
+// /* ---------------------------- Event Propagation with Bubbling Phase ---------------------------- */
+
+// /* L'event commence sur la Target puis se propage sur les parents durant la Bubbling Phase. */
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+// 	this.style.backgroundColor = randomColor();
+
+// 	// Stop propagation (si nécessaire mais c'est rare)
+// 	// e.stopPropagation();
+
+// 	console.log('LINK', e.target, e.currentTarget); //> Cf. Console
+// 	console.log(e.currentTarget === this); // true
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+// 	this.style.backgroundColor = randomColor();
+
+// 	console.log('CONTAINER', e.target, e.currentTarget); //> Cf. Console
+// 	console.log(e.currentTarget === this); // true
+// });
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+// 	this.style.backgroundColor = randomColor();
+
+// 	console.log('NAV', e.target, e.currentTarget); //> Cf. Console
+// 	console.log(e.currentTarget === this); // true
+// });
+
+// /* ---------------------------- Event Propagation with Capturing Phase ---------------------------- */
+
+// /* Par défaut, l'Event débute sur le Target puis se propage sur les parents durant la Bubbling Phase.
+// Toutefois il est possible d'inverser cela et de propager l'event d'abord durant la la Capturing Phase puis sur le Target.
+// Comment ? En ajoutant l'argument "true" après notre Event Handler.
+// Est-ce utile ? Pas spécialement, généralement on laisse par défaut la propagation se réaliser durant la Bubbling Phase. */
+
+// // document.querySelector('.nav').addEventListener(
+// // 	'click',
+// // 	function (e) {
+// // 		this.style.backgroundColor = randomColor();
+
+// // 		console.log('NAV', e.target, e.currentTarget); //> Cf. Console
+// // 		console.log(e.currentTarget === this); // true
+// // 	},
+// // 	true
+// // );
+
+// // document.querySelector('.nav__links').addEventListener(
+// // 	'click',
+// // 	function (e) {
+// // 		this.style.backgroundColor = randomColor();
+
+// // 		console.log('CONTAINER', e.target, e.currentTarget); //> Cf. Console
+// // 		console.log(e.currentTarget === this); // true
+// // 	},
+// // 	true
+// // );
+
+// // document.querySelector('.nav__link').addEventListener(
+// // 	'click',
+// // 	function (e) {
+// // 		this.style.backgroundColor = randomColor();
+
+// // 		// Stop propagation (si nécessaire mais c'est rare)
+// // 		// e.stopPropagation();
+
+// // 		console.log('LINK', e.target, e.currentTarget); //> Cf. Console
+// // 		console.log(e.currentTarget === this); // true
+// // 	},
+// // 	true
+// // );
