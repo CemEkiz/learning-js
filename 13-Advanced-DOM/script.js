@@ -335,3 +335,41 @@
 // // 	},
 // // 	true
 // // );
+
+// ====================================================================== //
+// ====================================================================== //
+// ========================== Event Delegation ========================== //
+// ====================================================================== //
+// ====================================================================== //
+
+// /********** Without Event Delegation **********/
+// /* On utilisera dans ce cas forEach afin d'appliquer la fonction à tous les éléments mais cela
+// risque d'avoir un impact sur les performances s'il y a trop d'éléments (ici il y en a que 3) */
+
+// // document.querySelectorAll('.nav__link').forEach(function (el) {
+// // 	el.addEventListener('click', function (e) {
+// // 		e.preventDefault();
+
+// // 		const id = this.getAttribute('href');
+// // 		// console.log(id);
+// // 		document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+// // 	});
+// // });
+
+// /********** With Event Delegation **********/
+// /* Permet une meilleur performance, surtout quand il s'agit d'appliquer la même fonction à plusieurs
+// éléments. Pour cela on va se servir du phénomène de "bubble up" */
+
+// // Étape 1 : on attache l'Event Listener à un parent commun des éléments (ici ".nav__links")
+// // Étape 2 : déterminer quel élément est à l'origine de l'event
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+// 	e.preventDefault();
+// 	// console.log(e.target);
+
+// 	// Matching Strategy (ignorer si le clic ne match pas avec ce que je veux)
+// 	if (e.target.classList.contains('nav__link')) {
+// 		const id = e.target.getAttribute('href');
+// 		document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+// 		// console.log(id);
+// 	}
+// });
