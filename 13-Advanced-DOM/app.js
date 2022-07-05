@@ -32,3 +32,35 @@ document.addEventListener('keydown', function (e) {
 		closeModal();
 	}
 });
+
+///////////////////////////////////////
+// Smooth Scrolling
+
+const section1 = document.querySelector('#section--1');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+
+/********** Old way **********/
+
+// btnScrollTo.addEventListener('click', function (e) {
+// 	// Obtenir les infos de position
+// 	const s1coords = section1.getBoundingClientRect();
+// 	// console.log(s1coords);
+
+// 	// Scrolling
+// 	// window.scrollTo(
+// 	// 	s1coords.left + window.scrollX,
+// 	// 	s1coords.top + window.scrollY
+// 	// );
+
+// 	window.scrollTo({
+// 		left: s1coords.left + window.pageXOffset,
+// 		top: s1coords.top + window.pageYOffset,
+// 		behavior: 'smooth',
+// 	});
+// });
+
+/********** Modern way **********/
+
+btnScrollTo.addEventListener('click', function (e) {
+	section1.scrollIntoView({ behavior: 'smooth' });
+});
