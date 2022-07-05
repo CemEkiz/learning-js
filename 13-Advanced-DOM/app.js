@@ -38,28 +38,22 @@ document.addEventListener('keydown', function (e) {
 ////////////////////////////////////////////////////////////////////////////////
 // Smooth Scrolling
 
-/********** Modern way **********/
-
 btnScrollTo.addEventListener('click', function (e) {
 	section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-/********** Old way **********/
+////////////////////////////////////////////////////////////////////////////////
+// Page Navigation
 
-// btnScrollTo.addEventListener('click', function (e) {
-// 	// Obtenir les infos de position
-// 	const s1coords = section1.getBoundingClientRect();
-// 	// console.log(s1coords);
+// With Event Delegation
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+	e.preventDefault();
+	// console.log(e.target);
 
-// 	// Scrolling
-// 	// window.scrollTo(
-// 	// 	s1coords.left + window.scrollX,
-// 	// 	s1coords.top + window.scrollY
-// 	// );
-
-// 	window.scrollTo({
-// 		left: s1coords.left + window.pageXOffset,
-// 		top: s1coords.top + window.pageYOffset,
-// 		behavior: 'smooth',
-// 	});
-// });
+	// Matching Strategy
+	if (e.target.classList.contains('nav__link')) {
+		const id = e.target.getAttribute('href');
+		document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+		// console.log(id);
+	}
+});
