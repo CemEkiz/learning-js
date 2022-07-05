@@ -180,3 +180,27 @@
 // /* Faire un test pour savoir si une classe existe ou pas (true ou false) */
 // console.log(logo.classList.contains('cem')); // false
 // console.log(logo.classList.contains('nav__logo')); // true
+
+// ==================================================================================== //
+// ==================================================================================== //
+// ========================== Styles, Attributes and Classes ========================== //
+// ==================================================================================== //
+// ==================================================================================== //
+
+// // Obtenir le DOMRect : Position X/Y, Width/Height, Top/Right/Bottom/Left
+// console.log(document.querySelector('.btn--scroll-to').getBoundingClientRect());
+// console.log(document.querySelector('#section--1').getBoundingClientRect());
+
+// // Obtenir la distance parcourue en scroll
+// console.log('Current Scroll (X/Y),', window.scrollX, window.scrollY);
+
+// // Obtenir la Height/Width de la page dans le Viewport
+// console.log(
+// 	'Height/Width Viewport',
+// 	document.documentElement.clientHeight,
+// 	document.documentElement.clientWidth
+// );
+
+// // Obtenir la Height/Width d'un élément dans le Viewport
+// console.log(document.querySelector('#section--1').clientHeight);
+// console.log(document.querySelector('.btn--scroll-to').clientHeight);
