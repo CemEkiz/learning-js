@@ -181,11 +181,11 @@
 // console.log(logo.classList.contains('cem')); // false
 // console.log(logo.classList.contains('nav__logo')); // true
 
-// ==================================================================================== //
-// ==================================================================================== //
-// ========================== Styles, Attributes and Classes ========================== //
-// ==================================================================================== //
-// ==================================================================================== //
+// ============================================================================================ //
+// ============================================================================================ //
+// ========================== Get useful infos about scroll/viewport ========================== //
+// ============================================================================================ //
+// ============================================================================================ //
 
 // // Obtenir le DOMRect : Position X/Y, Width/Height, Top/Right/Bottom/Left
 // console.log(document.querySelector('.btn--scroll-to').getBoundingClientRect());
@@ -204,3 +204,51 @@
 // // Obtenir la Height/Width d'un élément dans le Viewport
 // console.log(document.querySelector('#section--1').clientHeight);
 // console.log(document.querySelector('.btn--scroll-to').clientHeight);
+
+// ======================================================================================== //
+// ======================================================================================== //
+// ========================== Type of Events and Events Handlers ========================== //
+// ======================================================================================== //
+// ======================================================================================== //
+
+// /* ---------------------------- Type of Events ---------------------------- */
+// /* Il existe d'autres types d'events que "click" --> voir MDN : Events Reference */
+
+// const h1 = document.querySelector('h1');
+
+// h1.addEventListener('mouseenter', function (e) {
+// 	alert('Great! You are reading the heading :)');
+// });
+
+// /* Old way (juste à titre d'information, il est tjrs préférable d'utiliser addEventListener) */
+// // h1.onmouseenter = function (e) {
+// // 	alert('Great! You are reading the heading :)');
+// // };
+
+// /* ---------------------------- Event Handlers ---------------------------- */
+// /* Il existe un autre Event Handler utile parfois : removeEventListener */
+
+// /* Supprimer un Event Listener après qu'il ait été déclenché */
+
+// const logo = document.querySelector('.nav__logo');
+
+// const alertLogo = function (e) {
+// 	alert('You are reading the logo :D');
+// 	logo.removeEventListener('mouseenter', alertLogo);
+// };
+
+// logo.addEventListener('mouseenter', alertLogo);
+
+// /* Supprimer un Event Listener après un certain temps */
+
+// const navBtn = document.querySelector('.nav__link--btn');
+
+// const alertNavBtn = function (e) {
+// 	alert('You are reading the Nav Button :D');
+// };
+
+// navBtn.addEventListener('mouseenter', alertNavBtn);
+
+// setTimeout(() => {
+// 	navBtn.removeEventListener('mouseenter', alertNavBtn);
+// }, 5000);
