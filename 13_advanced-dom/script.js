@@ -33,7 +33,7 @@
 // const btn = document.getElementsByClassName('btn');
 // console.log(btn); //> HTMLCollection de tous les éléments ayant la class "btn"
 
-// /* Différence entre HTMLCollection et NodeList : HTMLCollection se met à jour automatiquement lorsque l'on supprime
+// /* NOTE: Différence entre HTMLCollection et NodeList : HTMLCollection se met à jour automatiquement lorsque l'on supprime
 // un bouton par exemple contrairement à NodeList qu'il faut mettre à jour manuellement. */
 
 // /* ---------------------------- Créer/Insérer/Supprimer des éléments ---------------------------- */
@@ -116,9 +116,9 @@
 // 	Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 // console.log(getComputedStyle(message).height); // 80px
 
-// /* Changer la valeur d'une variable CSS */
-// /* Les variables CSS sont stockés dans le :root, pour y accéder en JS : documentElement */
-// // document.documentElement.style.setProperty('--color-primary', 'blue');
+// /* NOTE: Changer la valeur d'une variable CSS, il faut utiliser documentElement
+// car elles sont stockés dans le :root */
+// document.documentElement.style.setProperty('--color-primary', 'blue');
 
 // /* ---------------------------- Attributs ---------------------------- */
 
@@ -187,11 +187,11 @@
 // ============================================================================================ //
 // ============================================================================================ //
 
-// // Obtenir le DOMRect : Position X/Y, Width/Height, Top/Right/Bottom/Left
+// /* Obtenir le DOMRect : Position X/Y, Width/Height, Top/Right/Bottom/Left */
 // console.log(document.querySelector('.btn--scroll-to').getBoundingClientRect());
 // console.log(document.querySelector('#section--1').getBoundingClientRect());
 
-// // Obtenir la distance parcourue en scroll
+// /* Obtenir la distance parcourue en scroll */
 // console.log('Current Scroll (X/Y),', window.scrollX, window.scrollY);
 
 // // Obtenir la Height/Width de la page dans le Viewport
@@ -201,7 +201,7 @@
 // 	document.documentElement.clientWidth
 // );
 
-// // Obtenir la Height/Width d'un élément dans le Viewport
+// /* Obtenir la Height/Width d'un élément dans le Viewport */
 // console.log(document.querySelector('#section--1').clientHeight);
 // console.log(document.querySelector('.btn--scroll-to').clientHeight);
 
@@ -228,7 +228,7 @@
 // /* ---------------------------- Event Handlers ---------------------------- */
 // /* Il existe un autre Event Handler utile parfois : removeEventListener */
 
-// /* Supprimer un Event Listener après qu'il ait été déclenché */
+// /*  EX: Supprimer un Event Listener après qu'il ait été déclenché */
 
 // const logo = document.querySelector('.nav__logo');
 
@@ -239,7 +239,7 @@
 
 // logo.addEventListener('mouseenter', alertLogo);
 
-// /* Supprimer un Event Listener après un certain temps */
+// /* EX: Supprimer un Event Listener après un certain temps */
 
 // const navBtn = document.querySelector('.nav__link--btn');
 
@@ -268,7 +268,7 @@
 
 // /* ---------------------------- Event Propagation with Bubbling Phase ---------------------------- */
 
-// /* L'event commence sur la Target puis se propage sur les parents durant la Bubbling Phase. */
+// /* NOTE: L'event commence sur la Target puis se propage sur les parents durant la Bubbling Phase. */
 // document.querySelector('.nav__link').addEventListener('click', function (e) {
 // 	this.style.backgroundColor = randomColor();
 
@@ -295,7 +295,7 @@
 
 // /* ---------------------------- Event Propagation with Capturing Phase ---------------------------- */
 
-// /* Par défaut, l'Event débute sur le Target puis se propage sur les parents durant la Bubbling Phase.
+// /* NOTE: Par défaut, l'Event débute sur le Target puis se propage sur les parents durant la Bubbling Phase.
 // Toutefois il est possible d'inverser cela et de propager l'event d'abord durant la la Capturing Phase puis sur le Target.
 // Comment ? En ajoutant l'argument "true" après notre Event Handler.
 // Est-ce utile ? Pas spécialement, généralement on laisse par défaut la propagation se réaliser durant la Bubbling Phase. */
@@ -343,7 +343,7 @@
 // ====================================================================== //
 
 // /********** Without Event Delegation **********/
-// /* On utilisera dans ce cas forEach afin d'appliquer la fonction à tous les éléments mais cela
+// /* NOTE: On utilisera dans ce cas forEach afin d'appliquer la fonction à tous les éléments mais cela
 // risque d'avoir un impact sur les performances s'il y a trop d'éléments (ici il y en a que 3) */
 
 // // document.querySelectorAll('.nav__link').forEach(function (el) {
@@ -357,7 +357,7 @@
 // // });
 
 // /********** With Event Delegation **********/
-// /* Permet une meilleur performance, surtout quand il s'agit d'appliquer la même fonction à plusieurs
+// /* NOTE: Permet une meilleur performance, surtout quand il s'agit d'appliquer la même fonction à plusieurs
 // éléments. Pour cela on va se servir du phénomène de "bubble up" */
 
 // // Étape 1 : on attache l'Event Listener à un parent commun des éléments (ici ".nav__links")
@@ -423,7 +423,7 @@
 // console.log(h1.parentElement.children);
 // //> HTMLCollection(4) [h1, h4, button.btn--text.btn--scroll-to, img.header__img]
 
-// /* Exp : scale à 0.5 tous les éléments-jumeaux de h1 (sauf h1 lui-même) */
+// /* EX: scale à 0.5 tous les éléments-jumeaux de h1 (sauf h1 lui-même) */
 // const elArr = [...h1.parentElement.children];
 // console.log(elArr);
 // elArr.forEach((el) => {
