@@ -57,3 +57,36 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 		// console.log(id);
 	}
 });
+
+////////////////////////////////////////////////////////////////////////////////
+// Tab Component
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// With Event Delegation
+tabsContainer.addEventListener('click', function (e) {
+	const clicked = e.target.closest('.operations__tab');
+	console.log(clicked);
+	console.log(clicked.dataset.tab);
+
+	// Guard Clause
+	if (!clicked) return;
+
+	// Remove active state to all tabs
+	tabs.forEach((tab) => tab.classList.remove('operations__tab--active'));
+
+	// Remove active state to all contents
+	tabsContent.forEach((content) =>
+		content.classList.remove('operations__content--active')
+	);
+
+	// Add active state to tab selected
+	clicked.classList.add('operations__tab--active');
+
+	// Add active state to content selected
+	document
+		.querySelector(`.operations__content--${clicked.dataset.tab}`)
+		.classList.add('operations__content--active');
+});
