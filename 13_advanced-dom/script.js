@@ -379,3 +379,55 @@
 // ========================== DOM Traversing ========================== //
 // ==================================================================== //
 // ==================================================================== //
+
+// const h1 = document.querySelector('h1');
+// const nav = document.querySelector('.nav');
+// const navItem = document.querySelector('.nav__item');
+
+// /* ---------------------------- Vers le bas : child ---------------------------- */
+
+// console.log(nav.querySelectorAll('.nav__link'));
+// //> NodeList(4) [a.nav__link, a.nav__link, a.nav__link, a.nav__link.nav__link--btn.btn--show-modal]
+// console.log(nav.childNodes);
+// //> NodeList(5) [text, img#logo.nav__logo, text, ul.nav__links, text]
+// console.log(nav.children);
+// //> HTMLCollection(2) [img#logo.nav__logo, ul.nav__links, logo: img#logo.nav__logo]
+
+// h1.firstElementChild.style.color = 'black';
+// h1.lastElementChild.style.color = 'orangered';
+
+// /* ---------------------------- Vers le haut : parent ---------------------------- */
+
+// console.log(navItem.parentNode); //> ul.nav__links
+// console.log(h1.parentNode); //> div.header__title
+// console.log(nav.parentNode); //> header.header
+
+// console.log(navItem.parentElement); //> ul.nav__links
+// console.log(h1.parentElement); //> div.header__title
+// console.log(nav.parentElement); //> header.header
+
+// /* ---------------------------- Vers l'élément le plus proche ---------------------------- */
+
+// /* La Method .closest retourne l'élément-parent le plus proche qui match avec le sélecteur */
+// h1.closest('.header').style.background = 'grey';
+// h1.closest('h1').style.background = 'blue';
+
+// /* ---------------------------- Vers le sens latéral ---------------------------- */
+
+// console.log(h1.previousElementSibling); //> null
+// console.log(h1.nextElementSibling); //> h4
+
+// console.log(h1.previousSibling); //> cf. Console
+// console.log(h1.nextSibling); //> cf. Console
+
+// console.log(h1.parentElement.children);
+// //> HTMLCollection(4) [h1, h4, button.btn--text.btn--scroll-to, img.header__img]
+
+// /* Exp : scale à 0.5 tous les éléments-jumeaux de h1 (sauf h1 lui-même) */
+// const elArr = [...h1.parentElement.children];
+// console.log(elArr);
+// elArr.forEach((el) => {
+// 	if (el !== h1) {
+// 		el.style.transform = 'scale(0.5)';
+// 	}
+// });
