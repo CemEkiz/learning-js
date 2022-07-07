@@ -15,7 +15,7 @@
 
 // 		if (birthYear >= 1981 && birthYear <= 1996) {
 // 			var millenial = true;
-// 			// const firstName = "Steven";
+// 			// const firstName = 'Steven';
 // 			const str = `Oh, and you're a millenial, ${firstName}`;
 // 			console.log(str);
 // 		}
@@ -27,7 +27,7 @@
 // 	return age;
 // }
 
-// const firstName = "Jonas";
+// const firstName = 'Jonas';
 // calcAge(1991);
 
 // ======================================================================= //
@@ -38,12 +38,12 @@
 
 // /******************** Variables ********************/
 // console.log(me); // undefined
-// console.log(job); // ReferenceError : Cannot access "job" before initialization
-// console.log(year); // ReferenceError : Cannot access "year" before initialization
+// console.log(job); // ReferenceError : Cannot access 'job' before initialization
+// console.log(year); // ReferenceError : Cannot access 'year' before initialization
 // console.log(x); // ReferenceError : x is not defined
 
-// var me = "Jonas";
-// let job = "Teacher";
+// var me = 'Jonas';
+// let job = 'Teacher';
 // const year = 1991;
 
 // /******************** Functions ********************/
@@ -78,7 +78,7 @@
 // var numProducts = 10;
 
 // function deleteShoppingCart() {
-// 	console.log("All products deleted");
+// 	console.log('All products deleted');
 // }
 
 // /******************** var & Window Object ********************/
@@ -143,10 +143,10 @@
 
 // /* ---------------- Cas de bug 1  ---------------- */
 
-// // var firstName = "Matilda";
+// // var firstName = 'Matilda';
 
 // const jonas = {
-// 	firstName: "Jonas",
+// 	firstName: 'Jonas',
 // 	year: 1991,
 // 	calcAge: function () {
 // 		console.log(this);
@@ -160,7 +160,7 @@
 
 // /* ---------------- Cas de bug 2  ---------------- */
 // const jonas = {
-// 	firstName: "Jonas",
+// 	firstName: 'Jonas',
 // 	year: 1991,
 // 	calcAge: function () {
 // 		console.log(this);
@@ -192,7 +192,7 @@
 // // true
 
 // /* ---------------- arguments keyword ---------------- */
-// /* Le "arguments" Keyword existe seulement pour les Regular Functions et pas pour les Arrow Functions  */
+// /* Le 'arguments' Keyword existe seulement pour les Regular Functions et pas pour les Arrow Functions  */
 
 // /* ---------------- Regular Function  ---------------- */
 
@@ -219,37 +219,37 @@
 // =========================================================================== //
 // =========================================================================== //
 
-// let lastName = "Williams";
+// let lastName = 'Williams';
 // let oldLastName = lastName;
-// lastName = "Davis";
+// lastName = 'Davis';
 // console.log(lastName); // Davis
 // console.log(oldLastName); // Williams
 
 // const jessica = {
-// 	firstName: "Jessica",
-// 	lastName: "Williams",
+// 	firstName: 'Jessica',
+// 	lastName: 'Williams',
 // 	age: 27,
 // };
 
 // const marriedJessica = jessica;
-// marriedJessica.lastName = "Davis";
+// marriedJessica.lastName = 'Davis';
 // console.log(jessica.lastName); // Davis
 // console.log(marriedJessica.lastName); // Davis
 
 // // Copying Objects
 
 // const elena = {
-// 	firstName: "Elena",
-// 	lastName: "Williams",
+// 	firstName: 'Elena',
+// 	lastName: 'Williams',
 // 	age: 27,
-// 	family: ["Alice", "Bob"],
+// 	family: ['Alice', 'Bob'],
 // };
 
 // const elenaCopy = Object.assign({}, elena);
-// elenaCopy.lastName = "Davis";
+// elenaCopy.lastName = 'Davis';
 
-// elenaCopy.family.push("Mary");
-// elenaCopy.family.push("John");
+// elenaCopy.family.push('Mary');
+// elenaCopy.family.push('John');
 
 // console.log(elena.lastName); // Williams
 // console.log(elena.family); // (4) ['Alice', 'Bob', 'Mary', 'John']

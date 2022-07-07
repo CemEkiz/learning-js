@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
 // Data needed for a later exercise
 // const flights =
-// 	"_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+// 	'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // ========================================================================== //
 // ========================================================================== //
@@ -56,8 +56,8 @@
 
 // /* Récupérer les Keys de l'Object pour les décomposer en Variables */
 // const cem = {
-// 	firstName: "Cem",
-// 	lastName: "Ekiz",
+// 	firstName: 'Cem',
+// 	lastName: 'Ekiz',
 // 	age: 26,
 // };
 
@@ -66,9 +66,9 @@
 
 // /* Récupérer les Keys d'un Object pour les décomposer en Variables en changeant leur nom   */
 // const mike = {
-// 	firstName: "Mike",
-// 	city: "New-York",
-// 	job: "Teacher",
+// 	firstName: 'Mike',
+// 	city: 'New-York',
+// 	job: 'Teacher',
 // };
 
 // const { firstName: mikeName, city: mikeCity, job: mikeJob } = mike;
@@ -76,13 +76,13 @@
 
 // /* Définir une valeur par défaut si la Key n'existe pas dans l'Object */
 // const sarah = {
-// 	firstName: "Sarah",
+// 	firstName: 'Sarah',
 // 	age: 22,
 // };
 
 // const { firstName: sarahName = [], favoriteFood: sarahFavoriteFood = [] } =
 // 	sarah;
-// console.log(sarahFavoriteFood, sarahName); // [] "Sarah"
+// console.log(sarahFavoriteFood, sarahName); // [] 'Sarah'
 
 // /* Muter des Variables */
 // /* Exemple : je veux que num1 ait pr valeur 23 et que num2 ait pour valeur 7 */
@@ -95,12 +95,12 @@
 
 // /* Destructuring Nested Objects */
 // const michael = {
-// 	firstName: "Michael",
-// 	lastNaeme: "Schott",
+// 	firstName: 'Michael',
+// 	lastNaeme: 'Schott',
 // 	friends: {
 // 		bestFriends: {
-// 			bf1: "Dwight",
-// 			bf2: "Jim",
+// 			bf1: 'Dwight',
+// 			bf2: 'Jim',
 // 		},
 // 	},
 // };
@@ -120,7 +120,7 @@
 // /* - Le Spread Operator permet de récupérer les valeurs individuelle d'un Array. Il sert principalement
 // à expandre un Array existant dans un Array que nous venons de créer, on ne l'utilise pas pour créer une nouvelle
 // variable comme pour le Destructuring Assignment car il faut l'utiliser dans une situation ou il y a des valeurs séparés par des virgules :
-// admettons que nous créons un nouvel Array nous allons ajouter des valeurs à l'intérieur (séparé par des virgules) puis "...array1" pour expandre
+// admettons que nous créons un nouvel Array nous allons ajouter des valeurs à l'intérieur (séparé par des virgules) puis '...array1' pour expandre
 // un Array existant (mais celui d'origine n'est pas modifié)
 //    - Le Spread Operator fonctionne avec tous les iterables (Arrays, Strings, Maps, Set) */
 
@@ -141,19 +141,19 @@
 // console.log(...goodNewArray); // 1 2 7 8 9
 
 // /* Créer la copie d'un Array */
-// const charachter = ["Kevin", "Meredith", "Angela"];
+// const charachter = ['Kevin', 'Meredith', 'Angela'];
 // const charachterCopy = [...charachter];
 // console.log(charachterCopy); // (3) ['Kevin', 'Meredith', 'Angela']
 
 // /* Fusionner 2 Array */
-// const charachter2 = ["Michael", "Jim"];
-// const charachter3 = ["Pam", "Andy"];
+// const charachter2 = ['Michael', 'Jim'];
+// const charachter3 = ['Pam', 'Andy'];
 // const charachterMerged = [...charachter2, ...charachter3];
 // console.log(charachterMerged); // (4) ['Michael', 'Jim', 'Pam', 'Andy']
 
 // /* Spread Operator avec un String */
-// const str = "Jonas";
-// const letters = [...str, "", "S."];
+// const str = 'Jonas';
+// const letters = [...str, ', 'S.'];
 // console.log(letters); // (7) ['J', 'o', 'n', 'a', 's', '', 'S.']
 
 // ======================================================================================= //
@@ -162,14 +162,14 @@
 // ======================================================================================= //
 // ======================================================================================= //
 // /* Rest est similaire à Spread mais il sert à pack (au lieu de unpack) les valeurs d'un array
-// et au niveau de la syntaxe il se différencie au fait qu'il se place à gauche du "=" */
+// et au niveau de la syntaxe il se différencie au fait qu'il se place à gauche du '=' */
 
-// /* Spread Operator car les "..." sont à droite du "=" */
+// /* Spread Operator car les '...' sont à droite du '=' */
 // const arr = [1, 2, ...[3, 4]];
 // console.log(arr); // (4) [1, 2, 3, 4]
 
-// /* Rest Operator car les "..." sont à gauche du "=" */
-// /* Explication : ici nous décomposons les 2 premières valeurs de arr1 et le reste sera dans l'array "others" */
+// /* Rest Operator car les '...' sont à gauche du '=' */
+// /* Explication : ici nous décomposons les 2 premières valeurs de arr1 et le reste sera dans l'array 'others' */
 // const arr1 = [1, 2, 3, 4, 5];
 // const [a, b, ...others] = arr1;
 // console.log(a, b, others); // 1 2 (3) [3, 4, 5]
@@ -201,11 +201,11 @@
 // En fait || cherche à renvoyer une valeur true, il renverra alors la première valeur true
 // sur laquelle elle tombera mais si il y en a plusieurs d'affilés elle retournera le dernier */
 
-// console.log(3 || "Cem"); // 3
-// console.log("" || "Cem"); // Jonas
+// console.log(3 || 'Cem'); // 3
+// console.log(' || 'Cem'); // Jonas
 // console.log(true || 0); // true
 // console.log(undefined || null); // null
-// console.log(undefined || 0 || "" || "Hello" || 23 || null); // Hello
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
 
 // /* -------------------------- && -------------------------- */
 // /* Dans le cas d'un Short-Circuiting, l'opérateur && marche de la manière opposée à ||
@@ -213,16 +213,16 @@
 // il renvoie la dernière falsy valeur
 // En fait le && cherche à renvoyer une valeur true si toutes les opérandes sont trues, mais il suffit qu'une
 // opérande soit falsy et tout sera considéré comme false */
-// console.log(0 && "Cem"); // 0
-// console.log(7 && "Cem"); // Cem
-// console.log("Hello" && 23 && null && "Cem"); // null
+// console.log(0 && 'Cem'); // 0
+// console.log(7 && 'Cem'); // Cem
+// console.log('Hello' && 23 && null && 'Cem'); // null
 
 // ====================================================================================== //
 // ====================================================================================== //
 // ========================== Nullish Coalescing Operator (??) ========================== //
 // ====================================================================================== //
 // ====================================================================================== //
-// /* En fait le Nullish Operator ne considère pas 0 et "" comme falsy */
+// /* En fait le Nullish Operator ne considère pas 0 et '' comme falsy */
 
 // /* En comparaison avec && */
 // /* Ici on a un problème car on veut retourner le nombre d'élèves même si il est égal à 0
@@ -243,17 +243,17 @@
 // ================================================================================== //
 
 // const rest1 = {
-// 	name: "Capri",
+// 	name: 'Capri',
 // 	numGuests: 20,
 // };
 
 // const rest2 = {
-// 	name: "La Piazza",
-// 	owner: "Giovanni Rossi",
+// 	name: 'La Piazza',
+// 	owner: 'Giovanni Rossi',
 // };
 
 // const rest3 = {
-// 	name: "Capri",
+// 	name: 'Capri',
 // 	numGuests: 0,
 // };
 
@@ -288,16 +288,16 @@
 // /* -------------------------- ||= et ??= -------------------------- */
 
 // /* Pour rappel avec le AND Logical Operator && */
-// rest1.owner = rest1.owner && "<ANONYMOUS>";
-// rest2.owner = rest2.owner && "<ANONYMOUS>";
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
 // console.log(rest1); // undefined (mais la Key a été crée dans l'Object rest1)
 // console.log(rest2); // <ANONYMOUS>
 
 // /* Avec le AND Assignment Operator (&&=) */
 // /* L'avantage de cet opérateur réside dans le fait qu'il sert à modifier une Key existante (Truthy) et contrairement
 // à ci-dessus il ne créera pas de Key si celle-ci n'existe pas (Falsy) */
-// rest1.owner &&= "<ANONYMOUS>";
-// rest2.owner &&= "<ANONYMOUS>";
+// rest1.owner &&= '<ANONYMOUS>';
+// rest2.owner &&= '<ANONYMOUS>';
 // console.log(rest1); // undefined (sans créer la Key dans l'Object rest1)
 // console.log(rest2); // <ANONYMOUS>
 
@@ -309,12 +309,12 @@
 // /* Il est possible de faire ce que fait la for-of avec une loop classique avec le counter etc. mais justement
 // le for-of loop simplifie ce procédé */
 
-// const theOfficeFemale = ["Meredith", "Angela", "Phyllis"];
-// const theOfficeMale = ["Jim", "Ryan", "Dwight"];
+// const theOfficeFemale = ['Meredith', 'Angela', 'Phyllis'];
+// const theOfficeMale = ['Jim', 'Ryan', 'Dwight'];
 // const theOfficeMix = [...theOfficeFemale, ...theOfficeMale];
 // console.log(theOfficeMix);
 
-// /* Explication : en fait la variable "item" est l'élément actuel de chaque itération */
+// /* Explication : en fait la variable 'item' est l'élément actuel de chaque itération */
 // for (const item of theOfficeMix) {
 // 	console.log(item);
 // }
@@ -356,36 +356,36 @@
 // /* L'ancienne méthode pour insérer un object existant dans un autre */
 // /* Le problème réside que le nom de la propriété (key) est identique au nom de l'Object */
 // const restaurant1 = {
-// 	name: "Classico Pizza",
+// 	name: 'Classico Pizza',
 // 	openingHours: openingHours,
 // };
 
 // /* La nouvelle méthode depuis ES6 (Enhanced Object Literals) */
 // /* Il suffit juste d'entrer le nom de l'Object */
 // const restaurant2 = {
-// 	name: "Classico Pizza",
+// 	name: 'Classico Pizza',
 // 	openingHours,
 // };
 
 // /* L'ancienne méthode pour inclure une fonction dans un Object */
 // const restaurant3 = {
-// 	name: "Classico Pizza",
+// 	name: 'Classico Pizza',
 // 	order: function (starterIndex, mainIndex) {
 // 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
 // 	},
 // };
 
 // /* La nouvelle méthode depuis ES6 (Enhanced Object Literals) */
-// /* On peut enlever le keyword "function" */
+// /* On peut enlever le keyword 'function' */
 // const restaurant4 = {
-// 	name: "Classico Pizza",
+// 	name: 'Classico Pizza',
 // 	order(starterIndex, mainIndex) {
 // 		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
 // 	},
 // };
 
-// /* On peut "compute" (calculer) des Keys dans un Object */
-// const weekdays = ["mon", "tue,", "wed", "thu", "fri", "sat", "sun"];
+// /* On peut 'compute' (calculer) des Keys dans un Object */
+// const weekdays = ['mon', 'tue,', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 // const openingHours2 = {
 // 	[weekdays[3]]: {
@@ -411,9 +411,9 @@
 // ================================================================================ //
 
 // const restaurant5 = {
-// 	name: "Classico Pizza",
-// 	starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-// 	mainMenu: ["Pizza", "Pasta", "Risotto"],
+// 	name: 'Classico Pizza',
+// 	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+// 	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 // 	openingHours: {
 // 		thu: {
 // 			open: 12,
@@ -445,36 +445,36 @@
 // 	console.log(restaurant5.openingHours.fri.open);
 // } // 11
 
-// /* Avec l'Optional Chaining (?.) : si la propriété avant le "?." n'existe pas alors le reste qui suit ne sera pas lu */
+// /* Avec l'Optional Chaining (?.) : si la propriété avant le '?.' n'existe pas alors le reste qui suit ne sera pas lu */
 // console.log(restaurant5.openingHours.mon?.open); // undefined
 // console.log(restaurant5.openingHours?.mon?.open); // undefined
 // console.log(restaurant5.openingHours?.thu?.open); // 12
 
 // /* Exemple */
-// const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 // for (const day of days) {
-// 	const open = restaurant5.openingHours[day]?.open ?? "closed";
+// 	const open = restaurant5.openingHours[day]?.open ?? 'closed';
 // 	console.log(`On ${day}, we open at ${open}`);
 // }
 
-// /* L'optional Chaining test si ce qui est avant le "?." existe, si oui alors on applique la suite
-// sinon on applique ce qui est après le "??", c'est donc une sorte de test if simplifié très pratique !
+// /* L'optional Chaining test si ce qui est avant le '?.' existe, si oui alors on applique la suite
+// sinon on applique ce qui est après le '??', c'est donc une sorte de test if simplifié très pratique !
 // La combinaison de l'opérateur ?. et ?? est donc très utile. */
 
 // /* Optional Chaining avec Method */
-// console.log(restaurant5.order?.(0, 1) ?? "Method does not exist"); // (2) ['Focaccia', 'Pasta']
-// console.log(restaurant5.orderRisotto?.(0, 1) ?? "Method does not exist"); // Method does not exist
+// console.log(restaurant5.order?.(0, 1) ?? 'Method does not exist'); // (2) ['Focaccia', 'Pasta']
+// console.log(restaurant5.orderRisotto?.(0, 1) ?? 'Method does not exist'); // Method does not exist
 
 // /* Optional Chaining avec Array */
-// const users = [{ name: "Jonas", email: "hello@jonas.io" }];
-// console.log(users[0]?.name ?? "User array empty");
+// const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+// console.log(users[0]?.name ?? 'User array empty');
 
 // /* Sans Optional Chaining il aurait fallu faire ceci : */
 // if (users.length > 0) {
 // 	console.log(users[0].name);
 // } else {
-// 	console.log("User Array Empty");
+// 	console.log('User Array Empty');
 // }
 
 // ================================================================================================ //
@@ -544,12 +544,12 @@
 
 // /* Voici comment créer un Set, à l'intérieur de ([]) il doit y avoir un itérable (pas obligatoirement un Array) */
 // const orderSet = new Set([
-// 	"Pasta",
-// 	"Pizza",
-// 	"Pizza",
-// 	"Risotto",
-// 	"Pasta",
-// 	"Pizza",
+// 	'Pasta',
+// 	'Pizza',
+// 	'Pizza',
+// 	'Risotto',
+// 	'Pasta',
+// 	'Pizza',
 // ]);
 
 // /* La structure est similaire à un Array et il n'y a pas de valeurs dupliquées */
@@ -559,16 +559,16 @@
 // console.log(orderSet.size); // 3
 
 // /* Method .has : pour vérifier si une valeur existe dans un Set (similaire à la Method .include pour les Arrays) */
-// console.log(orderSet.has("Pizza")); // true
-// console.log(orderSet.has("Bread")); // false
+// console.log(orderSet.has('Pizza')); // true
+// console.log(orderSet.has('Bread')); // false
 
 // /* Method .add : pour ajouter un élément à un Set */
-// orderSet.add("Garlic Bread");
-// orderSet.add("Garlic Bread");
+// orderSet.add('Garlic Bread');
+// orderSet.add('Garlic Bread');
 // console.log(orderSet); // Set(4) {'Pasta', 'Pizza', 'Risotto', 'Garlic Bread'}
 
 // /* Method .delete : pour supprimer un élément d'un Set */
-// orderSet.delete("Risotto");
+// orderSet.delete('Risotto');
 // console.log(orderSet); // Set(3) {'Pasta', 'Pizza', 'Garlic Bread'}
 
 // for (const order of orderSet) {
@@ -576,12 +576,12 @@
 // } // cf. Console
 
 // /* Method .clear : supprimer tous les éléments d'un Set */
-// const myFriends = new Set(["Dwight", "Jim", "Michael"]);
+// const myFriends = new Set(['Dwight', 'Jim', 'Michael']);
 // myFriends.clear();
 // console.log(myFriends); // Set(0) {size: 0}
 
 // /* On peut aussi rentrer d'autres itérables dans un Set, comme un string par exemple */
-// const myName = new Set("Cem");
+// const myName = new Set('Cem');
 // console.log(myName); // Set(3) {'C', 'e', 'm'}
 // /* Pour savoir le nombre de lettre qu'il y a dans un String */
 // console.log(myName.size); // 3
@@ -603,7 +603,7 @@
 // /* -------------------------- Exemple d'utilisation de Set -------------------------- */
 // /* Dans cet exemple nous avons 2 Chef, 3 Waiter et 1 Manager. Le problème est le suivant :
 // Nous voulons savoir combien de poste différent il existe. */
-// const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 
 // /* Solution : On va créer un Set et le convertir en même temps en Array grâce au Spread Operator
 // afin de supprimer les dupliqués tout en stockant les données dans un Array */
@@ -615,7 +615,7 @@
 
 // /* Une autre solution pour résoudre ce problème */
 // console.log(
-// 	new Set(["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"]).size
+// 	new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
 // ); // 3
 
 // ========================================================= //
@@ -631,10 +631,10 @@
 // const rest = new Map();
 
 // /* La Method .set : permet de remplir la Map */
-// /* Explication : "name" est mapé à "Classico Italiano" etc. */
-// rest.set("name", "Classico Italiano");
-// rest.set(1, "Firenze, Italy");
-// rest.set(2, "Lisbon, Portugal");
+// /* Explication : 'name' est mapé à 'Classico Italiano' etc. */
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze, Italy');
+// rest.set(2, 'Lisbon, Portugal');
 
 // /* Lorsqu'on ajoute des données à Map avec la Method .set, celle-ci ne fait pas que ajouter des données mais elle retourne
 // également la Map */
@@ -642,35 +642,35 @@
 
 // /* Il est possible d'enchaîner l'utilisation de la Method .set */
 // rest
-// 	.set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-// 	.set("open", 11)
-// 	.set("close", 23)
-// 	.set(true, "We are open :D")
-// 	.set(false, "We are closed :(");
+// 	.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+// 	.set('open', 11)
+// 	.set('close', 23)
+// 	.set(true, 'We are open :D')
+// 	.set(false, 'We are closed :(');
 
 // console.log(rest); // cf. Console
 
 // /* Créer une Map avec des éléments */
 // const myMap = new Map([
-// 	["name", "John"],
-// 	["surname", "Doe"],
+// 	['name', 'John'],
+// 	['surname', 'Doe'],
 // ]);
 // console.log(myMap); // Map(2) {'name' => 'John', 'surname' => 'Doe'}
 
 // // /* _____Les Methods_____ */
 
 // /* La Method .get : retourne l'élément spécifié de la Map */
-// console.log(rest.get("name")); // Classico Italiano
+// console.log(rest.get('name')); // Classico Italiano
 // console.log(rest.get(true)); // We are open :D
 
 // /* Cet exemple sert à montrer les possibilités de Map en utilisant d'autres Types que String en Keys (ici des Booleans)
 // mais ce code n'est pas très pratique dans la réalité car pas assez lisible/explicite */
 // const time = 21;
-// console.log(rest.get(time > rest.get("open") && time < rest.get("close"))); // We are open :D
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // We are open :D
 
 // /* La Method .has : permet de savoir si un élément existe ou non dans la Map  */
-// console.log(rest.has("categories")); // true
-// console.log(rest.has("guest")); // false
+// console.log(rest.has('categories')); // true
+// console.log(rest.has('guest')); // false
 
 // /* La Method .delete : permet de supprimer une Key de la Map */
 // rest.delete(2);
@@ -688,32 +688,32 @@
 // /* Erreur à ne pas commettre */
 // /* Explication : ici nous avons rentré exactement le même Array sur les 2 lignes (.set pour ajouter, et .get pour retourner)
 // mais les deux Arrays sont distinctes dans le heap (dans la mémoire) ce ne sont pas les mêmes ! C'est pour cela que undefined est retourné */
-// rest.set([1, 2], "Test");
+// rest.set([1, 2], 'Test');
 // console.log(rest.get([1, 2])); // undefined
 
 // /* La bonne manière de faire */
 // /* Explication : il faut d'abord créer un Array et la stocker dans une Variable et ensuite l'utiliser dans la Map */
 // const arr = [1, 2];
-// rest.set(arr, "Test");
+// rest.set(arr, 'Test');
 // console.log(rest.get(arr)); // Test
 
 // /* -------------------------- Utiliser un Object en Key -------------------------- */
 
 // /* Pour cet exemple on va utiliser le DOM (qui est un Object) */
-// rest.set(document.querySelector("h1"), "Heading");
+// rest.set(document.querySelector('h1'), 'Heading');
 // console.log(rest); // cf. Console
 
 // /* -------------------------- Créer un simple Quizz -------------------------- */
 
-// /* Cette structure fait penser à "Object.entries" qui est un "Array d'un Array" */
+// /* Cette structure fait penser à 'Object.entries' qui est un 'Array d'un Array' */
 // const question = new Map([
-// 	["question", "What is the best programming language in the World ?"],
-// 	[1, "C"],
-// 	[2, "Java"],
-// 	[3, "JavaScript"],
-// 	["correct", 3],
-// 	[true, "Correct !"],
-// 	[false, "Try again !"],
+// 	['question', 'What is the best programming language in the World ?'],
+// 	[1, 'C'],
+// 	[2, 'Java'],
+// 	[3, 'JavaScript'],
+// 	['correct', 3],
+// 	[true, 'Correct !'],
+// 	[false, 'Try again !'],
 // ]);
 
 // console.log(question); // cf. Console
@@ -721,25 +721,25 @@
 // /* Pour rappel, Map est un Iterable donc il est possible de faire des Boucles dans une Map */
 
 // /* Petite précision : un Object n'est pas un itérables mais Object.entries est un itérable, c'est pourquoi
-// après le "of" nous devions mettre Object.entries, mais Map est un itérable donc on peut directement entrer
-// le nom de la Map (ici "question") */
+// après le 'of' nous devions mettre Object.entries, mais Map est un itérable donc on peut directement entrer
+// le nom de la Map (ici 'question') */
 
 // /* _____Quizz App_____ */
 
-// console.log(question.get("question")); // What is the best programming language in the World ?
+// console.log(question.get('question')); // What is the best programming language in the World ?
 
 // for (const [key, value] of question) {
-// 	if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+// 	if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
 // }
 // // Answer 1: C
 // // Answer 2: Java
 // // Answer 3: JavaScript
 
-// const answer = Number(prompt("Your answer"));
+// const answer = Number(prompt('Your answer'));
 // console.log(answer); // cf. Console
 
 // /* Sans l'utilisation du if Statement */
-// console.log(question.get(question.get("correct") === answer));
+// console.log(question.get(question.get('correct') === answer));
 
 // /* Avec l'utilisation du if Statement */
 // // if (answer === true) {
@@ -775,13 +775,13 @@
 // /* -------------------------- Convertir Map en Array -------------------------- */
 
 // const question = new Map([
-// 	["question", "What is the best programming language in the World ?"],
-// 	[1, "C"],
-// 	[2, "Java"],
-// 	[3, "JavaScript"],
-// 	["correct", 3],
-// 	[true, "Correct !"],
-// 	[false, "Try again !"],
+// 	['question', 'What is the best programming language in the World ?'],
+// 	[1, 'C'],
+// 	[2, 'Java'],
+// 	[3, 'JavaScript'],
+// 	['correct', 3],
+// 	[true, 'Correct !'],
+// 	[false, 'Try again !'],
 // ]);
 
 // /* Avant conversion */
@@ -799,19 +799,19 @@
 
 // /* Je crée un Object avec 2 propriétés */
 // const myObject = {
-// 	myName: "Cem",
-// 	surname: "Ekiz",
+// 	myName: 'Cem',
+// 	surname: 'Ekiz',
 // };
 
 // /* Je crée 2 Objects vide */
 // const a = {};
 // const b = {};
 
-// /* J'ajoute un par un les 2 Objects que j'ai crée ci-dessus (l'Object étant la Key auquel je paire un String ("a" et "b")) */
+// /* J'ajoute un par un les 2 Objects que j'ai crée ci-dessus (l'Object étant la Key auquel je paire un String ('a' et 'b')) */
 // /* Le problème est le suivant : seulement le dernier Object ajouté en tant que Key sera compté, c'est là que Map résout
 // ce problème car il n'a pas cette contrainte. */
-// myObject[a] = "a";
-// myObject[b] = "b";
+// myObject[a] = 'a';
+// myObject[b] = 'b';
 // console.log(myObject); // cf. Console
 
 // /* _____Dans le cas d'une Map_____ */
@@ -820,10 +820,10 @@
 // const c = {};
 // const d = {};
 
-// /* Je crée ma Map : j'y ajoute les 2 Objects que je viens de créer ci-dessus (c et d) et je paire des Strings ("c" et "d") */
+// /* Je crée ma Map : j'y ajoute les 2 Objects que je viens de créer ci-dessus (c et d) et je paire des Strings ('c' et 'd') */
 // const myMap = new Map([
-// 	[c, "c"],
-// 	[d, "d"],
+// 	[c, 'c'],
+// 	[d, 'd'],
 // ]);
 
 // console.log(myMap); // cf. Console
@@ -835,11 +835,11 @@
 // ================================================================================ //
 
 // const restaurant = {
-// 	name: "Classico Italiano",
-// 	location: "Via Angelo Tavanti 23, Firenze, Italy",
-// 	categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-// 	starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-// 	mainMenu: ["Pizza", "Pasta", "Risotto"],
+// 	name: 'Classico Italiano',
+// 	location: 'Via Angelo Tavanti 23, Firenze, Italy',
+// 	categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+// 	starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+// 	mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
 // 	openingHours: {
 // 		thu: {
@@ -863,7 +863,7 @@
 // 	orderDelivery({
 // 		starterIndex = 1,
 // 		mainIndex = 0,
-// 		time = "20:00",
+// 		time = '20:00',
 // 		address,
 // 	}) {
 // 		console.log(
@@ -881,20 +881,20 @@
 // 	},
 // };
 
-// /* Utilisation de la Method "order" (même s'il est possible de le faire sans fonction) */
+// /* Utilisation de la Method 'order' (même s'il est possible de le faire sans fonction) */
 // const [starterCourse, mainCourse] = restaurant.order(2, 0);
 // console.log(starterCourse, mainCourse); // Garlic Bread Pizza
 
 // /* Utilisation de la Method orderDelivery */
 // restaurant.orderDelivery({
-// 	time: "22:30",
-// 	address: "Via del Sole, 21",
+// 	time: '22:30',
+// 	address: 'Via del Sole, 21',
 // 	mainIndex: 2,
 // 	starterIndex: 2,
 // }); // Order received! Garlic Bread and Risotto will be delivered to Via del Sole, 21 at 22:30
 
 // restaurant.orderDelivery({
-// 	address: "Via del Sole, 21",
+// 	address: 'Via del Sole, 21',
 // 	starterIndex: 1,
 // }); // Order received! Bruschetta and Pizza will be delivered to Via del Sole, 21 at 20:00
 
@@ -925,7 +925,7 @@
 // console.log(restaurantName, hours, tags); // cf. Console
 
 // /* Valeur par défaut lorsqu'une Key n'est pas dans l'Object */
-// /* Dans notre exemple du restaurant la Key "menu" n'existe pas tandis que starterMenu existe */
+// /* Dans notre exemple du restaurant la Key 'menu' n'existe pas tandis que starterMenu existe */
 // const { menu = [], starterMenu: starters = [] } = restaurant;
 // console.log(menu, starters); // cf. Console
 
@@ -936,7 +936,7 @@
 // console.log(openFri, closeFri); // 11 23
 
 // /* Créer un nouveau menu en utilisant le Spread Operator */
-// const newMenu = [...restaurant.mainMenu, "Gnocci"];
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
 // console.log(newMenu); // (4) ['Pizza', 'Pasta', 'Risotto', 'Gnocci']
 
 // /* Copier le mainMenu */
@@ -947,18 +947,18 @@
 // console.log(menuMerged); // (7) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad', 'Pizza', 'Pasta', 'Risotto']
 
 // /* Utilisons le Spread Operator avec la method orderPasta */
-// const ingredients = ["Mushrooms", "Tomato", "Cheese"];
+// const ingredients = ['Mushrooms', 'Tomato', 'Cheese'];
 // console.log(ingredients); // (3) ['Mushrooms', 'Tomato', 'Cheese']
 
 // restaurant.orderPasta(...ingredients); // Here is your delicious pasta with Mushrooms, Tomato, Cheese
 
 // /* Spread Operator avec Objects */
-// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: "Giuseppe" };
+// const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Giuseppe' };
 // console.log(newRestaurant); // cf. Console
 
 // /* Copier un Object avec le Spread Operator */
 // const restaurantCopy = { ...restaurant };
-// restaurantCopy.name = "Ristorante Roma";
+// restaurantCopy.name = 'Ristorante Roma';
 // console.log(restaurantCopy.name); // Ristorante Roma
 // console.log(restaurant.name); // Classico Italiano
 
@@ -976,16 +976,16 @@
 
 // /* Utilisation de la fonction orderPizza avec le Rest Parameter */
 // /* Le premier ingredient est indiqué dans un string et le reste est placé dans un array */
-// restaurant.orderPizza("mushrooms", "onion", "olives", "spinach"); // mushrooms (3) ['onion', 'olives', 'spinach']
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach'); // mushrooms (3) ['onion', 'olives', 'spinach']
 
 // /* Dans cet exemple on utilise le Ternary Operator pour faire un test
-// Si c'est true (?) alors "restaurant.numGuests" sinon (:) 10 */
+// Si c'est true (?) alors 'restaurant.numGuests' sinon (:) 10 */
 // restaurant.numGuests = 23;
 // const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 // console.log(guests1); // 23
 
 // /* Mais il est possible de simplifier le code en réalisant un short-circuiting
-// La première valeur "true" sera retourné, dans ce cas c'est "restaurant.numGuests" donc 23 */
+// La première valeur 'true' sera retourné, dans ce cas c'est 'restaurant.numGuests' donc 23 */
 // const guests2 = restaurant.numGuests || 10; // 23
 
 // /* Nullish Operator */
@@ -1005,36 +1005,36 @@
 un String est une Primitive Data est n'est pas PAS MUTABLE. Donc lorsqu'on va utiliser les Methods
 pour manipuler un String, cela crée et renvoie un nouveau String (qu'on peut stocker dans une nouvelle Variable) */
 
-const airline = "TAP Air Portugal";
-const plane = "A320";
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
 
 // /* -------------------------- Les Methods de String  -------------------------- */
 
 // /* Retourner la première lettre indexé d'un String */
 // console.log(plane[0]); // A
 // console.log(plane[1]); // 1 (String)
-// console.log("Cem"[0]); // C
+// console.log('Cem'[0]); // C
 
 // /* Retourner la taille d'un String */
 // console.log(airline.length); // 16
-// console.log("Cem".length); // 3
+// console.log('Cem'.length); // 3
 
 // /* Retourner l'index d'un caractère du String */
-// console.log(airline.indexOf("r")); // 6
-// console.log(airline.lastIndexOf("r")); // 10
+// console.log(airline.indexOf('r')); // 6
+// console.log(airline.lastIndexOf('r')); // 10
 
 // /* Retourner le mot d'un String */
-// console.log(airline.indexOf("Portugal")); // 8
+// console.log(airline.indexOf('Portugal')); // 8
 
 // /* Extraire les caractères d'un String, le String devient alors un Sub-String */
 // console.log(airline.slice(4)); // Air Portugal
 // console.log(airline.slice(4, 7)); // Air
 
 // /* Extraire le premier mot d'un String ayant plusieurs mots */
-// console.log(airline.slice(0, airline.indexOf(" "))); // TAP
+// console.log(airline.slice(0, airline.indexOf(' '))); // TAP
 
 // /* Extraire le dernier mot d'un String ayant plusieurs mots */
-// console.log(airline.slice(airline.lastIndexOf(" ") + 1)); // Portugal
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // Portugal
 
 // /* Extraire les caractères d'un String en partant de la fin */
 // console.log(airline.slice(-2)); // al
@@ -1053,33 +1053,33 @@ const plane = "A320";
 
 // const checkMiddleSeat = function (seat) {
 // 	const s = seat.slice(-1);
-// 	if (s === "B" || s === "E") {
+// 	if (s === 'B' || s === 'E') {
 // 		console.log(`The place ${seat} is a Middle Seat`);
 // 	} else {
 // 		console.log(`The place ${seat} is not a Middle Seat`);
 // 	}
 // };
 
-// checkMiddleSeat("11B"); // The place 11B is a Middle Seat
-// checkMiddleSeat("23C"); // The place 23C is not a Middle Seat
-// checkMiddleSeat("3E"); // The place 3E is a Middle Seat
+// checkMiddleSeat('11B'); // The place 11B is a Middle Seat
+// checkMiddleSeat('23C'); // The place 23C is not a Middle Seat
+// checkMiddleSeat('3E'); // The place 3E is a Middle Seat
 
 // // /* ----------- Comment se fait-il qu'une Primitive Data comme un String ait des Methods ----------- */
 
 // /* Cette partie n'est pas à retenir par coeur c'est juste à titre d'information ;) */
 // /* En réalité, lorsque nous appelons une Method sur un String (comme .slice ou .indexOf), JavaScript
-// convertit le String Primitive en String Object (c'est ce qu'on appelle le "Boxing") avec le même contenu,
+// convertit le String Primitive en String Object (c'est ce qu'on appelle le 'Boxing') avec le même contenu,
 // et c'est sur le String Object que la Method est call en réalité (et non pas sur le String Primitive)
 // et une fois que la Method a été appliqué, JS retourne le nouveau String sous forme de String Primitive */
 
-// /* String "Object" */
-// console.log(new String("Cem")); // cf. Console
-// console.log(typeof new String("Cem")); // object
+// /* String 'Object' */
+// console.log(new String('Cem')); // cf. Console
+// console.log(typeof new String('Cem')); // object
 
-// /* Exemple : le String "Cem" va être convertit en String Object afin d'appliquer la Method .slice puis il sera
+// /* Exemple : le String 'Cem' va être convertit en String Object afin d'appliquer la Method .slice puis il sera
 // retourné sous forme de String Primitive à nouveau */
-// console.log(new String("Cem").slice(-1)); // m
-// console.log(typeof new String("Cem").slice(1)); // string
+// console.log(new String('Cem').slice(-1)); // m
+// console.log(typeof new String('Cem').slice(1)); // string
 
 // // /* -------------------------- String et Case -------------------------- */
 
@@ -1089,9 +1089,9 @@ const plane = "A320";
 
 // /* -------------------------- Exercie : Définir une Case personnalisé  -------------------------- */
 
-// /* Cas pratique : un passager a pas respecté les Case "Cem" par exemple, il a écrit "jOnAS" il faut réctifier cela */
+// /* Cas pratique : un passager a pas respecté les Case 'Cem' par exemple, il a écrit 'jOnAS' il faut réctifier cela */
 // /* En bonus je peux faire une fonction pour cela */
-// const passenger = "jOnAS";
+// const passenger = 'jOnAS';
 // 1.
 // const passengerLower = passenger.toLowerCase();
 // 2.
@@ -1108,16 +1108,16 @@ const plane = "A320";
 // 	console.log(passengerCorrect);
 // };
 
-// upperCaser("jOnaS"); // Jonas
-// upperCaser("MICHAEL"); // Michael
-// upperCaser("dwiGHT"); // Dwight
+// upperCaser('jOnaS'); // Jonas
+// upperCaser('MICHAEL'); // Michael
+// upperCaser('dwiGHT'); // Dwight
 
 // /* -------------------------- Exercice : Formater un String  -------------------------- */
 
 // /* Créer et stocker les 2 e-mails */
-// const email = "hello@jonas.io";
-// const loginEmail1 = " Hello@Jonas.Io \n";
-// const loginEmail2 = "  ekizCEM.PRO@gmail.com      ";
+// const email = 'hello@jonas.io';
+// const loginEmail1 = ' Hello@Jonas.Io \n';
+// const loginEmail2 = '  ekizCEM.PRO@gmail.com      ';
 
 // // // 1.
 // // const lowerEmail = loginEmail1.toLowerCase();
@@ -1139,58 +1139,58 @@ const plane = "A320";
 
 // // /* -------------------------- Replacer des parties d'un String -------------------------- */
 
-// /* Remplacer le "$" par "€" et le "," par "." */
-// const priceGB = "288,97$";
-// const priceEU = priceGB.replace("$", "€").replace(",", ".");
+// /* Remplacer le '$' par '€' et le ',' par '.' */
+// const priceGB = '288,97$';
+// const priceEU = priceGB.replace('$', '€').replace(',', '.');
 // console.log(priceEU); // 288.97€
 
-// /* Remplacer TOUTES les occurences du String "door" par "gate" */
+// /* Remplacer TOUTES les occurences du String 'door' par 'gate' */
 // const announcement =
-// 	"All passengers come to boarding door 23. Boarding door 23!";
+// 	'All passengers come to boarding door 23. Boarding door 23!';
 // console.log(announcement); // All passengers come to boarding door 23. Boarding door 23!
 
 // /* Méthode 1 : avec l'utilisation de la Method .replaceAll */
-// const announcementNew = announcement.replaceAll("door", "gate");
+// const announcementNew = announcement.replaceAll('door', 'gate');
 // console.log(announcementNew); // All passengers come to boarding gate 23. Boarding gate 23!
 
 // /* Méthode 2 : avec l'utilisation de Regular Expression */
-// const announcementNew2 = announcement.replace(/door/g, "gate");
+// const announcementNew2 = announcement.replace(/door/g, 'gate');
 // console.log(announcementNew2); // All passengers come to boarding gate 23. Boarding gate 23!
 
 // // /* -------------------------- Les Methods de String qui retournent des Booleans -------------------------- */
 
-// const plane2 = "Airbus A320neo";
+// const plane2 = 'Airbus A320neo';
 
 // /* La Method .includes */
-// console.log(plane2.includes("A320")); // true
-// console.log(plane.includes("Boeing")); // false
+// console.log(plane2.includes('A320')); // true
+// console.log(plane.includes('Boeing')); // false
 
 // /* La Method .startsWith */
-// console.log(plane2.startsWith("Air")); // true
-// console.log(plane2.startsWith("A320")); // false
-// console.log(plane2.endsWith("neo")); // true
+// console.log(plane2.startsWith('Air')); // true
+// console.log(plane2.startsWith('A320')); // false
+// console.log(plane2.endsWith('neo')); // true
 
-// /* P'tit exercice pratique : vérifier si le nouvel avion fait partie de la famille "Airbus" */
-// if (plane2.startsWith("Airbus") && plane2.endsWith("neo")) {
-// 	console.log("Part of the New Airbus family");
+// /* P'tit exercice pratique : vérifier si le nouvel avion fait partie de la famille 'Airbus' */
+// if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+// 	console.log('Part of the New Airbus family');
 // }
 
 // /* Exercice : vérifier si le bagage est autorisé dans l'avion */
 // /* Je transforme l'input (item) en lowercase avec la Method toLowerCase pour faciliter le if statement qui va suivre
 // Dans cette situation il est important de transformer l'input de l'utilisateur en lowercase car JS est sensible à la casse
-// et donc "Knife" et "knife" n'est pas considéré comme étant le même String pour JavaScript. */
+// et donc 'Knife' et 'knife' n'est pas considéré comme étant le même String pour JavaScript. */
 // const checkBaggage = function (items) {
 // 	const baggage = items.toLowerCase();
-// 	if (baggage.includes("knife") || baggage.includes("gun")) {
-// 		console.log("You are not allowed on board");
+// 	if (baggage.includes('knife') || baggage.includes('gun')) {
+// 		console.log('You are not allowed on board');
 // 	} else {
-// 		console.log("Welcome aboard!");
+// 		console.log('Welcome aboard!');
 // 	}
 // };
 
-// checkBaggage("I have a laptop, some Food and a pocket Knife"); // You are not allowed on board
-// checkBaggage("Socks and camera"); // Welcome aboard!
-// checkBaggage("Got some snacks and a gun for protection"); // You are not allowed on board
+// checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are not allowed on board
+// checkBaggage('Socks and camera'); // Welcome aboard!
+// checkBaggage('Got some snacks and a gun for protection'); // You are not allowed on board
 
 // // /* -------------------------- Autres Methods de String -------------------------- */
 
@@ -1198,58 +1198,58 @@ const plane = "A320";
 // /* La Method .split divise un string en une liste de substrings et met chacun de ces substring dans un array et retourne l’array
 // (elle nécessite un divider qui sert de repère pour diviser le string) */
 
-// /* Dans cet exemple le divider est le caractère "+" */
-// console.log("a+very+nice+string".split("+")); //  ['a', 'very', 'nice', 'string']
+// /* Dans cet exemple le divider est le caractère '+' */
+// console.log('a+very+nice+string'.split('+')); //  ['a', 'very', 'nice', 'string']
 
-// /* Dans cet exemple le divider est le caractère " " */
-// console.log("Mon nom est Cem".split(" ")); // (4) ['Mon', 'nom', 'est', 'Cem']
+// /* Dans cet exemple le divider est le caractère ' ' */
+// console.log('Mon nom est Cem'.split(' ')); // (4) ['Mon', 'nom', 'est', 'Cem']
 
 // /* La Method .join */
 // /* La Method .join concatène les éléments d’un array et crée un nouveau string avec tous les éléments assemblés
 // puis retourne ce nouveau string */
 
-// const elements = ["Fire", "Air", "Water"];
+// const elements = ['Fire', 'Air', 'Water'];
 // console.log(elements.join()); // Fire,Air,Water
-// console.log(elements.join("")); // FireAirWater
-// console.log(elements.join(" ")); // Fire Air Water
-// console.log(elements.join("-")); // Fire-Air-Water
+// console.log(elements.join(')); // FireAirWater
+// console.log(elements.join(' ')); // Fire Air Water
+// console.log(elements.join('-')); // Fire-Air-Water
 
 // /* Exemple dans lequel j’utilise .split puis .join */
-// const [firstName, lastName] = "Cem Ekiz".split(" ");
+// const [firstName, lastName] = 'Cem Ekiz'.split(' ');
 // console.log(firstName); // Cem
 // console.log(lastName); // Ekiz
 
-// const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
 // console.log(newName); // Mr. Cem EKIZ
 
 // /* Je veux capitaliser la première lettre de chaque mot */
 // const capitalizeName = function (name) {
-// 	const names = name.split(" ");
+// 	const names = name.split(' ');
 // 	const namesUpper = [];
 // 	for (const n of names) {
 // 		namesUpper.push(n[0].toUpperCase() + n.slice(1));
 // 		// namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
 // 	}
 // 	// console.log(namesUpper);
-// 	console.log(namesUpper.join(" "));
+// 	console.log(namesUpper.join(' '));
 // };
 
-// capitalizeName("jessica ann smith davis"); // Jessica Ann Smith Davis
-// capitalizeName("cem ekiz"); // Cem Ekiz
-// capitalizeName("jonas schmedtmann"); // Jonas Schmedtmann
+// capitalizeName('jessica ann smith davis'); // Jessica Ann Smith Davis
+// capitalizeName('cem ekiz'); // Cem Ekiz
+// capitalizeName('jonas schmedtmann'); // Jonas Schmedtmann
 
 // /* La Method .padStart et .padEnd */
 // /* Permet de remplir un String avec le caractère spécifié afin qu'il fasse la largeur spécifié */
-// const myName = "Cem Ekiz";
-// const teacherName = "Jonas Schmedtmann";
-// console.log(myName.padStart(25, "+").padEnd(30, "+")); // +++++++++++++++++Cem Ekiz+++++
-// console.log(teacherName.padStart(25, "+").padEnd(30, "+")); // ++++++++Jonas Schmedtmann+++++
+// const myName = 'Cem Ekiz';
+// const teacherName = 'Jonas Schmedtmann';
+// console.log(myName.padStart(25, '+').padEnd(30, '+')); // +++++++++++++++++Cem Ekiz+++++
+// console.log(teacherName.padStart(25, '+').padEnd(30, '+')); // ++++++++Jonas Schmedtmann+++++
 
 // /* Cacher les chiffres d’une carte bancaire sauf les 4 derniers */
 // const maskCreditCard = function (number) {
-// 	const str = number + "";
+// 	const str = number + '';
 // 	const last = str.slice(-4);
-// 	return last.padStart(str.length, "*");
+// 	return last.padStart(str.length, '*');
 // };
 
 // console.log(maskCreditCard(11515666)); // ****5666
@@ -1257,11 +1257,11 @@ const plane = "A320";
 // console.log(maskCreditCard(5421210320365161)); // ************5161
 
 // /* La Method .repeat */
-// const message = "Bad weather... All departures Delayed... ";
+// const message = 'Bad weather... All departures Delayed... ';
 // console.log(message.repeat(5)); // cf. Console
 
 // const planesInLine = function (n) {
-// 	console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+// 	console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
 // };
 
 // planesInLine(5); // There are 5 planes in line ✈️✈️✈️✈️✈️
@@ -1271,14 +1271,14 @@ const plane = "A320";
 // /* String Methods Practice */
 
 // const flights =
-// 	"_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";00
+// 	'_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';00
 // const getCode = (str) => str.slice(0, 3).toUpperCase();
 
-// for (const flight of flights.split("+")) {
-// 	const [type, from, to, time] = flight.split(";");
-// 	const output = `${type.startsWith("_Delayed") ? "🔴" : ""}${type.replaceAll(
-// 		"_",
-// 		" "
-// 	)} ${getCode(from)} to ${getCode(to)} ${time.replace(":", "h")}`.padStart(40);
+// for (const flight of flights.split('+')) {
+// 	const [type, from, to, time] = flight.split(';');
+// 	const output = `${type.startsWith('_Delayed') ? '🔴' : '}${type.replaceAll(
+// 		'_',
+// 		' '
+// 	)} ${getCode(from)} to ${getCode(to)} ${time.replace(':', 'h')}`.padStart(40);
 // 	console.log(output);
 // }

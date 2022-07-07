@@ -16,36 +16,36 @@
 // /* ---------------------------- Convertir un String en Number ---------------------------- */
 
 // /* Avec la fonction Number */
-// console.log(Number("23")); // 23
+// console.log(Number('23')); // 23
 
 // /* Avec le Type Coercion */
-// console.log(+"23"); // 23
+// console.log(+'23'); // 23
 
 // /* ---------------------------- Parsing ---------------------------- */
 // /* Le string doit commencer par un Number */
 
 // /* ParseInt */
 // /* Le 10 (Radix Parameter) signifie qu'on est sur une base 10 (nombres décimaux pas pris en compte) */
-// console.log(Number.parseInt("30px", 10)); // 30
-// console.log(Number.parseInt("px30", 10)); // NaN
-// console.log(Number.parseInt("2.5rem")); // 2
+// console.log(Number.parseInt('30px', 10)); // 30
+// console.log(Number.parseInt('px30', 10)); // NaN
+// console.log(Number.parseInt('2.5rem')); // 2
 
 // /* ParseFloat */
 // /* Il permet de prendre en compte les nombres décimaux contrairement à parseInt */
-// console.log(Number.parseFloat("2.5rem")); // 2.5
-// console.log(Number.parseFloat("2rem")); // 2
+// console.log(Number.parseFloat('2.5rem')); // 2.5
+// console.log(Number.parseFloat('2rem')); // 2
 
 // /* ---------------------------- .isNaN ---------------------------- */
-// /* Cette Method permet de check si une valeur est "NaN" (true ou false) */
+// /* Cette Method permet de check si une valeur est 'NaN' (true ou false) */
 
 // console.log(Number.isNaN(20)); // false
 // console.log(20); // 20
 
-// console.log(Number.isNaN("20")); // false (c'est un String)
-// console.log("20"); // "20"
+// console.log(Number.isNaN('20')); // false (c'est un String)
+// console.log('20'); // '20'
 
-// console.log(Number.isNaN(+"20x")); // true (+"20x" retourne NaN)
-// console.log(+"20x"); // NaN
+// console.log(Number.isNaN(+'20x')); // true (+'20x' retourne NaN)
+// console.log(+'20x'); // NaN
 
 // console.log(Number.isNaN(23 / 0)); // false
 // console.log(23 / 0); // Infinity
@@ -53,16 +53,16 @@
 // /* ---------------------------- .isFinite ---------------------------- */
 // /* - Cette Method permet de check si une valeur est un Number.
 //    - Il est préférable d'utiliser cette méthode plutôt que isNaN.
-//    - "Finite" est le contraire de "Infinite". */
+//    - 'Finite' est le contraire de 'Infinite'. */
 
 // console.log(Number.isFinite(20)); // true
 // console.log(20); // 20
 
-// console.log(Number.isFinite("20")); // false
-// console.log("20"); // "20"
+// console.log(Number.isFinite('20')); // false
+// console.log('20'); // '20'
 
-// console.log(Number.isFinite(+"20x")); // false
-// console.log(+"20x"); // NaN
+// console.log(Number.isFinite(+'20x')); // false
+// console.log(+'20x'); // NaN
 
 // console.log(Number.isFinite(23 / 0)); // false
 // console.log(23 / 0); // Infinity
@@ -78,13 +78,13 @@
 
 // /* .max (retourne la valeur la + élevée)*/
 // console.log(Math.max(5, 20, 10, 17, 11)); // 20
-// console.log(Math.max(5, "20", 10, 17, 11)); // 20
-// console.log(Math.max(5, "20px", 10, 17, 11)); // NaN
+// console.log(Math.max(5, '20', 10, 17, 11)); // 20
+// console.log(Math.max(5, '20px', 10, 17, 11)); // NaN
 
 // /* .min (retourne la valeur la - élevée)*/
 // console.log(Math.min(5, 20, 10, 17, 11)); // 5
-// console.log(Math.min(5, "5", 10, 17, 11)); // 5
-// console.log(Math.min(5, "5x", 10, 17, 11)); // NaN
+// console.log(Math.min(5, '5', 10, 17, 11)); // 5
+// console.log(Math.min(5, '5x', 10, 17, 11)); // NaN
 
 // /* PI */
 // console.log(Math.PI); // 3.141592653589793
@@ -119,7 +119,7 @@
 
 // /* .toFixed (retourne un string avec les décimals arrondis) */
 // /* Pour rappel un Number est une Primitive donc elle n'est pas censé avoir de Method,
-// mais JS va faire un "boxing" -> transformer le Number en Object, appliquer la Method
+// mais JS va faire un 'boxing' -> transformer le Number en Object, appliquer la Method
 // puis retourner le résultat reconverti en Number */
 // console.log(+(2.7).toFixed(0)); // 3
 // console.log(+(2.7).toFixed(1)); // 2.7
@@ -138,19 +138,19 @@
 // ========================== Remainder Operator ========================== //
 // ======================================================================== //
 // ======================================================================== //
-// /* Cet opérateur retourne le "reste". */
+// /* Cet opérateur retourne le 'reste'. */
 
 // /* ---------------------------- Exemples ---------------------------- */
 
 // /* 2 x 2 = 4 --> il reste 1 */
-// /* "2 entier peut entrer 2 fois dans 5, il restera alors 1" */
+// /* '2 entier peut entrer 2 fois dans 5, il restera alors 1' */
 // console.log(5 % 2); // 1
 
 // /* 4 x 7 = 28 --> il reste 2 */
 // /* 4 entier peut entrer 7 fois dans 30, il restera alors 2 */
 // console.log(30 % 4); // 2
 
-// /* Un nombre est "pair" s'il retourne 0 */
+// /* Un nombre est 'pair' s'il retourne 0 */
 // console.log(6 % 2); // 0
 // console.log(30 % 2); // 0
 // console.log(102 % 2); // 0
@@ -175,7 +175,7 @@
 //    --> 27000000000 = 27,000,000,000
 //    --> 27000000000 = 27.000.000.000 */
 
-// /* JS ne prends pas en compte les "_" donc on peut l'utiliser dans notre code afin
+// /* JS ne prends pas en compte les '_' donc on peut l'utiliser dans notre code afin
 // de faciliter la lisibilité */
 
 // // /* ---------------------------- Exemples ---------------------------- */
@@ -198,21 +198,21 @@
 // // console.log(_3.1415);
 // // console.log(3.1415_);
 
-// console.log(Number("230_000")); // NaN
-// console.log(parseInt("230_000")); // 230
+// console.log(Number('230_000')); // NaN
+// console.log(parseInt('230_000')); // 230
 
 // ========================================================================= //
 // ========================================================================= //
 // ========================== Working with BigInt ========================== //
 // ========================================================================= //
 // ========================================================================= //
-// /* JS représente les Numbers en 64 bits. Cela signifie qu'il y a 64 "1" ou "0" (binaire)
+// /* JS représente les Numbers en 64 bits. Cela signifie qu'il y a 64 '1' ou '0' (binaire)
 // pour représenter un Number. En réalité 53 bits sont utilisés pour stocker les chiffres
 // eux même, le reste est dédié au points décimaux et aux signes. */
 
 // /* - Le plus grand nombre pouvant être représenté par JS de manière safe est 9007199254740991
 // - 2 --> pour le binaire (0 et 1)
-// - 1 --> on retire 1 pour ne pas comptabiliser "0" */
+// - 1 --> on retire 1 pour ne pas comptabiliser '0' */
 // console.log(2 ** 53 - 1); // 9007199254740991
 // console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
 
@@ -258,7 +258,7 @@
 // console.log(20n == 20); // true
 
 // /* Concaténation */
-// console.log(3215616515614561361651616n + "is REALLY big");
+// console.log(3215616515614561361651616n + 'is REALLY big');
 
 // /* Divisions */
 // console.log(11n / 3n); // 3n
@@ -277,9 +277,9 @@
 
 // /* Autres exemples */
 
-// console.log(new Date("Wed Jun 29 2022 20:31:44")); // Wed Jun 29 2022 20:31:44 GMT+0200
+// console.log(new Date('Wed Jun 29 2022 20:31:44')); // Wed Jun 29 2022 20:31:44 GMT+0200
 
-// console.log(new Date("December 24, 2015")); // Thu Dec 24 2015 00:00:00 GMT+0100
+// console.log(new Date('December 24, 2015')); // Thu Dec 24 2015 00:00:00 GMT+0100
 
 // /* 2037 --> année
 //    10 --> 11ème mois (janvier = 0, février = 1, etc.)
@@ -320,7 +320,7 @@
 // /* Pour convertir en format ISOS */
 // console.log(future.toISOString()); // 2037-11-19T14:23:00.000Z
 
-// /* Pour obtenir le timestamp (de la variable "future") */
+// /* Pour obtenir le timestamp (de la variable 'future') */
 // console.log(future.getTime()); // 2142253380000
 
 // /* Obtenir le timestamp de maintenant */
@@ -381,32 +381,32 @@
 // ========================== Internationalizing Dates (Intl) ========================== //
 // ===================================================================================== //
 // ===================================================================================== //
-// /* Pour les options, il existe d'autres possibilités que "numeric", comme par exemple "long"
-// qui donnera le nom du mois ou "2-digit" qui donnera le numéro du mois avec 2 digits. */
+// /* Pour les options, il existe d'autres possibilités que 'numeric', comme par exemple 'long'
+// qui donnera le nom du mois ou '2-digit' qui donnera le numéro du mois avec 2 digits. */
 
 // const now = new Date();
 
 // /* Voir + d'options sur MDN */
 // const options = {
-// 	hour: "numeric",
-// 	minute: "numeric",
-// 	day: "numeric",
-// 	month: "long",
-// 	year: "numeric",
-// 	weekday: "long",
+// 	hour: 'numeric',
+// 	minute: 'numeric',
+// 	day: 'numeric',
+// 	month: 'long',
+// 	year: 'numeric',
+// 	weekday: 'long',
 // };
 
 // const locale = navigator.language;
 // labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 
-// console.log(new Intl.DateTimeFormat("en-US", options).format(now)); // Friday, July 1, 2022 at 5:19 PM
-// console.log(new Intl.DateTimeFormat("en-US").format(now)); // 7/1/2022
+// console.log(new Intl.DateTimeFormat('en-US', options).format(now)); // Friday, July 1, 2022 at 5:19 PM
+// console.log(new Intl.DateTimeFormat('en-US').format(now)); // 7/1/2022
 
-// console.log(new Intl.DateTimeFormat("en-GB", options).format(now)); // Friday, 1 July 2022 at 17:19
-// console.log(new Intl.DateTimeFormat("en-GB").format(now)); // 01/07/2022
+// console.log(new Intl.DateTimeFormat('en-GB', options).format(now)); // Friday, 1 July 2022 at 17:19
+// console.log(new Intl.DateTimeFormat('en-GB').format(now)); // 01/07/2022
 
-// console.log(new Intl.DateTimeFormat("eu-FR", options).format(now)); // vendredi 1 juillet 2022 à 17:19
-// console.log(new Intl.DateTimeFormat("eu-FR").format(now)); // 01/07/2022
+// console.log(new Intl.DateTimeFormat('eu-FR', options).format(now)); // vendredi 1 juillet 2022 à 17:19
+// console.log(new Intl.DateTimeFormat('eu-FR').format(now)); // 01/07/2022
 
 // /* Pour adapter au langage du navigateur de l'utilisateur */
 // const locale = navigator.language;
@@ -422,14 +422,14 @@
 
 // /* Voir + d'options sur MDN */
 // const options = {
-// 	style: "unit",
-// 	unit: "mile-per-hour",
+// 	style: 'unit',
+// 	unit: 'mile-per-hour',
 // 	// useGrouping: false,
 // };
 
-// console.log(new Intl.NumberFormat("en-US", options).format(num)); // 3,884,764.23 mph
-// console.log(new Intl.NumberFormat("de-DE", options).format(num)); // 3.884.764,23 mi/h
-// console.log(new Intl.NumberFormat("fr-FR", options).format(num)); // 3 884 764,23 mi/h
+// console.log(new Intl.NumberFormat('en-US', options).format(num)); // 3,884,764.23 mph
+// console.log(new Intl.NumberFormat('de-DE', options).format(num)); // 3.884.764,23 mi/h
+// console.log(new Intl.NumberFormat('fr-FR', options).format(num)); // 3 884 764,23 mi/h
 // console.log(new Intl.NumberFormat(navigator.language, options).format(num)); // 3 884 764,23 mi/h
 
 // ==================================================================================== //
@@ -442,20 +442,20 @@
 // /* Cette fonction a pour but de run une callback function après qu'un timer soit écoulé */
 
 // /* setTimeout va utiliser sa callback function pour appeler console.log au bout de 3 secondes (3000ms) */
-// setTimeout(() => console.log("I will be there after 3 seconds"), 3000);
+// setTimeout(() => console.log('I will be there after 3 seconds'), 3000);
 
-// /* Dans cet exemple, "olives" et "spinach" seront les arguments des paramètres "ing1" et "ing"2 */
-// const ingredients = ["olives", "spinach"];
+// /* Dans cet exemple, 'olives' et 'spinach' seront les arguments des paramètres 'ing1' et 'ing'2 */
+// const ingredients = ['olives', 'spinach'];
 
 // const pizzaTimer = setTimeout(
 // 	(ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2}`),
 // 	3000,
 // 	...ingredients
 // );
-// console.log("Waiting...");
+// console.log('Waiting...');
 
 // /* clearTimeout permet d'arrêter le Timeout */
-// if (ingredients.includes("spinach")) {
+// if (ingredients.includes('spinach')) {
 // 	clearTimeout(pizzaTimer);
 // }
 

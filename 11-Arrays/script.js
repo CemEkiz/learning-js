@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // ========================================================================== //
 // ========================================================================== //
@@ -15,7 +15,7 @@
 // /* ---------------------------- .slice Method ---------------------------- */
 // /* Elle permet d'extraire une partie d'un array sans modifier l'array orignal */
 
-// let arr = ["a", "b", "c", "d", "e"];
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // console.log(arr.slice(2)); // (3) ['c', 'd', 'e']
 // console.log(arr.slice(2, 4)); // (2) ['c', 'd']
@@ -32,17 +32,17 @@
 // /* ---------------------------- .splice Method ---------------------------- */
 // /* Elle permet d'extraire une partie d'un array en modifiant l'original */
 
-// const arr2 = ["a", "b", "c", "d", "e"];
+// const arr2 = ['a', 'b', 'c', 'd', 'e'];
 
-// console.log(arr2.splice(-1)); // ["e"];
-// console.log(arr2.splice(-1)); // ["d"];
+// console.log(arr2.splice(-1)); // ['e'];
+// console.log(arr2.splice(-1)); // ['d'];
 
 // // Array original : il a été modifié
 // console.log(arr2); // ['a', 'b', 'c']
 
 // /* Remarque : les chiffres de .slice cible les espaces entre les éléments tandis
 // que les chiffres de .splice vise l'index des éléments */
-// const arr22 = ["a", "b", "c", "d", "e"];
+// const arr22 = ['a', 'b', 'c', 'd', 'e'];
 // console.log(arr22.slice(1, 3)); // ['b', 'c']
 // console.log(arr22.splice(1, 3)); // ['b', 'c', 'd']
 
@@ -74,8 +74,8 @@
 // const arr6 = [1, 2, 3, 4, 5];
 // const arr7 = [6, 7, 8, 9, 10];
 
-// console.log(arr6.join("_")); // 1_2_3_4_5
-// console.log([...arr6, ...arr7].join(" - ")); // 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
+// console.log(arr6.join('_')); // 1_2_3_4_5
+// console.log([...arr6, ...arr7].join(' - ')); // 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10
 
 // ================================================================ //
 // ================================================================ //
@@ -100,8 +100,8 @@
 // /* L'utilisation de .at ou pas dépendra des préférences et du contexte. */
 
 // // .at Method sur un String
-// console.log("Cem".at(2)); // m
-// console.log("Cem".at(-1)); // m
+// console.log('Cem'.at(2)); // m
+// console.log('Cem'.at(-1)); // m
 
 // ========================================================================= //
 // ========================================================================= //
@@ -142,7 +142,7 @@
 // -> forEach est plus clean mais sinon ça dépend des préférences de chacun. */
 
 // /* Note : les emplacements des mots pour [i, mov] dans la for-of loop et (mov, i, arr) dans forEach
-// sont inversés. Mais "i" cible l'index et mov cible l'élément. */
+// sont inversés. Mais 'i' cible l'index et mov cible l'élément. */
 // /* Note 2 : forEach fait obligatoirement tout le tour de l'array */
 
 // ================================================================================ //
@@ -154,9 +154,9 @@
 // /* -------------------------------- Avec Map -------------------------------- */
 
 // const currenciesMap = new Map([
-// 	["USD", "United States dollar"],
-// 	["EUR", "Euro"],
-// 	["GBP", "Pound sterling"],
+// 	['USD', 'United States dollar'],
+// 	['EUR', 'Euro'],
+// 	['GBP', 'Pound sterling'],
 // ]);
 
 // console.log(currenciesMap);
@@ -172,7 +172,7 @@
 
 // /* -------------------------------- Avec Set -------------------------------- */
 
-// const currenciesSet = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+// const currenciesSet = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 
 // console.log(currenciesSet);
 // //> Set(3) {'USD', 'GBP', 'EUR'}
@@ -242,7 +242,7 @@
 
 // const movementsDescriptions = movements.map(
 // 	(mov, i, arr) =>
-// 		`Movement ${i + 1}: You ${mov > 0 ? "deposited" : "withdrew"} ${Math.abs(
+// 		`Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
 // 			mov
 // 		)} `
 // );
@@ -251,7 +251,7 @@
 
 // /* Note : Différence entre forEach et .map Method
 // Bien que les 2 features permettent de loop over un array et d'utiliser une callback function sur les 3 paramètres (mov, i, arr)
-// il y une différence au niveau de l'output. Avec forEach on crée un "side effect" car elle retourne un output un par un (elle retourne
+// il y une différence au niveau de l'output. Avec forEach on crée un 'side effect' car elle retourne un output un par un (elle retourne
 // autant de ligne qu'il y a d'élément dans l'array) tandis que la .map Method va retourner les outputs dans un seul et même nouvel array. */
 
 // ======================================================================== //
@@ -260,7 +260,7 @@
 // ======================================================================== //
 // ======================================================================== //
 // /* Cette Method permet de loop over un array et de filtrer des éléments. Dans l'exemple ci-dessous
-// nous voulons un nouvel array ("deposits") qui contiendra seulement des nombres positifs. */
+// nous voulons un nouvel array ('deposits') qui contiendra seulement des nombres positifs. */
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -331,7 +331,7 @@
 // /* ---------------------------- Maximum Value ---------------------------- */
 // /* La .reduce Method permet de faire beaucoup de choses, dans cet exemple on va chercher
 // et retourner la valeur la plus grande d'un array, il faut toujours se demander "quel sera le rôle
-// du paramètre "acc" */
+// du paramètre 'acc'" */
 
 // const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -363,7 +363,7 @@
 // // console.log(totalDepositsUSD); // 5522.000000000001
 
 // /* Pour débuguer il faudrait utiliser console.log afin de déterminer d'où provient la source de l'erreur */
-// /* Admettons que nous avons mis le signe "<" au lieu de ">" lors de l'étape de la Method .filter
+// /* Admettons que nous avons mis le signe '<' au lieu de '>' lors de l'étape de la Method .filter
 // cf. l'étape de la Method .map qui résulte de la Method .filter (c'est comme une pipeline/cascade/effet domino) */
 // /* Ici on peut donc déduire que l'erreur viens de l'étape de la Method .filter qui a filtrer seulement les nombres négatifs. */
 
@@ -400,23 +400,23 @@
 // /* Trouver un compte (Object) en se basant sur le nom du propriétaire */
 
 // const account11 = {
-// 	owner: "Michael",
+// 	owner: 'Michael',
 // 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
 // };
 
 // const account22 = {
-// 	owner: "Dwight",
+// 	owner: 'Dwight',
 // 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
 // };
 
 // const account33 = {
-// 	owner: "Phyllis",
+// 	owner: 'Phyllis',
 // 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
 // };
 
 // const accountsNew = [account11, account22, account33];
 
-// const accountsFind = accountsNew.find((acc) => acc.owner === "Dwight");
+// const accountsFind = accountsNew.find((acc) => acc.owner === 'Dwight');
 
 // console.log(accountsFind); // {owner: 'Dwight', movements: Array(8)}
 
@@ -427,7 +427,7 @@
 // let accountfor;
 
 // for (const account of accountsNewFor) {
-// 	if (account.owner === "Michael") {
+// 	if (account.owner === 'Michael') {
 // 		accountfor = account;
 // 		break;
 // 	}
@@ -445,28 +445,28 @@
 // (rappel : dans le cas de .find c'est l'élément qui est retourné) */
 
 // const character1 = {
-// 	name: "Michael",
-// 	sexe: "Male",
+// 	name: 'Michael',
+// 	sexe: 'Male',
 // };
 
 // const character2 = {
-// 	name: "Dwight",
-// 	sexe: "Male",
+// 	name: 'Dwight',
+// 	sexe: 'Male',
 // };
 
 // const character3 = {
-// 	name: "Angela",
-// 	sexe: "Female",
+// 	name: 'Angela',
+// 	sexe: 'Female',
 // };
 
 // const character4 = {
-// 	name: "Erin",
-// 	sexe: "Male",
+// 	name: 'Erin',
+// 	sexe: 'Male',
 // };
 
 // const allCharacters = [character1, character2, character3, character4];
 
-// const firstFemale = allCharacters.findIndex((all) => all.sexe === "Female");
+// const firstFemale = allCharacters.findIndex((all) => all.sexe === 'Female');
 
 // console.log(firstFemale); // 2
 
@@ -542,22 +542,22 @@
 // /* ---------------------------- .flat VS .flatMap ---------------------------- */
 
 // const account11 = {
-// 	owner: "Jonas Schmedtmann",
+// 	owner: 'Jonas Schmedtmann',
 // 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
 // };
 
 // const account22 = {
-// 	owner: "Jessica Davis",
+// 	owner: 'Jessica Davis',
 // 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
 // };
 
 // const account33 = {
-// 	owner: "Steven Thomas Williams",
+// 	owner: 'Steven Thomas Williams',
 // 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
 // };
 
 // const account44 = {
-// 	owner: "Sarah Smith",
+// 	owner: 'Sarah Smith',
 // 	movements: [430, 1000, 700, 50, 90],
 // 	interestRate: 1,
 // 	pin: 4444,
@@ -591,7 +591,7 @@
 // /* Cette Method permet de trier un array (attention elle mutate l'array d'origine) */
 
 // // Strings
-// const owners = ["Jonas", "Zach", "Adam", "Martha"];
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
 // console.log(owners.sort());
 // console.log(owners);
 
@@ -630,7 +630,7 @@
 // const arr1 = [1, 2, 3, 4, 5];
 
 // /* .fill Method --> (définir la valeur, le début, la fin) */
-// arr1.fill("Cem", 0, 1);
+// arr1.fill('Cem', 0, 1);
 // console.log(arr1);
 
 // /* ---------------------------- Array Function ---------------------------- */
@@ -643,19 +643,19 @@
 // console.log(arr3); // (7) [empty × 7]
 
 // /* .fill Method --> (définir la valeur, le début, la fin) */
-// arr3.fill("Cem", 3, 5);
+// arr3.fill('Cem', 3, 5);
 // console.log(arr3); // 7) [empty × 3, 'Cem', 'Cem', empty × 2]
 
 // /* ---------------------------- .from Method ---------------------------- */
 
-// /* Cela permet de construire un array avec 7 slot et les fill avec la valeur "1" */
+// /* Cela permet de construire un array avec 7 slot et les fill avec la valeur '1' */
 // const y = Array.from({ length: 7 }, () => 1);
 // console.log(y); // (7) [1, 1, 1, 1, 1, 1, 1]
 
 // /* Ici je crée un array avec 7 slots qui va à chaque itération augmenter de + 1 */
 // /* Index 0 + 1 = 1 puis Index 1 + 1 = 2, puis Index 2 + 1 = 3, etc. */
-// /* Signification du "_" --> normalement c'est "cur" (current element) mais je ne l'utilise
-// pas dans cette fonction donc j'indique un "_" à la place (c'est une bonne pratique) */
+// /* Signification du '_' --> normalement c'est 'cur' (current element) mais je ne l'utilise
+// pas dans cette fonction donc j'indique un '_' à la place (c'est une bonne pratique) */
 // const z = Array.from({ length: 7 }, (_, i) => i + 1);
 // console.log(z); // (7) [1, 2, 3, 4, 5, 6, 7]
 
@@ -673,22 +673,22 @@
 // =================================================================================== //
 
 // const account100 = {
-// 	owner: "Jonas Schmedtmann",
+// 	owner: 'Jonas Schmedtmann',
 // 	movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
 // };
 
 // const account200 = {
-// 	owner: "Jessica Davis",
+// 	owner: 'Jessica Davis',
 // 	movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
 // };
 
 // const account300 = {
-// 	owner: "Steven Thomas Williams",
+// 	owner: 'Steven Thomas Williams',
 // 	movements: [200, -200, 340, -300, -20, 50, 400, -460],
 // };
 
 // const account400 = {
-// 	owner: "Sarah Smith",
+// 	owner: 'Sarah Smith',
 // 	movements: [430, 1000, 700, 50, 90],
 // };
 
@@ -746,7 +746,7 @@
 // 	.reduce(
 // 		(sums, cur) => {
 // 			// cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
-// 			sums[cur > 0 ? "deposits" : "withdrawals"] += cur;
+// 			sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
 // 			return sums;
 // 		},
 // 		{ deposits: 0, withdrawals: 0 }
@@ -757,22 +757,22 @@
 
 // /* ---------------------------- Exercice 4 ---------------------------- */
 
-// // 4 - Convertir "this is a nice title" à "This Is a Nice Title"
+// // 4 - Convertir 'this is a nice title' à 'This Is a Nice Title'
 
 // const convertTitleCase = function (title) {
 // 	const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
-// 	const expections = ["a", "an", "the", "but", "or", "on", "in", "with"];
+// 	const expections = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
 
 // 	const titleCase = title
 // 		.toLowerCase()
-// 		.split(" ")
+// 		.split(' ')
 // 		.map((word) => (expections.includes(word) ? word : capitalize(word)))
-// 		.join(" ");
+// 		.join(' ');
 
 // 	return capitalize(titleCase);
 // };
 
-// console.log(convertTitleCase("this is a nice title case")); // This Is a Nice Title Case
-// console.log(convertTitleCase("this is a LONG title but not too long")); // This Is a Long Title but Not Too Long
-// console.log(convertTitleCase("and here is another title with an EXAMPLE")); // And Here Is Another Title with an Example
+// console.log(convertTitleCase('this is a nice title case')); // This Is a Nice Title Case
+// console.log(convertTitleCase('this is a LONG title but not too long')); // This Is a Long Title but Not Too Long
+// console.log(convertTitleCase('and here is another title with an EXAMPLE')); // And Here Is Another Title with an Example

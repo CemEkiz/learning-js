@@ -20,7 +20,7 @@
 // 	} else if (koalasAvgScore >= dolphinsAvgScore * 2) {
 // 		console.log(`Koalas win (${koalasAvgScore} vs. ${dolphinsAvgScore})`);
 // 	} else {
-// 		console.log("No ones win");
+// 		console.log('No ones win');
 // 	}
 // };
 
@@ -61,7 +61,7 @@
 /* ----------------------------------------------------------------------------------------------------- */
 
 // const john = {
-// 	fullName: "John Smith",
+// 	fullName: 'John Smith',
 // 	mass: 92,
 // 	height: 1.95,
 // 	calcBMI: function () {
@@ -71,7 +71,7 @@
 // };
 
 // const mark = {
-// 	fullName: "Mark Miller",
+// 	fullName: 'Mark Miller',
 // 	mass: 78,
 // 	height: 1.69,
 // 	calcBMI: function () {

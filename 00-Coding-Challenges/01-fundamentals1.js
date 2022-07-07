@@ -62,55 +62,55 @@
 
 // if (averageScoreDolphins > averageScoreKoalas) {
 // 	// true
-// 	console.log("Dolphins win!");
+// 	console.log('Dolphins win!');
 // } else if (averageScoreDolphins === averageScoreKoalas) {
-// 	console.log("There is a draw!");
+// 	console.log('There is a draw!');
 // } else {
-// 	console.log("Koalas win!");
+// 	console.log('Koalas win!');
 // }
 
-// // Bonus 1
-// // const averageScoreDolphins = (97 + 112 + 101) / 3;
-// // console.log(averageScoreDolphins); // 103
-// // const averageScoreKoalas = (109 + 95 + 123) / 3;
-// // console.log(averageScoreKoalas); // 109
+// Bonus 1
+// const averageScoreDolphins = (97 + 112 + 101) / 3;
+// console.log(averageScoreDolphins); // 103
+// const averageScoreKoalas = (109 + 95 + 123) / 3;
+// console.log(averageScoreKoalas); // 109
 
-// // if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
-// // 	console.log("Dolphins win!");
-// // } else if (
-// // 	averageScoreKoalas > averageScoreDolphins &&
-// // 	averageScoreKoalas >= 100
-// // ) {
-// // 	// true
-// // 	console.log("Koalas win!");
-// // } else {
-// // 	console.log("No ones win!");
-// // }
+// if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
+// 	console.log('Dolphins win!');
+// } else if (
+// 	averageScoreKoalas > averageScoreDolphins &&
+// 	averageScoreKoalas >= 100
+// ) {
+// 	// true
+// 	console.log('Koalas win!');
+// } else {
+// 	console.log('No ones win!');
+// }
 
 // // Bonus 2
-// // const averageScoreDolphins = (97 + 112 + 101) / 3;
-// // console.log(averageScoreDolphins);
-// // const averageScoreKoalas = (109 + 95 + 106) / 3;
-// // console.log(averageScoreKoalas);
+// const averageScoreDolphins = (97 + 112 + 101) / 3;
+// console.log(averageScoreDolphins);
+// const averageScoreKoalas = (109 + 95 + 106) / 3;
+// console.log(averageScoreKoalas);
 
-// // if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
-// // 	// false
-// // 	console.log("Dolphins win!");
-// // } else if (
-// // 	averageScoreKoalas > averageScoreDolphins &&
-// // 	averageScoreKoalas >= 100
-// // ) {
-// // 	// false
-// // 	console.log("Koalas win!");
-// // } else if (
-// // 	(averageScoreDolphins === averageScoreKoalas && averageScoreDolphins,
-// // 	averageScoreKoalas >= 100)
-// // ) {
-// // 	// false
-// // 	console.log("There is a draw!");
-// // } else {
-// // 	console.log("No ones win!");
-// // }
+// if (averageScoreDolphins > averageScoreKoalas && averageScoreDolphins >= 100) {
+// 	// false
+// 	console.log('Dolphins win!');
+// } else if (
+// 	averageScoreKoalas > averageScoreDolphins &&
+// 	averageScoreKoalas >= 100
+// ) {
+// 	// false
+// 	console.log('Koalas win!');
+// } else if (
+// 	(averageScoreDolphins === averageScoreKoalas && averageScoreDolphins,
+// 	averageScoreKoalas >= 100)
+// ) {
+// 	// false
+// 	console.log('There is a draw!');
+// } else {
+// 	console.log('No ones win!');
+// }
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------------- */
