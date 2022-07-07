@@ -431,3 +431,85 @@
 // 		el.style.transform = 'scale(0.5)';
 // 	}
 // });
+
+// ======================================================================================= //
+// ======================================================================================= //
+// ========================== Refactoring / DRY avec les Events ========================== //
+// ======================================================================================= //
+// ======================================================================================= //
+
+// const navContainer = document.querySelector('.nav');
+
+// /* NOTE: Le Refactoring du code peut survenir après s'être rendu compte de la présence de code en doublon.
+//    Le principe de DRY (Dont Repeat Yourself) doit être appliqué. Dans le premier exemple ci-dessous,
+//    l'Event Handler se répète beaucoup (cf. Refactoring ci-après) */
+
+// /* ---------------------------- Sans Refactoring (sans DRY) ---------------------------- */
+
+// // navContainer.addEventListener('mouseover', function (e) {
+// //     if (e.target.classList.contains('nav__link')) {
+// //         const link = e.target;
+// // 		console.log(link);
+// // 		const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+// // 		console.log(siblings);
+// // 		const logo = link.closest('.nav').querySelector('img');
+// // 		console.log(logo);
+
+// // 		siblings.forEach((el) => {
+// //             if (el !== link) {
+// //                 el.style.opacity = 0.5;
+// // 			}
+// // 			logo.style.opacity = 0.5;
+// // 		});
+// // 	}
+// // });
+
+// // navContainer.addEventListener('mouseout', function (e) {
+// //     if (e.target.classList.contains('nav__link')) {
+// // 		const link = e.target;
+// // 		console.log(link);
+// // 		const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+// // 		console.log(siblings);
+// // 		const logo = link.closest('.nav').querySelector('img');
+// // 		console.log(logo);
+
+// // 		siblings.forEach((el) => {
+// // 			if (el !== link) {
+// //                 el.style.opacity = 1;
+// // 			}
+// // 			logo.style.opacity = 1;
+// // 		});
+// // 	}
+// // });
+
+// /* ---------------------------- Refactoring (DRY) ---------------------------- */
+
+// /* NOTE: Dans l'exemple précédent on va repérer les différences dans les 2 codes (la valeur de l'opacité),
+//    Ensuite on va créer une fonction qui va prendre en paramètre cette différence afin d'être modulaire et
+//    ré-utilisable avec différents arguments. */
+
+// /* Étape 1 - le code en doublon a été placé dans une fonction, avec l'opacité défini sur "this" (cf. Étape 2) */
+// const handleHover = function (e) {
+// 	if (e.target.classList.contains('nav__link')) {
+// 		const link = e.target;
+// 		console.log(link);
+// 		const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+// 		console.log(siblings);
+// 		const logo = link.closest('.nav').querySelector('img');
+// 		console.log(logo);
+
+// 		siblings.forEach((el) => {
+// 			if (el !== link) {
+// 				el.style.opacity = this;
+// 			}
+// 			logo.style.opacity = this;
+// 		});
+// 	}
+// };
+
+// /* Étape 2 - Call de la fonction contenant l'Event Handler en faisant appel à la .bind Method,
+// le "this" de la fonction contenant l'Event Handler pointera sur "l'argument" de la .bind Method */
+
+// navContainer.addEventListener('mouseover', handleHover.bind(0.5));
+
+// navContainer.addEventListener('mouseout', handleHover.bind(1));
