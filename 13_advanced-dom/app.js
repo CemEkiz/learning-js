@@ -120,9 +120,11 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 ////////////////////////////////////////////////////////////////////////////////
 // Sticky Navigation
 
+// 1. Get the height of the Navbar
 const navHeight = nav.getBoundingClientRect().height;
 // console.log(navHeight);
 
+// 2. Callback function for IntersectionObserver
 const stickyNav = function (entries) {
 	const [entry] = entries;
 	// console.log(entry);
@@ -134,10 +136,15 @@ const stickyNav = function (entries) {
 	}
 };
 
-const headerObserver = new IntersectionObserver(stickyNav, {
+// 3. Options for the IntersectionObserver
+const stickyNavOptions = {
 	root: null,
 	treshold: 0,
 	rootMargin: `-${navHeight}px`,
-});
+};
 
+// 4. Create the IntersectionObserver
+const headerObserver = new IntersectionObserver(stickyNav, stickyNavOptions);
+
+// 5. Call the IntersectionObserver Method (.observe)
 headerObserver.observe(header);
