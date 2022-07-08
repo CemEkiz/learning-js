@@ -550,7 +550,7 @@
 // /* NOTE: Il est possible d'entrer la Callback Function et les Options directement à l'intérieur de
 // l'IntersectionObserver API mais il est plus propre de les séparer dans des variables. */
 
-// // const section11 = document.querySelector('#section--1');
+// const section11 = document.querySelector('#section--1');
 
 // const obsCallback = function (entries, observer) {
 // 	entries.forEach((entry) => {
