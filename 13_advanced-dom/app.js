@@ -10,6 +10,7 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
+const header = document.querySelector('.header');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
@@ -68,8 +69,8 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 // With Event Delegation
 tabsContainer.addEventListener('click', function (e) {
 	const clicked = e.target.closest('.operations__tab');
-	console.log(clicked);
-	console.log(clicked.dataset.tab);
+	// console.log(clicked);
+	// console.log(clicked.dataset.tab);
 
 	// Guard Clause
 	if (!clicked) return;
@@ -97,11 +98,11 @@ tabsContainer.addEventListener('click', function (e) {
 const handleHover = function (e) {
 	if (e.target.classList.contains('nav__link')) {
 		const link = e.target;
-		console.log(link);
+		// console.log(link);
 		const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-		console.log(siblings);
+		// console.log(siblings);
 		const logo = link.closest('.nav').querySelector('img');
-		console.log(logo);
+		// console.log(logo);
 
 		siblings.forEach((el) => {
 			if (el !== link) {
@@ -115,3 +116,29 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+////////////////////////////////////////////////////////////////////////////////
+// Sticky Navigation
+
+const navHeight = nav.getBoundingClientRect().height;
+// console.log(navHeight);
+
+const stickyNav = function (entries) {
+	const [entry] = entries;
+	// console.log(entry);
+
+	if (!entry.isIntersecting) {
+		nav.classList.add('sticky');
+	} else {
+		nav.classList.remove('sticky');
+	}
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+	root: null,
+	treshold: 0,
+	rootMargin: `-${navHeight}px`,
+});
+ù;
+
+headerObserver.observe(header);
