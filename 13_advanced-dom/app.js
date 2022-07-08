@@ -11,6 +11,7 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
@@ -150,3 +151,40 @@ const headerObserver = new IntersectionObserver(stickyNav, stickyNavOptions);
 
 // 5. Call the IntersectionObserver Method (.observe)
 headerObserver.observe(header);
+
+////////////////////////////////////////////////////////////////////////////////
+// Reveal Sections on Scroll
+
+/* 1. Callback Function for the IntersectionObserver :
+- When a section is visible, remove the "section--hidden" class from it
+- When a section was observed, unobserve it for keeping performance */
+const revealSection = (entries, observer) => {
+	const [entry] = entries;
+	console.log(entry);
+
+	// Guard Clause
+	if (!entry.isIntersecting) return;
+
+	entry.target.classList.remove('section--hidden');
+
+	observer.unobserve(entry.target);
+};
+
+// 2. Options for the IntersectionObserver
+const revealSectionOptions = {
+	root: null,
+	threshold: 0.18,
+};
+
+// 3. Create the IntersectionObserver
+const sectionObserver = new IntersectionObserver(
+	revealSection,
+	revealSectionOptions
+);
+
+/* 4. - Call the IntersectionObserver Method (.observe)
+      - Add .section--hidden class to all sections */
+allSections.forEach((section) => {
+	sectionObserver.observe(section);
+	section.classList.add('section--hidden');
+});
