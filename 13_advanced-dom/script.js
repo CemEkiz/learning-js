@@ -513,3 +513,25 @@
 // navContainer.addEventListener('mouseover', handleHover.bind(0.5));
 
 // navContainer.addEventListener('mouseout', handleHover.bind(1));
+
+// ================================================================== //
+// ================================================================== //
+// ========================== scroll Event ========================== //
+// ================================================================== //
+// ================================================================== //
+
+// /* ---------------------------- With "scroll" Event ---------------------------- */
+// /* Déconseillé pour une Sticky Nav car manque de perf. */
+
+// const initialCords = section1.getBoundingClientRect();
+
+// window.addEventListener('scroll', function () {
+// 	// console.log(window.scrollY);
+// 	// console.log(initialCords);
+
+// 	if (window.scrollY > initialCords.top) {
+// 		nav.classList.add('sticky');
+// 	} else {
+// 		nav.classList.remove('sticky');
+// 	}
+// });
