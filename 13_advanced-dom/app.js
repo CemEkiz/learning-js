@@ -16,13 +16,13 @@ const allSections = document.querySelectorAll('.section');
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
 
-const openModal = function (e) {
+const openModal = (e) => {
 	e.preventDefault();
 	modal.classList.remove('hidden');
 	overlay.classList.remove('hidden');
 };
 
-const closeModal = function () {
+const closeModal = () => {
 	modal.classList.add('hidden');
 	overlay.classList.add('hidden');
 };
@@ -128,7 +128,7 @@ const navHeight = nav.getBoundingClientRect().height;
 /* 2. Callback function :
    - When the header is visible on the viewport, disable the Sticky Nav
    - When the header is ~ not visible on the viewport, enable the Sicky Nav */
-const stickyNav = function (entries) {
+const stickyNav = (entries) => {
 	const [entry] = entries;
 	// console.log(entry);
 
