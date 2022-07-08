@@ -535,3 +535,35 @@
 // 		nav.classList.remove('sticky');
 // 	}
 // });
+
+// =============================================================================== //
+// =============================================================================== //
+// ========================== Intersection Observer API ========================== //
+// =============================================================================== //
+// =============================================================================== //
+
+// /* NOTE: Il y a une Callback Function, des Options et une Target. Explication :
+// - Dès que la Target sort de l'intersection avec le root alors la Callback Function est lancée.
+// - Le treshold définissant le % acceptée
+// /* cf. Sticky Navigation du Projet Bankist DOM */
+
+// /* NOTE: Il est possible d'entrer la Callback Function et les Options directement à l'intérieur de
+// l'IntersectionObserver API mais il est plus propre de les séparer dans des variables. */
+
+// // const section11 = document.querySelector('#section--1');
+
+// const obsCallback = function (entries, observer) {
+// 	entries.forEach((entry) => {
+// 		console.log(entry);
+// 	});
+// };
+
+// const obsOptions = {
+// 	root: null,
+// 	treshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+
+// // Target
+// observer.observe(section11);
