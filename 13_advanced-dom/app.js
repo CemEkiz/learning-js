@@ -124,7 +124,9 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 const navHeight = nav.getBoundingClientRect().height;
 // console.log(navHeight);
 
-// 2. Callback function for IntersectionObserver
+/* 2. Callback function :
+   - When the header is visible on the viewport, disable the Sticky Nav
+   - When the header is ~ not visible on the viewport, enable the Sicky Nav */
 const stickyNav = function (entries) {
 	const [entry] = entries;
 	// console.log(entry);
