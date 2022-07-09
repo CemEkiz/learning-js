@@ -236,8 +236,8 @@ imgTargets.forEach((img) => {
 // Slider (Testimonial)
 
 // To work with a better overview
-document.querySelector('.slider').style.transform = 'scale(0.5)';
-document.querySelector('.slider').style.overflow = 'visible';
+// document.querySelector('.slider').style.transform = 'scale(0.5)';
+// document.querySelector('.slider').style.overflow = 'visible';
 
 // For Changing Slide
 let curSlide = 0;
