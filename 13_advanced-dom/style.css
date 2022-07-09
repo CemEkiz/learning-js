@@ -28,11 +28,11 @@ html {
 body {
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
-	color: #dddddd;
-	/* color: #444; */
+	/* color: #dddddd; */
+	color: #444;
 	line-height: 1.9;
-	background-color: #181818;
-	/* background-color: #f3f3f3; */
+	/* background-color: #181818; */
+	background-color: #f3f3f3;
 }
 
 /* GENERAL ELEMENTS */
@@ -476,8 +476,8 @@ h4 {
 }
 
 .dots__dot--active {
-	background-color: #fff;
-	/* background-color: #888; */
+	/* background-color: #fff; */
+	background-color: #282828;
 	opacity: 1;
 }
 
