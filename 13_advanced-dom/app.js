@@ -16,6 +16,7 @@ const imgTargets = document.querySelectorAll('img[data-src]');
 const slides = document.querySelectorAll('.slide');
 const btnLeft = document.querySelector('.slider__btn--left');
 const btnRight = document.querySelector('.slider__btn--right');
+const dotContainer = document.querySelector('.dots');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
@@ -245,17 +246,56 @@ let curSlide = 0;
 // For stop at the last slide
 const maxSlide = slides.length;
 
-// 1. For translate the X position of the slide
+// Create Dots below the Slider
+const createDots = function () {
+	slides.forEach(function (_, i) {
+		dotContainer.insertAdjacentHTML(
+			'beforeend',
+			`<button class="dots__dot" data-slide="${i}"></button>`
+		);
+	});
+};
+
+createDots();
+
+// Set a different color to the dot of the active slide
+const activateDot = function (slide) {
+	// Remove the active state to all dots
+	document
+		.querySelectorAll('.dots__dot')
+		.forEach((dot) => dot.classList.remove('dots__dot--active'));
+
+	// Add the active class to the active slide (using css attribute selector)
+	document
+		.querySelector(`.dots__dot[data-slide="${slide}"]`)
+		.classList.add('dots__dot--active');
+};
+
+// Activate Dot at the beginning
+activateDot(0);
+
+// Move to next and previous slide with dots
+dotContainer.addEventListener('click', function (e) {
+	if (e.target.classList.contains('dots__dot')) {
+		// console.log('dot');
+		const slide = e.target.dataset.slide;
+
+		goToSlide(slide);
+		activateDot(slide);
+	}
+});
+
+// For translate the X position of the slide
 const goToSlide = function (slide) {
 	slides.forEach((s, i) => {
 		s.style.transform = `translateX(${100 * (i - slide)}%)`;
 	});
 };
 
-// 2. TranslateX chacune des slides : le 1er à 0%, le 2ème à 100%, le 3ème à 200%, etc. */
+// TranslateX chacune des slides : le 1er à 0%, le 2ème à 100%, le 3ème à 200%, etc. */
 goToSlide(0);
 
-// 3. Move to next side
+// Move to next side
 const nextSlide = function () {
 	if (curSlide === maxSlide - 1) {
 		curSlide = 0;
@@ -264,11 +304,12 @@ const nextSlide = function () {
 	}
 
 	goToSlide(curSlide);
+	activateDot(curSlide);
 };
 
-console.log(slides.length);
+// console.log(slides.length);
 
-// 4. Move to previous slide
+// Move to previous slide
 const prevSlide = function () {
 	if (curSlide === 0) {
 		// curSlide = slides.length - 1;
@@ -280,8 +321,20 @@ const prevSlide = function () {
 	// curSlide--;
 
 	goToSlide(curSlide);
+	activateDot(curSlide);
 };
 
-// 5. Calling nextSlide and prevSlide on click
+// Calling nextSlide and prevSlide on click
 btnRight.addEventListener('click', nextSlide);
 btnLeft.addEventListener('click', prevSlide);
+
+// Calling nextSlide and prevSlide with Keyboard Shortcut
+document.addEventListener('keydown', function (e) {
+	// console.log(e);
+	if (e.key === 'ArrowLeft') {
+		prevSlide();
+	}
+
+	// with Short-Circuiting
+	// e.key === 'ArrowRight' && nextSlide();
+});
