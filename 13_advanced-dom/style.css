@@ -420,6 +420,22 @@ h4 {
 	width: 5.5rem;
 	font-size: 3.25rem;
 	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.slider__btn > svg {
+	fill: #444;
+}
+
+.chev-left {
+	margin-right: 0.5rem;
+}
+
+.chev-right {
+	margin-left: 0.5rem;
 }
 
 .slider__btn--left {
