@@ -13,6 +13,9 @@ const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 const imgTargets = document.querySelectorAll('img[data-src]');
+const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
@@ -187,7 +190,7 @@ const sectionObserver = new IntersectionObserver(
       - Add .section--hidden class to all sections */
 allSections.forEach((section) => {
 	sectionObserver.observe(section);
-	section.classList.add('section--hidden');
+	// section.classList.add('section--hidden');
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -228,3 +231,57 @@ const imgObserver = new IntersectionObserver(loadImg, loadImgOptions);
 imgTargets.forEach((img) => {
 	imgObserver.observe(img);
 });
+
+////////////////////////////////////////////////////////////////////////////////
+// Slider (Testimonial)
+
+// To work with a better overview
+document.querySelector('.slider').style.transform = 'scale(0.5)';
+document.querySelector('.slider').style.overflow = 'visible';
+
+// For Changing Slide
+let curSlide = 0;
+
+// For stop at the last slide
+const maxSlide = slides.length;
+
+// 1. For translate the X position of the slide
+const goToSlide = function (slide) {
+	slides.forEach((s, i) => {
+		s.style.transform = `translateX(${100 * (i - slide)}%)`;
+	});
+};
+
+// 2. TranslateX chacune des slides : le 1er à 0%, le 2ème à 100%, le 3ème à 200%, etc. */
+goToSlide(0);
+
+// 3. Move to next side
+const nextSlide = function () {
+	if (curSlide === maxSlide - 1) {
+		curSlide = 0;
+	} else {
+		curSlide++;
+	}
+
+	goToSlide(curSlide);
+};
+
+console.log(slides.length);
+
+// 4. Move to previous slide
+const prevSlide = function () {
+	if (curSlide === 0) {
+		// curSlide = slides.length - 1;
+		curSlide = maxSlide - 1;
+	} else {
+		curSlide--;
+	}
+
+	// curSlide--;
+
+	goToSlide(curSlide);
+};
+
+// 5. Calling nextSlide and prevSlide on click
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
