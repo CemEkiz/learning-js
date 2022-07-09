@@ -12,6 +12,7 @@ const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
+const imgTargets = document.querySelectorAll('img[data-src]');
 
 ////////////////////////////////////////////////////////////////////////////////
 // Modal Window
@@ -160,7 +161,7 @@ headerObserver.observe(header);
 - When a section was observed, unobserve it for keeping performance */
 const revealSection = (entries, observer) => {
 	const [entry] = entries;
-	console.log(entry);
+	// console.log(entry);
 
 	// Guard Clause
 	if (!entry.isIntersecting) return;
@@ -187,4 +188,43 @@ const sectionObserver = new IntersectionObserver(
 allSections.forEach((section) => {
 	sectionObserver.observe(section);
 	section.classList.add('section--hidden');
+});
+
+////////////////////////////////////////////////////////////////////////////////
+// Lazy Loading Images
+
+/* 1. Callback Function for the IntersectionObserver :
+   - Replace src with data-src
+   - Remove "lazy-img" class when the HQ image is load */
+const loadImg = (entries, observer) => {
+	const [entry] = entries;
+	console.log(entry);
+
+	// Guard Clause
+	if (!entry.isIntersecting) return;
+
+	entry.target.src = entry.target.dataset.src;
+
+	// entry.target.classList.remove('lazy-img');
+
+	entry.target.addEventListener('load', function () {
+		entry.target.classList.remove('lazy-img');
+	});
+
+	observer.unobserve(entry.target);
+};
+
+// 2. Options for the IntersectionObserver
+const loadImgOptions = {
+	root: null,
+	threshold: 0.2,
+	rootMargin: '200px',
+};
+
+// 3. Create the IntersectionObserver
+const imgObserver = new IntersectionObserver(loadImg, loadImgOptions);
+
+// 4. Call the IntersectionObserver Method (.observe)
+imgTargets.forEach((img) => {
+	imgObserver.observe(img);
 });
