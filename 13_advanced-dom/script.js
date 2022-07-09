@@ -567,3 +567,50 @@
 
 // // Target
 // observer.observe(section11);
+
+// =================================================================== //
+// =================================================================== //
+// ========================== Lazy Load Img ========================== //
+// =================================================================== //
+// =================================================================== //
+
+const imgTargets1 = document.querySelectorAll('img[data-src]');
+
+/* 1. Callback Function for the IntersectionObserver :
+   - Replace src with data-src */
+const loadImg1 = (entries, observer) => {
+	const [entry] = entries;
+	console.log(entry);
+
+	// Guard Clause
+	if (!entry.isIntersecting) return;
+
+	entry.target.src = entry.target.dataset.src;
+
+	// cf. vidéo 199, time 5:40
+	// Le fait de remplacer src par data-src va lancer un event "load"
+	// Si je retire la class lazy-img comme ci-dessous, pour les connexions lentes
+	// cela posera un problème car ils verront l'image lazy trop tôt
+	// car le blur sera retiré avant que l'image de bonne qualité soit load
+	// c'est pourquoi il faut créer un event handler avec l'event "load" pour
+	// attendre que le load arrive puis de retirer la classe "lazy-img"
+	entry.target.classList.remove('lazy-img');
+
+	entry.target.addEventListener('load', function () {});
+
+	observer.unobserve(entry.target);
+};
+
+// 2. Options for the IntersectionObserver
+const loadImgOptions1 = {
+	root: null,
+	threshold: 0,
+};
+
+// 3. Create the IntersectionObserver
+const imgObserver1 = new IntersectionObserver(loadImg1, loadImgOptions1);
+
+// 4. Call the IntersectionObserver Method (.observe)
+imgTargets1.forEach((img) => {
+	imgObserver1.observe(img);
+});
