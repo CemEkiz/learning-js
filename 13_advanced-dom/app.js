@@ -202,7 +202,7 @@ allSections.forEach((section) => {
    - Remove "lazy-img" class when the HQ image is load */
 const loadImg = (entries, observer) => {
 	const [entry] = entries;
-	console.log(entry);
+	// console.log(entry);
 
 	// Guard Clause
 	if (!entry.isIntersecting) return;
