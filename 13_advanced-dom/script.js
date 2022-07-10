@@ -574,43 +574,61 @@
 // =================================================================== //
 // =================================================================== //
 
-const imgTargets1 = document.querySelectorAll('img[data-src]');
+// const imgTargets1 = document.querySelectorAll('img[data-src]');
 
-/* 1. Callback Function for the IntersectionObserver :
-   - Replace src with data-src */
-const loadImg1 = (entries, observer) => {
-	const [entry] = entries;
-	console.log(entry);
+// /* 1. Callback Function for the IntersectionObserver :
+//    - Replace src with data-src */
+// const loadImg1 = (entries, observer) => {
+// 	const [entry] = entries;
+// 	console.log(entry);
 
-	// Guard Clause
-	if (!entry.isIntersecting) return;
+// 	// Guard Clause
+// 	if (!entry.isIntersecting) return;
 
-	entry.target.src = entry.target.dataset.src;
+// 	entry.target.src = entry.target.dataset.src;
 
-	// cf. vidéo 199, time 5:40
-	// Le fait de remplacer src par data-src va lancer un event "load"
-	// Si je retire la class lazy-img comme ci-dessous, pour les connexions lentes
-	// cela posera un problème car ils verront l'image lazy trop tôt
-	// car le blur sera retiré avant que l'image de bonne qualité soit load
-	// c'est pourquoi il faut créer un event handler avec l'event "load" pour
-	// attendre que le load arrive puis de retirer la classe "lazy-img"
-	entry.target.classList.remove('lazy-img');
+// 	// cf. vidéo 199, time 5:40
+// 	// Le fait de remplacer src par data-src va lancer un event "load"
+// 	// Si je retire la class lazy-img comme ci-dessous, pour les connexions lentes
+// 	// cela posera un problème car ils verront l'image lazy trop tôt
+// 	// car le blur sera retiré avant que l'image de bonne qualité soit load
+// 	// c'est pourquoi il faut créer un event handler avec l'event "load" pour
+// 	// attendre que le load arrive puis de retirer la classe "lazy-img"
+// 	entry.target.classList.remove('lazy-img');
 
-	entry.target.addEventListener('load', function () {});
+// 	entry.target.addEventListener('load', function () {});
 
-	observer.unobserve(entry.target);
-};
+// 	observer.unobserve(entry.target);
+// };
 
-// 2. Options for the IntersectionObserver
-const loadImgOptions1 = {
-	root: null,
-	threshold: 0,
-};
+// // 2. Options for the IntersectionObserver
+// const loadImgOptions1 = {
+// 	root: null,
+// 	threshold: 0,
+// };
 
-// 3. Create the IntersectionObserver
-const imgObserver1 = new IntersectionObserver(loadImg1, loadImgOptions1);
+// // 3. Create the IntersectionObserver
+// const imgObserver1 = new IntersectionObserver(loadImg1, loadImgOptions1);
 
-// 4. Call the IntersectionObserver Method (.observe)
-imgTargets1.forEach((img) => {
-	imgObserver1.observe(img);
-});
+// // 4. Call the IntersectionObserver Method (.observe)
+// imgTargets1.forEach((img) => {
+// 	imgObserver1.observe(img);
+// });
+
+// ========================================================================================== //
+// ========================================================================================== //
+// ========================== Lifecycle DOM Events and defer/async ========================== //
+// ========================================================================================== //
+// ========================================================================================== //
+
+// // Cet événement est le chargement (complet) du DOM Tree
+// document.addEventListener('DOMContentLoaded', function (e) {
+// 	console.log('HTML parsed and DOM tree built!', e);
+// });
+// /* NOTE: Il est donc logique de lancer le script JS uniquement après le chargement complet du
+// DOM Tree, c'est pourquoi il faut toujours mettre le script à la fin du document HTML. */
+
+// // Cet événenement est le chargement complet de la page avec les ressources externes (images, etc.)
+// window.addEventListener('load', function (e) {
+// 	console.log('Page fully loaded', e);
+// });
