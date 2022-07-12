@@ -83,3 +83,70 @@
 // // La propriété "species" n'est pas vraiment dans l'object cem mais elle y a accès grâce au Prototypal Inheritence
 // console.log(cem); // cf. Console
 // console.log(cem.hasOwnProperty('species')); // false
+
+// =============================================================================================== //
+// =============================================================================================== //
+// ========================== Prototypal Inheritence on Built-in Object ========================== //
+// =============================================================================================== //
+// =============================================================================================== //
+
+// const Person = function (firstName, birthYear) {
+// 	this.firstName = firstName;
+// 	this.birthYear = birthYear;
+// };
+
+// Person.prototype.calcAge = function () {
+// 	console.log(2022 - this.birthYear);
+// };
+
+// const cem = new Person('Cem', 1996);
+
+// Person.prototype.species = 'Homo Sapiens';
+
+// /* ---------------------------- Prototype Chain ---------------------------- */
+
+// // Remontons la Prototype Chain de l'Object cem de 1 lvl
+// console.log(cem.__proto__); // Person.prototype
+
+// // Remontons la Prototype Chain de l'Object cem de 2 lvl
+// console.log(cem.__proto__.__proto__); // Object.prototype
+
+// // Remontons la la Prototype Chain de l'Object cem de 3 lvl
+// console.log(cem.__proto__.__proto__.__proto__); // null
+
+// console.dir(Person.prototype.constructor); // cf. Console
+
+// /* ---------------------------- Array object ---------------------------- */
+
+// /* NOTE: L'Array object contient la propriété length, les methods forEach, flatMap, map, pop, push...
+// Donc tous les arrays qui sont crée peuvent utiliser ces methods et accéder aux propriété de l'Array object
+// grâce au Prototype Inheritance */
+
+// const arr = [3, 3, 3, 4, 5, 7, 5, 6, 5];
+
+// console.log(arr.__proto__); // Array prototype
+// console.log(arr.__proto__ === Array.prototype); // true
+// console.log(arr.__proto__.__proto__); // Object prototype
+
+// // Créer une method dans Array.prototype (déconseillé)
+// Array.prototype.unique = function () {
+// 	return [...new Set(this)];
+// };
+
+// console.log(arr.unique()); // (5) [3, 4, 5, 7, 6]
+
+// /* NOTE: Pourquoi est-ce déconseillé d'ajouter des Methods à Array.prototype ?
+// 1. Car les devs de JS pourraient ajouter des nouvelles features/methods ayant le même nom que j'ai donné à
+// une de mes methods, et cela pourrait break le code.
+// 2. En travail d'équipe, cela porterait à confusion car chacun appelerait ses methods différement, etc. */
+
+// /* ---------------------------- More examples ---------------------------- */
+
+// const h1 = document.querySelector('h1');
+// console.dir(h1); // cf. Console
+// console.log(h1.__proto__); // HTMLHeadingElement
+// console.log(h1.__proto__.__proto__); // HTMLElement
+// console.log(h1.__proto__.__proto__.__proto__); // Element
+// console.log(h1.__proto__.__proto__.__proto__.__proto__); // Node
+// console.log(h1.__proto__.__proto__.__proto__.__proto__.__proto__); // EventTarget
+// console.log(h1.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__); // Object
