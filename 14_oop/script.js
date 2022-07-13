@@ -1,42 +1,5 @@
 'use strict';
 
-// ================================================================================================ //
-// ================================================================================================ //
-// ========================== Constructor Functions and the new Operator ========================== //
-// ================================================================================================ //
-// ================================================================================================ //
-
-// // Une Constructor Function
-// const Person = function (firstName, birthYear) {
-// 	this.firstName = firstName;
-// 	this.birthYear = birthYear;
-
-// 	// Ne JAMAIS ajouter une fonction à l'intérieur d'un Prototype (car mauvaise perf.)
-// 	// À la place on va utiliser la Prototypal Inheritance !
-// 	// this.calcAge = function () {
-// 	// 	console.log(2037 - this.birthYear);
-// 	// };
-// };
-
-// // Call de la Constructor Function
-// const cem = new Person('Cem', 1996);
-// const matilda = new Person('Matilda', 2017);
-// const jack = new Person('Jack', 1975);
-// console.log(cem); // Person {firstName: 'Cem', birthYear: 1996}
-// console.log(matilda); // Person {firstName: 'Matilda', birthYear: 2017}
-// console.log(jack); // Person {firstName: 'Jack', birthYear: 1975}
-
-// console.log(cem instanceof Person); // true
-// console.log(matilda instanceof Person); // true
-// console.log(jack instanceof Person); // true
-
-// // NOTE:
-// /* Lors de l'appel de la fonction avec "new"
-//    1. Nouvel Object vide {} est crée
-//    2. Function est call, "this" pointe vers le nouvel Object vide {}
-//    3. L'Object vide {} est lié à un Prototype (cf. section suivante)
-//    4. La fonction retourne automatiquement l'Object vide {} */
-
 // ================================================================ //
 // ================================================================ //
 // ========================== Prototypes ========================== //
@@ -55,11 +18,30 @@
 // 	console.log(2022 - this.birthYear);
 // };
 
+// /* NOTE: Ne JAMAIS attribuer une fonction à l'intérieur d'un Prototype object, à la place
+// on va faire comme ci-dessus pour ajouter une fonction. Les objects (instances) crée à partir
+// de ce prototype n'auront pas cette fonction au moment de leur création (= meilleur perf.) mais
+// elle pourront accéder à la fonction grâce au Prototypal Inheritence */
+
 // // Le prototype contient bien les propriétés firstName, birthYear et la method calcAge
 // console.log(Person.prototype); // cf. Console
 
 // /* 3. Créer un Object (instance) à partir d'un prototype avec le Constructor "new"  */
 // const cem = new Person('Cem', 1996);
+// const matilda = new Person('Matilda', 2017);
+// const jack = new Person('Jack', 1975);
+// console.log(cem); // Person {firstName: 'Cem', birthYear: 1996}
+// console.log(matilda); // Person {firstName: 'Matilda', birthYear: 2017}
+// console.log(jack); // Person {firstName: 'Jack', birthYear: 1975}
+// console.log(cem instanceof Person); // true
+// console.log(matilda instanceof Person); // true
+// console.log(jack instanceof Person); // true
+
+// /* NOTE: Lors de l'appel de la fonction avec "new"
+//    1. Nouvel Object vide {} est crée
+//    2. Function est call, "this" pointe vers le nouvel Object vide {}
+//    3. L'Object vide {} est lié à un Prototype (cf. section suivante)
+//    4. La fonction retourne automatiquement l'Object vide {} */
 
 // /* 4. Utiliser la method attribué au prototype Person sur un Object */
 // cem.calcAge(); // 26
@@ -67,8 +49,8 @@
 // // L'object (instance) a pu utiliser calcAge() grâce au Prototypal Inheritence (son prototype => Person)
 // console.log(cem); // Person {firstName: 'Jonas', birthYear: 1991}
 
-// // /!\ Person.prototype n'est PAS le prototype de Person (le keyword "prototype" est trompeur)
-// // Par contre c'est le prototype de l'object lié comme l'object "cem" par exemple
+// /* NOTE: /!\ Person.prototype n'est PAS le prototype de Person (le keyword "prototype" est trompeur)
+//    Par contre c'est le prototype de l'object lié comme l'object "cem" par exemple */
 // console.log(cem.__proto__); // {calcAge: ƒ, constructor: ƒ}
 // console.log(cem.__proto__ === Person.prototype); // true
 // console.log(Person.prototype.isPrototypeOf(cem)); // true
