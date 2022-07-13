@@ -72,10 +72,12 @@
 // =============================================================================================== //
 // =============================================================================================== //
 
-// const Person = function (firstName, birthYear) {
-// 	this.firstName = firstName;
-// 	this.birthYear = birthYear;
-// };
+// class Person {
+//     constructor(firstName, birthYear) {
+//         this.firstName = firstName;
+//         this.birthYear = birthYear;
+//     }
+// }
 
 // Person.prototype.calcAge = function () {
 // 	console.log(2022 - this.birthYear);
@@ -132,3 +134,46 @@
 // console.log(h1.__proto__.__proto__.__proto__.__proto__); // Node
 // console.log(h1.__proto__.__proto__.__proto__.__proto__.__proto__); // EventTarget
 // console.log(h1.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__); // Object
+
+// ================================================================= //
+// ================================================================= //
+// ========================== ES6 Classes ========================== //
+// ================================================================= //
+// ================================================================= //
+
+// // Old way
+// // const PersonCl = function (firstName, birthYear) {
+// // };
+
+// // class expression
+// // const PersonCl = class {
+// // 	constructor(firstName, birthYear) {}
+// // };
+
+// // class declaration
+// class PersonCl {
+// 	constructor(firstName, birthYear) {
+// 		this.firstName = firstName;
+// 		this.birthYear = birthYear;
+// 	}
+
+// 	/* NOTE: Écrire une Method ici revient à l'écrire à l'extérieur, elle ne sera pas ajouté au nouvelle instance
+// 	Mais la Method sera ajouté au prototype et donc accessible/utilisable par les nouvelles instances */
+// 	calcAge() {
+// 		console.log(2037 - this.birthYear);
+// 	}
+// }
+
+// // La création d'instance n'a pas changé
+// const jessica = new PersonCl('Jessica', 1996);
+
+// console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
+
+// jessica.calcAge(); // 41
+
+// console.log(jessica.__proto__ === PersonCl.prototype); // true
+
+// /* NOTE:
+//    1. Classes are NOT hoisted
+//    2. Class are first-class citizens
+//    3. Classes are executed in strict mode */
