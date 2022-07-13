@@ -141,62 +141,108 @@
 // ================================================================= //
 // ================================================================= //
 
-/* NOTE:
-   1. Classes are NOT hoisted
-   2. Class are first-class citizens
-   3. Classes are executed in strict mode */
+// /* NOTE:
+//    1. Classes are NOT hoisted
+//    2. Class are first-class citizens
+//    3. Classes are executed in strict mode */
 
-// constructor function (Old way)
-// const PersonCl = function (firstName, birthYear) {
+// /* NOTE: instance method VS static method
+//    - Les instance method sont liés aux nouvelles instances (object) crée
+//    - Les static method sont liés aux prototypes elles-même (ex: Array.from ne peut pas être utilisé
+//    sur les arrays crée à partir de l'Object Array mais que sur l'Array Object lui-même) */
+
+// /* ---------------------------- ES6 Classes ---------------------------- */
+
+// // class expression (New way)
+// // const PersonCl = class {
+// // 	constructor(firstName, birthYear) {}
+// // };
+
+// // class declaration (New way)
+// class PersonCl {
+// 	constructor(fullName, birthYear) {
+// 		this.fullName = fullName;
+// 		this.birthYear = birthYear;
+// 	}
+
+// 	/* NOTE: Écrire une Method ici revient à l'écrire à l'extérieur, elle ne sera pas ajouté au nouvelle instance
+// 	Mais la Method sera ajouté au prototype et donc accessible/utilisable par les nouvelles instances */
+
+// 	// Instance Method
+// 	calcAge() {
+// 		console.log(2037 - this.birthYear);
+// 	}
+
+// 	// Static Method
+// 	static hey() {
+// 		console.log('Hey there');
+// 		// console.log(this);
+// 	}
+
+// 	// Getter
+// 	get age() {
+// 		return 2037 - this.birthYear;
+// 	}
+
+// 	// Getter (pour le Setter fullname afin d'éviter conflit)
+// 	get fullName() {
+// 		return this._fullName;
+// 	}
+
+// 	// Setter avec une propriété déjà existante
+// 	set fullName(name) {
+// 		if (name.includes(' ')) {
+// 			this._fullName = name;
+// 		} else {
+// 			alert(`${name} is not a full name`);
+// 		}
+// 	}
+// }
+
+// // La création d'instance n'a pas changé
+// const jessica = new PersonCl('Jessica Davis', 1996);
+// // const walter = new PersonCl('Walter', 1980);
+
+// // Instance Method
+// console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
+// jessica.calcAge(); // 41
+
+// // Static Method
+// PersonCl.hey(); // Hey there
+// // jessica.hey(); // TypeError
+
+// // Setters and Getters
+// console.log(jessica.age); // 41
+// console.log(jessica._fullName); // Jessica Davis
+// console.log(jessica.fullName); // Jessica Davis
+
+// console.log(jessica.__proto__ === PersonCl.prototype); // true
+
+// /* ---------------------------- Constructor Function ---------------------------- */
+// // Pour comparaison avec ES6 Classes
+
+// // Constructor Function
+// const Person = function (firstName, birthYear) {
+// 	this.firstName = firstName;
+// 	this.birthYear = birthYear;
 // };
 
-// class expression (New way)
-// const PersonCl = class {
-// 	constructor(firstName, birthYear) {}
+// // Création d'un object (instance)
+// const cem = new Person('Cem', 1996);
+
+// // Ajout d'une instance method
+// Person.prototype.calcAge = function () {
+// 	console.log(2022 - this.birthYear);
 // };
 
-// class declaration (New way)
-class PersonCl {
-	constructor(fullName, birthYear) {
-		this.fullName = fullName;
-		this.birthYear = birthYear;
-	}
+// // Ajout d'une static method
+// Person.hey = function () {
+// 	console.log('Hey there');
+// 	// console.log(this);
+// };
 
-	/* NOTE: Écrire une Method ici revient à l'écrire à l'extérieur, elle ne sera pas ajouté au nouvelle instance
-	Mais la Method sera ajouté au prototype et donc accessible/utilisable par les nouvelles instances */
-	calcAge() {
-		console.log(2037 - this.birthYear);
-	}
+// // Call Instance Method
+// cem.calcAge(); // 26
 
-	// Getter
-	get age() {
-		return 2037 - this.birthYear;
-	}
-
-	// Getter (pour le Setter fullname afin d'éviter conflit)
-	get fullName() {
-		return this._fullName;
-	}
-
-	// Setter avec une propriété déjà existante
-	set fullName(name) {
-		if (name.includes(' ')) {
-			this._fullName = name;
-		} else {
-			alert(`${name} is not a full name`);
-		}
-	}
-}
-
-// La création d'instance n'a pas changé
-const jessica = new PersonCl('Jessica Davis', 1996);
-// const walter = new PersonCl('Walter', 1980);
-
-console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
-jessica.calcAge(); // 41
-console.log(jessica.__proto__ === PersonCl.prototype); // true
-
-// Setters and Getters
-console.log(jessica.age); // 41
-console.log(jessica._fullName); // Jessica Davis
-console.log(jessica.fullName); // Jessica Davis
+// // Call Static Method
+// Person.hey(); // Hey there
