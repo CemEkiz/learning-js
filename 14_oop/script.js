@@ -287,3 +287,58 @@
 // sarah.init('Sarah', 1979);
 
 // sarah.calcAge(); // 58
+
+// ================================================================================= //
+// ================================================================================= //
+// ========================== Inheritance between Classes ========================== //
+// ================================================================================= //
+// ================================================================================= //
+
+// /* On va utiliser la Constructor Function pour le moment pour mieux comprendre le fonctionnement
+// de l’héritage entre les Classes. (cf. plus bas pour la version avec ES6 Classes) */
+
+// /* ---------------------------- with Constructor Function ---------------------------- */
+
+// const Person = function (firstName, birthYear) {
+// 	this.firstName = firstName;
+// 	this.birthYear = birthYear;
+// };
+
+// Person.prototype.calcAge = function () {
+// 	console.log(2037 - this.birthYear);
+// };
+
+// /* NOTE: Lorsqu'on attribue les propriétés/methods de Person à Student il faut rediriger le "this" Keyword
+// vers Student grâce à la method .call ainsin Student aura les mêmes propriétés/methods que Person + celles
+// qui sont spécifiques à Student */
+// const Student = function (firstName, birthYear, course) {
+// 	Person.call(this, firstName, birthYear);
+// 	this.course = course;
+// };
+
+// /* NOTE: Cela permet de créer une connexion entre Student et Person. Il faut faire cela avant d'ajouter
+// de nouvelles methods (comme ci-dessous avec .introduce) à la class Student sinon -> overwrite. */
+// Student.prototype = Object.create(Person.prototype);
+
+// Student.prototype.introduce = function () {
+// 	console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+
+// const mike = new Student('Mike', 2020, 'Computer Science');
+// console.log(mike); // Student {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
+// mike.introduce(); // My name is Mike and I study Computer Science
+// mike.calcAge(); // 17
+
+// /* ---------------------------- Tests / Ajustements ---------------------------- */
+
+// console.log(mike.__proto__); // cf. Console
+// console.log(mike.__proto__.__proto__); // cf. Console
+
+// console.log(mike instanceof Student); // true
+// console.log(mike instanceof Person); // true
+// console.log(mike instanceof Object); // true
+
+// // Redéfinir le constructor de Student sur le bon
+// console.dir(Student.prototype.constructor); // Person
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor); // Student
