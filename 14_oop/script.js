@@ -246,3 +246,44 @@
 
 // // Call Static Method
 // Person.hey(); // Hey there
+
+// =================================================================== //
+// =================================================================== //
+// ========================== Object.create ========================== //
+// =================================================================== //
+// =================================================================== //
+
+// const PersonProto = {
+// 	calcAge() {
+// 		console.log(2037 - this.birthYear);
+// 	},
+
+// 	init(firstName, birthYear) {
+// 		this.firstName = firstName;
+// 		this.birthYear = birthYear;
+// 	},
+// };
+
+// /* Exemple 1 */
+
+// // On crée l'object "steven" et on définit son prototype à "PersonProto"
+// // À noter qu'il n'y pas le keyword "new"
+// const steven = Object.create(PersonProto);
+
+// console.log(steven); // cf. Console
+// console.log(steven.__proto__ === PersonProto); // true
+
+// // C'est une mauvaise pratique de créer des propriétés de cette manière (cf. Exemple 2 à la place)
+// steven.name = 'Steven';
+// steven.birthYear = 2002;
+
+// steven.calcAge(); // 35
+
+// /* Exemple 2 */
+
+// const sarah = Object.create(PersonProto);
+
+// // J'ai crée une "Constructor Function" manuellement alors que d'hab c'est automatique (cf. ES6 Classes / Constructor Function)
+// sarah.init('Sarah', 1979);
+
+// sarah.calcAge(); // 58
