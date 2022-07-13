@@ -141,64 +141,62 @@
 // ================================================================= //
 // ================================================================= //
 
-// // constructor function (Old way)
-// // const PersonCl = function (firstName, birthYear) {
-// // };
+/* NOTE:
+   1. Classes are NOT hoisted
+   2. Class are first-class citizens
+   3. Classes are executed in strict mode */
 
-// // class expression (New way)
-// // const PersonCl = class {
-// // 	constructor(firstName, birthYear) {}
-// // };
+// constructor function (Old way)
+// const PersonCl = function (firstName, birthYear) {
+// };
 
-// // class declaration (New way)
-// class PersonCl {
-// 	constructor(fullName, birthYear) {
-// 		this.fullName = fullName;
-// 		this.birthYear = birthYear;
-// 	}
+// class expression (New way)
+// const PersonCl = class {
+// 	constructor(firstName, birthYear) {}
+// };
 
-// 	/* NOTE: Écrire une Method ici revient à l'écrire à l'extérieur, elle ne sera pas ajouté au nouvelle instance
-// 	Mais la Method sera ajouté au prototype et donc accessible/utilisable par les nouvelles instances */
-// 	calcAge() {
-// 		console.log(2037 - this.birthYear);
-// 	}
+// class declaration (New way)
+class PersonCl {
+	constructor(fullName, birthYear) {
+		this.fullName = fullName;
+		this.birthYear = birthYear;
+	}
 
-// 	// Getter
-// 	get age() {
-// 		return 2037 - this.birthYear;
-// 	}
+	/* NOTE: Écrire une Method ici revient à l'écrire à l'extérieur, elle ne sera pas ajouté au nouvelle instance
+	Mais la Method sera ajouté au prototype et donc accessible/utilisable par les nouvelles instances */
+	calcAge() {
+		console.log(2037 - this.birthYear);
+	}
 
-// 	// Getter (pour le Setter fullname afin d'éviter conflit)
-// 	get fullName() {
-// 		return this._fullName;
-// 	}
+	// Getter
+	get age() {
+		return 2037 - this.birthYear;
+	}
 
-// 	// Setter avec une propriété déjà existante
-// 	set fullName(name) {
-// 		if (name.includes(' ')) {
-// 			this._fullName = name;
-// 		} else {
-// 			alert(`${name} is not a full name`);
-// 		}
-// 	}
-// }
+	// Getter (pour le Setter fullname afin d'éviter conflit)
+	get fullName() {
+		return this._fullName;
+	}
 
-// // La création d'instance n'a pas changé
-// const jessica = new PersonCl('Jessica Davis', 1996);
-// // const walter = new PersonCl('Walter', 1980);
+	// Setter avec une propriété déjà existante
+	set fullName(name) {
+		if (name.includes(' ')) {
+			this._fullName = name;
+		} else {
+			alert(`${name} is not a full name`);
+		}
+	}
+}
 
-// console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
+// La création d'instance n'a pas changé
+const jessica = new PersonCl('Jessica Davis', 1996);
+// const walter = new PersonCl('Walter', 1980);
 
-// jessica.calcAge(); // 41
+console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
+jessica.calcAge(); // 41
+console.log(jessica.__proto__ === PersonCl.prototype); // true
 
-// console.log(jessica.age); // 41
-
-// console.log(jessica._fullName); // Jessica Davis
-// console.log(jessica.fullName); // Jessica Davis
-
-// console.log(jessica.__proto__ === PersonCl.prototype); // true
-
-// /* NOTE:
-//    1. Classes are NOT hoisted
-//    2. Class are first-class citizens
-//    3. Classes are executed in strict mode */
+// Setters and Getters
+console.log(jessica.age); // 41
+console.log(jessica._fullName); // Jessica Davis
+console.log(jessica.fullName); // Jessica Davis
