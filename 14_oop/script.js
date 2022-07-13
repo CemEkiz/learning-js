@@ -141,19 +141,19 @@
 // ================================================================= //
 // ================================================================= //
 
-// // Old way
+// // constructor function (Old way)
 // // const PersonCl = function (firstName, birthYear) {
 // // };
 
-// // class expression
+// // class expression (New way)
 // // const PersonCl = class {
 // // 	constructor(firstName, birthYear) {}
 // // };
 
-// // class declaration
+// // class declaration (New way)
 // class PersonCl {
-// 	constructor(firstName, birthYear) {
-// 		this.firstName = firstName;
+// 	constructor(fullName, birthYear) {
+// 		this.fullName = fullName;
 // 		this.birthYear = birthYear;
 // 	}
 
@@ -162,14 +162,39 @@
 // 	calcAge() {
 // 		console.log(2037 - this.birthYear);
 // 	}
+
+// 	// Getter
+// 	get age() {
+// 		return 2037 - this.birthYear;
+// 	}
+
+// 	// Getter (pour le Setter fullname afin d'éviter conflit)
+// 	get fullName() {
+// 		return this._fullName;
+// 	}
+
+// 	// Setter avec une propriété déjà existante
+// 	set fullName(name) {
+// 		if (name.includes(' ')) {
+// 			this._fullName = name;
+// 		} else {
+// 			alert(`${name} is not a full name`);
+// 		}
+// 	}
 // }
 
 // // La création d'instance n'a pas changé
-// const jessica = new PersonCl('Jessica', 1996);
+// const jessica = new PersonCl('Jessica Davis', 1996);
+// // const walter = new PersonCl('Walter', 1980);
 
 // console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
 
 // jessica.calcAge(); // 41
+
+// console.log(jessica.age); // 41
+
+// console.log(jessica._fullName); // Jessica Davis
+// console.log(jessica.fullName); // Jessica Davis
 
 // console.log(jessica.__proto__ === PersonCl.prototype); // true
 
