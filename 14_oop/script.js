@@ -518,3 +518,81 @@
 
 // /* NOTE: Résumé
 //    - Données protégées : les propriétés _movements, _pin et la method _approveLoan */
+
+// ================================================================================================== //
+// ================================================================================================== //
+// ========================== Encapsulation : Private Properties/Methods ========================== //
+// ================================================================================================== //
+// ================================================================================================== //
+
+// /* NOTE: Pour rendre une donnée privée il faut la déclarer en dehors du constructor précédé d'un #
+//    (avec pin on doit le garder à l'intérieur du constructor car il utilise l'argument "pin" du constructor
+//    mais il faut tout de même le déclarer à l'extérieur avec un #) */
+
+// // 1) Public fields
+// // 2) Private fields
+// // 3) Public methods
+// // 4) Private methods
+// // Il existe aussi les static version (donc 8 au total)
+
+// class Account {
+// 	// 1) Public fields (instances)
+// 	locale = navigator.language;
+
+// 	// 2) Private fields
+// 	#movements = [];
+// 	#pin;
+
+// 	// 3) Public methods
+// 	// On laisse comme c'est
+
+// 	constructor(owner, currency, pin) {
+// 		this.owner = owner;
+// 		this.currency = currency;
+// 		// this.locale = navigator.language;
+// 		this._pin = pin;
+// 		// this._movements = [];
+
+// 		console.log(`Thanks for opening an account, ${owner}`);
+// 	}
+
+// 	getMovement() {
+// 		return this.#movements;
+// 	}
+
+// 	deposit(val) {
+// 		this.#movements.push(val);
+// 	}
+
+// 	withdraw(val) {
+// 		this.deposit(-val);
+// 	}
+
+// 	requestLoan(val) {
+// 		if (this.#approveLoan(val)) {
+// 			this.deposit(val);
+// 			console.log(`Loan approved`);
+// 		}
+// 	}
+
+// 	// 4) Private Methods (non supporté pour le moment)
+// 	#approveLoan(val) {
+// 		return true;
+// 	}
+// }
+
+// const acc1 = new Account('Jonas', 'EUR', 1111, []);
+// console.log(acc1);
+
+// acc1.deposit(250);
+// acc1.withdraw(140);
+// acc1.requestLoan(1000); // Loan approved
+// console.log(acc1); // Account {owner: 'Jonas', currency: 'EUR', pin: 1111, movements: Array(3), locale: 'fr'}
+// console.log(acc1.getMovement()); // (3) [250, -140, 1000]
+
+// // Lorsqu'on essaie d'accéder à une private field
+// // console.log(acc1.#movements); // SyntaxError: Private field...
+// // console.log(acc1.#pin); // SyntaxError: Private field...
+
+// // Lorsqu'on essaie d'accéder à une private method
+// // console.log(acc1.#approveLoan(1000)); // SyntaxError: Private field...
