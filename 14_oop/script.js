@@ -329,8 +329,6 @@
 // mike.introduce(); // My name is Mike and I study Computer Science
 // mike.calcAge(); // 17
 
-// /* ---------------------------- Tests / Ajustements ---------------------------- */
-
 // console.log(mike.__proto__); // cf. Console
 // console.log(mike.__proto__.__proto__); // cf. Console
 
@@ -342,3 +340,82 @@
 // console.dir(Student.prototype.constructor); // Person
 // Student.prototype.constructor = Student;
 // console.dir(Student.prototype.constructor); // Student
+
+// /* ---------------------------- with ES6 Classes ---------------------------- */
+// /* NOTE: - En pratique il est mieux d'utiliser les ES6 Classes plutôt que les Constructor Function
+//          - Mais les ES6 Classes ont un haut niveau d'abstraction donc si j'ai besoin de comprendre
+//          le fonctionnement de qqch. je dois me référer aux Constructor Functions.*/
+
+// class PersonCl {
+// 	constructor(fullName, birthYear) {
+// 		this.fullName = fullName;
+// 		this.birthYear = birthYear;
+// 	}
+
+// 	// Instance Method
+// 	calcAge() {
+// 		console.log(2022 - this.birthYear);
+// 	}
+
+// 	// Static Method
+// 	static hey() {
+// 		console.log('Hey there');
+// 		// console.log(this);
+// 	}
+
+// 	// Getter
+// 	get age() {
+// 		return 2022 - this.birthYear;
+// 	}
+
+// 	// Getter (pour le Setter fullname afin d'éviter conflit)
+// 	get fullName() {
+// 		return this._fullName;
+// 	}
+
+// 	// Setter avec une propriété déjà existante
+// 	set fullName(name) {
+// 		if (name.includes(' ')) {
+// 			this._fullName = name;
+// 		} else {
+// 			alert(`${name} is not a full name`);
+// 		}
+// 	}
+// }
+
+// /* NOTE: On peut créer un prototype et lui faire hériter des propriétés/methods d'un autre prototype
+//    sans forcément ajouter de nouvelles propriétés/methods + spécifiques (cf. martha) */
+// class MiniStudentCl extends PersonCl {}
+
+// class StudentCl extends PersonCl {
+// 	constructor(fullName, birthYear, course) {
+// 		// Toujours à faire en premier car cela crée le this keyword
+// 		super(fullName, birthYear);
+// 		this.course = course;
+// 	}
+
+// 	introduce() {
+// 		console.log(`My name is ${this.fullName} and I study ${this.course}`);
+// 	}
+
+// 	calcAge() {
+// 		console.log(
+// 			`I'm ${
+// 				2022 - this.birthYear
+// 			} years old, but as a student I feel more like ${
+// 				2022 - this.birthYear + 10
+// 			}`
+// 		);
+// 	}
+// }
+
+// const martha = new MiniStudentCl('Martha Jones', 2012);
+// console.log(martha); // MiniStudentCl {fullName: 'Martha Jonas', birthYear: 2012}
+// console.log(martha.__proto__); // PersonCl
+
+// const alex = new StudentCl('Alex Scott', 2003, 'Computer Science');
+// console.log(alex); // StudentCl {fullName: 'Alex Scott', birthYear: 2003, course: 'Computer Science'}
+// console.log(alex.__proto__); // PersonCl
+
+// alex.introduce(); // 19
+// alex.calcAge(); // 19
