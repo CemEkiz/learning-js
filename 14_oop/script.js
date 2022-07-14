@@ -419,3 +419,36 @@
 
 // alex.introduce(); // 19
 // alex.calcAge(); // 19
+
+// /* ---------------------------- with Object.create ---------------------------- */
+// /* NOTE: Cette technique est la plus pratique/simple mais c'est la moins utilisée dans la réalité */
+
+// const PersonProto = {
+// 	calcAge() {
+// 		console.log(2022 - this.birthYear);
+// 	},
+
+// 	init(firstName, birthYear) {
+// 		this.firstName = firstName;
+// 		this.birthYear = birthYear;
+// 	},
+// };
+
+// const steven = Object.create(PersonProto);
+
+// const StudentProto = Object.create(PersonProto);
+
+// StudentProto.init = function (firstName, birthYear, course) {
+// 	PersonProto.init.call(this, firstName, birthYear);
+// 	this.course = course;
+// };
+
+// StudentProto.introduce = function () {
+// 	console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+
+// const jay = Object.create(StudentProto);
+// jay.init('Jay', 1995, 'Computer Science');
+// console.log(jay); // {firstName: 'Jay', birthYear: 2010, course: 'Computer Science'}
+// jay.introduce();
+// jay.calcAge();
