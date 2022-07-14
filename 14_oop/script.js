@@ -453,38 +453,46 @@
 // jay.introduce();
 // jay.calcAge();
 
-// ================================================================================ //
-// ================================================================================ //
-// ========================== More Examples with Classes ========================== //
-// ================================================================================ //
-// ================================================================================ //
-// /* Section ayant pour but de montrer d'autres possibilités avec les Classes */
+// ================================================================================================== //
+// ================================================================================================== //
+// ========================== Encapsulation : Protected Properties/Methods ========================== //
+// ================================================================================================== //
+// ================================================================================================== //
+// /* NOTE: Attention, JS ne permet pas encore de rendre les donnée “privée” (une feature est prévue mais pas tout à faite prête),
+//    le but de cette section est protéger les données/methods afin qu’elle ne soit pas accidentellement modifier par du code externe */
+
+// /* NOTE: Pour protéger une donnée on va le précéder d'un underscore "_" (cf. _movements et _pin et _approveLoan) */
 
 // class Account {
 // 	constructor(owner, currency, pin) {
 // 		this.owner = owner;
 // 		this.currency = currency;
-// 		this.pin = pin;
-// 		this.movements = [];
 // 		this.locale = navigator.language;
+// 		// Protected property
+// 		this._pin = pin;
+// 		this._movements = [];
 
 // 		console.log(`Thanks for opening an account, ${owner}`);
 // 	}
 
+// 	getMovement() {
+// 		return this._movements;
+// 	}
+
 // 	deposit(val) {
-// 		this.movements.push(val);
+// 		this._movements.push(val);
 // 	}
 
 // 	withdraw(val) {
 // 		this.deposit(-val);
 // 	}
 
-// 	approveLoan(val) {
+// 	_approveLoan(val) {
 // 		return true;
 // 	}
 
 // 	requestLoan(val) {
-// 		if (this.approveLoan(val)) {
+// 		if (this._approveLoan(val)) {
 // 			this.deposit(val);
 // 			console.log(`Loan approved`);
 // 		}
@@ -492,16 +500,21 @@
 // }
 
 // const acc1 = new Account('Jonas', 'EUR', 1111, []);
-// // console.log(acc1);
+// console.log(acc1);
 
-// // Sans Public Interface
-// // acc1.movements.push(250);
-// // acc1.movements.push(-140);
-// // console.log(acc1);
-
-// // Avec Public Interface
+// // Cela n'a rien à voir avec l'Encapsulation, c'est juste pour utiliser la Public Interface
 // acc1.deposit(250);
 // acc1.withdraw(140);
 // acc1.requestLoan(1000); // Loan approved
-// console.log(acc1.approveLoan(1000)); // true1
+// // console.log(acc1.approveLoan(1000)); // true
 // console.log(acc1); // Account {owner: 'Jonas', currency: 'EUR', pin: 1111, movements: Array(3), locale: 'fr'}
+
+// // NOTE: Manipuler _movements est tout de même possible mais au moins le "_" nous avertit qu'on manipule une donnée protégée
+// // acc1._movements.push(250);
+// // acc1._movements.push(-140);
+
+// // Get des données (sans les manipuler)
+// console.log(acc1.getMovement());
+
+// /* NOTE: Résumé
+//    - Données protégées : les propriétés _movements, _pin et la method _approveLoan */
