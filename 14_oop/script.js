@@ -519,11 +519,11 @@
 // /* NOTE: Résumé
 //    - Données protégées : les propriétés _movements, _pin et la method _approveLoan */
 
-// ================================================================================================== //
-// ================================================================================================== //
+// ================================================================================================ //
+// ================================================================================================ //
 // ========================== Encapsulation : Private Properties/Methods ========================== //
-// ================================================================================================== //
-// ================================================================================================== //
+// ================================================================================================ //
+// ================================================================================================ //
 
 // /* NOTE: Pour rendre une donnée privée il faut la déclarer en dehors du constructor précédé d'un #
 //    (avec pin on doit le garder à l'intérieur du constructor car il utilise l'argument "pin" du constructor
@@ -596,3 +596,54 @@
 
 // // Lorsqu'on essaie d'accéder à une private method
 // // console.log(acc1.#approveLoan(1000)); // SyntaxError: Private field...
+
+// =================================================================================== //
+// =================================================================================== //
+// ========================== Chaining Methods with Classes ========================== //
+// =================================================================================== //
+// =================================================================================== //
+
+// class Account {
+// 	constructor(owner, currency, pin) {
+// 		this.owner = owner;
+// 		this.currency = currency;
+// 		this.locale = navigator.language;
+// 		this._pin = pin;
+// 		this._movements = [];
+
+// 		console.log(`Thanks for opening an account, ${owner}`);
+// 	}
+
+// 	getMovement() {
+// 		return this._movements;
+// 	}
+
+// 	deposit(val) {
+// 		this._movements.push(val);
+// 		return this;
+// 	}
+
+// 	withdraw(val) {
+// 		this.deposit(-val);
+// 		return this;
+// 	}
+
+// 	approveLoan(val) {
+// 		return true;
+// 		return this;
+// 	}
+
+// 	requestLoan(val) {
+// 		if (this.approveLoan(val)) {
+// 			this.deposit(val);
+// 			console.log(`Loan approved`);
+// 			return this;
+// 		}
+// 	}
+// }
+
+// const acc1 = new Account('Jonas', 'EUR', 1111, []);
+
+// // Chaining (il faut rajouter "return this" à la fin des methods)
+// acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+// console.log(acc1.getMovement()); // [300, 500, -35, 25000, -4000]
