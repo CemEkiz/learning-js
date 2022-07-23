@@ -99,12 +99,13 @@ body {
 }
 
 .btn-country {
+	margin-top: 8rem;
 	border: none;
 	font-size: 2rem;
 	padding: 2rem 5rem;
 	border-radius: 0.7rem;
 	color: white;
-	background-color: orangered;
+	background-color: #888;
 	cursor: pointer;
 }
 
