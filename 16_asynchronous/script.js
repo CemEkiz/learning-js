@@ -162,79 +162,116 @@ const countriesContainer = document.querySelector('.countries');
 // =============================================================== //
 // =============================================================== //
 
-const renderCountry = function (data, className = '') {
-	const html = `
-    <article class="country ${className}">
-          <img class="country__img" src="${data.flag}" />
-          <div class="country__data">
-            <h3 class="country__name">${data.name}</h3>
-            <h4 class="country__region">${data.region}</h4>
-            <p class="country__row"><span>👫</span>${(
-							+data.population / 1000000
-						).toFixed(1)} people</p>
-            <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
-            <p class="country__row"><span>💰</span>${
-							data.currencies[0].name
-						}</p>
-          </div>
-        </article>
-    `;
+// const renderCountry = function (data, className = '') {
+// 	const html = `
+//     <article class="country ${className}">
+//           <img class="country__img" src="${data.flag}" />
+//           <div class="country__data">
+//             <h3 class="country__name">${data.name}</h3>
+//             <h4 class="country__region">${data.region}</h4>
+//             <p class="country__row"><span>👫</span>${(
+// 							+data.population / 1000000
+// 						).toFixed(1)} people</p>
+//             <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+//             <p class="country__row"><span>💰</span>${
+// 							data.currencies[0].name
+// 						}</p>
+//           </div>
+//         </article>
+//     `;
 
-	countriesContainer.insertAdjacentHTML('beforeend', html);
-	// countriesContainer.style.opacity = 1;
-};
+// 	countriesContainer.insertAdjacentHTML('beforeend', html);
+// 	// countriesContainer.style.opacity = 1;
+// };
 
-const renderError = function (msg) {
-	countriesContainer.insertAdjacentText('beforeend', msg);
-	// countriesContainer.style.opacity = 1;
-};
+// // /* ---------------------------- Consuming Promises ---------------------------- */
 
-// /* ---------------------------- Consuming Promises ---------------------------- */
+// /* NOTE: - La fetch API retourne une Promise sur laquelle on peut call .then method
+// - Sur la response on doit obtenir les données avec la .json method (cela retourne une nouvelle Promise)
+// - On utilise ensuite à nouveau .then method sur cette nouvelle Promise afin de retourner les données  */
 
-/* NOTE: - La fetch API retourne une Promise sur laquelle on peut call .then method
-- Sur la response on doit obtenir les données avec la .json method (cela retourne une nouvelle Promise)
-- On utilise ensuite à nouveau .then method sur cette nouvelle Promise afin de retourner les données  */
+// // Refacto
+// const renderError = function (msg) {
+// 	countriesContainer.insertAdjacentText('beforeend', msg);
+// 	// countriesContainer.style.opacity = 1;
+// };
 
-const getCountryData = function (country) {
-	// Country 1
-	fetch(`https://restcountries.com/v2/name/${country}`)
-		.then((response) => response.json())
-		.then((data) => {
-			renderCountry(data[0]);
+// // Refacto
+// const getJSON = (url, errorMsg = 'Something went wrong') =>
+// 	fetch(url).then((response) => {
+// 		if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
 
-			const neighbour = data[0].borders?.[0];
+// 		return response.json();
+// 	});
 
-			if (!neighbour) return;
-
-			// Country 2
-			return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
-		})
-		.then((response) => response.json())
-		.then((data) => renderCountry(data, 'neighbour'))
-		.catch((error) => {
-			console.error(`${error}`);
-			renderError(`Something went wrong : ${error.message}`);
-		})
-		.finally(() => {
-			countriesContainer.style.opacity = 1;
-		});
-};
-
-/* Version explicite (pour mieux comprendre) */
 // const getCountryData = function (country) {
-// 	fetch(`https://restcountries.com/v2/name/${country}`)
-// 		.then(function (response) {
-// 			console.log(response);
-// 			return response.json();
-// 		})
-// 		.then(function (data) {
-// 			console.log(data);
+// 	// Country 1
+// 	getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found')
+// 		.then((data) => {
 // 			renderCountry(data[0]);
+
+// 			const neighbour = data[0].borders?.[0];
+// 			// const neighbour = 'dqsjdpqs';
+
+// 			if (!neighbour) throw new Error('No neighbour found!');
+
+// 			// Country 2
+// 			return getJSON(
+// 				`https://restcountries.com/v2/alpha/${neighbour}`,
+// 				'Country not found'
+// 			);
+// 		})
+// 		.then((data) => renderCountry(data, 'neighbour'))
+// 		.catch((error) => {
+// 			console.error(`${error}`);
+// 			renderError(`Something went wrong : ${error.message}`);
+// 		})
+// 		.finally(() => {
+// 			countriesContainer.style.opacity = 1;
 // 		});
 // };
 
-btn.addEventListener('click', function () {
-	getCountryData('portugal');
-});
+// /* Sans refactoring */
+// // const getCountryData = function (country) {
+// // 	// Country 1
+// // 	fetch(`https://restcountries.com/v2/name/${country}`)
+// // 		.then((response) => {
+// // 			if (!response.ok) {
+// // 				throw new Error(`Country not found (${response.status})`);
+// // 			}
 
-getCountryData('fsdfdlsk');
+// // 			return response.json();
+// // 		})
+// // 		.then((data) => {
+// // 			renderCountry(data[0]);
+
+// // 			const neighbour = data[0].borders?.[0];
+
+// // 			if (!neighbour) return;
+
+// // 			// Country 2
+// // 			return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+// // 		})
+// // 		.then((response) => {
+// // 			if (!response.ok) {
+// // 				throw new Error(`Country not found (${response.status})`);
+// // 			}
+
+// // 			return response.json();
+// // 		})
+// // 		.then((data) => renderCountry(data, 'neighbour'))
+// // 		.catch((error) => {
+// // 			console.error(`${error}`);
+// // 			renderError(`Something went wrong : ${error.message}`);
+// // 		})
+// // 		.finally(() => {
+// // 			countriesContainer.style.opacity = 1;
+// // 		});
+// // };
+
+// /* Pour tester les erreurs en offline */
+// // btn.addEventListener('click', function () {
+// // 	getCountryData('portugal');
+// // });
+
+// getCountryData('australia');
