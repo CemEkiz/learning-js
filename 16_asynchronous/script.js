@@ -282,11 +282,16 @@ const countriesContainer = document.querySelector('.countries');
 // ================================================================================= //
 // ================================================================================= //
 
-console.log('Test start');
-setTimeout(() => console.log('0 sec timer'), 0);
-Promise.resolve('Resolved promise 1').then((res) => console.log(res));
-Promise.resolve('Resolved promise 2').then((res) => {
-	for (let i = 0; i < 1000000000; i++) {}
-	console.log(res);
-});
-console.log('Test end');
+// // NOTE: Cet exemple illustre l'ordre "Call Stack > Microtask Queue > Callback Queue".
+// // Un autre point important : la seconde Promise loop sur un très grand Number, cela
+// // a pour effet de "bloquer" l'exécution du setTimeout qui est censé s'exécuter juste après
+// // soit pour un certain temps, soit pour "toujours" (mais c'est rare que cela arrive).
+
+// console.log('Test start'); // Order 1
+// setTimeout(() => console.log('0 sec timer'), 0); // Order 5
+// Promise.resolve('Resolved promise 1').then((res) => console.log(res)); // Order 3
+// Promise.resolve('Resolved promise 2').then((res) => {
+// 	for (let i = 0; i < 10000000000; i++) {}
+// 	console.log(res);
+// }); // Order 4
+// console.log('Test end'); // 2
