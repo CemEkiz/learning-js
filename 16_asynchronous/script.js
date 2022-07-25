@@ -295,3 +295,75 @@ const countriesContainer = document.querySelector('.countries');
 // 	console.log(res);
 // }); // Order 4
 // console.log('Test end'); // 2
+
+// ============================================================================ //
+// ============================================================================ //
+// ========================== Build a Simple Promise ========================== //
+// ============================================================================ //
+// ============================================================================ //
+
+// /* NOTE: Une Promise renvoie soit resolve() si elle est fullfiled, soit reject() si elle est rejected
+// Si elle est resolved, on peut alors la consume avec .then et .catch, sinon il faut définir un message d'erreur à afficher.  */
+
+// // On crée une Promise (dans la réalité on va surtout fetch un API = Promise)
+// const lotteryPromise = new Promise(function (resolve, reject) {
+// 	console.log('Lottery draw is happening 🔮');
+
+// 	setTimeout(function () {
+// 		if (Math.random() >= 0.5) {
+// 			resolve('You WIN 🤑');
+// 		} else {
+// 			reject(new Error('You lost your money 💩'));
+// 		}
+// 	}, 2000);
+// });
+
+// // On consume la Promise en appellant .then et .catch sur la Promise.
+// lotteryPromise
+// 	.then((res) => console.log(res))
+// 	.catch((err) => console.error(err));
+
+// // Promisifying une function (setTimeout)
+// const wait = function (seconds) {
+// 	return new Promise(function (resolve) {
+// 		setTimeout(resolve, seconds * 1000);
+// 	});
+// };
+
+// /* ---------------------------- Promises Non-Async ---------------------------- */
+// // Ces Promises sont traités immédiatement
+
+// Promise.resolve('abc').then((x) => console.log(x));
+// Promise.reject(new Error('Problem!')).catch((x) => console.error(x));
+
+// /* ---------------------------- Callback Hell vs Promises ---------------------------- */
+
+// // /* Callback Hell */
+// // // setTimeout(() => {
+// // // 	console.log('1 second passed');
+// // // 	setTimeout(() => {
+// // // 		console.log('2 second passed');
+// // // 		setTimeout(() => {
+// // // 			console.log('3 second passed');
+// // // 		}, 1000);
+// // // 	}, 1000);
+// // // }, 1000);
+
+// /* Promises */
+// wait(1)
+// 	.then(() => {
+// 		console.log('1 second passed');
+// 		return wait(1);
+// 	})
+// 	.then(() => {
+// 		console.log('2 second passed');
+// 		return wait(1);
+// 	})
+// 	.then(() => {
+// 		console.log('3 second passed');
+// 		return wait(1);
+// 	})
+// 	.then(() => {
+// 		console.log('4 second passed');
+// 		return wait(1);
+// 	});
